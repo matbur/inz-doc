@@ -1,5 +1,6 @@
 import json
 from collections import OrderedDict as OrD
+from itertools import count
 from pathlib import Path
 from pprint import pprint
 
@@ -18,6 +19,8 @@ d1 = {
     for group, questions in data
 }
 
+it = count(1)
+
 d2 = OrD([
     (group, OrD([
         (question, OrD([
@@ -29,23 +32,38 @@ d2 = OrD([
     for group, questions in data
 ])
 
+
 # pprint(d1)
-pprint(d2, width=120)
-print(d1 == d2)
-pprint(data)
+# pprint(d2, width=120)
+# print(d1 == d2)
+
+# pprint(data)
+
+def get_next():
+    return str(next(it))
 
 
-# label = 'Choroba'
-#
-# features = [j for _, i in data for j, *_ in i]
-# features.remove(label)
-#
-# pprint(features)
-# feature_dumps = json.dumps(features, ensure_ascii=False)
-# Path('../data/features.json').write_text(feature_dumps)
-#
-# labels = list(d2[label][label].keys())
-#
-# pprint(labels)
-# feature_dumps = json.dumps(labels, ensure_ascii=False)
-# Path('../data/labels.json').write_text(feature_dumps)
+def row_from_list(l: list):
+    return ' & '.join(l).join([r'\hline ', r'\\'])
+
+
+l = []
+for group, questions in d2.items():
+    # ll = ['', '', f'{group}']
+    # s = row_from_list(ll)
+    s = rf'\multicolumn{{3}}{{|c|}}{{{group}}}'.join([r'\hline ', r'\\'])
+    l.append(s)
+    for question, answers in questions.items():
+        answer, idx = answers.popitem(last=False)
+        popitem = f'{idx} - {answer}'
+        ll = [get_next(), question, popitem]
+        s = row_from_list(ll)
+        l.append(s)
+        for answer, idx in answers.items():
+            ll = ['', '', f'{idx} - {answer}']
+            s = row_from_list(ll)
+            l.append(s)
+
+pprint(l)
+
+Path('file.tex').write_text('\n'.join(l))
