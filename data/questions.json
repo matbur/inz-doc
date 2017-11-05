@@ -1,0 +1,410 @@
+[
+  [
+    "Ogólne",
+    [
+      [
+        "Płeć",
+        1,
+        [
+          "męska",
+          "żeńska"
+        ]
+      ],
+      [
+        "Wiek",
+        1,
+        [
+          "poniżej 20 lat",
+          "20 - 30 lat",
+          "21 - 30 lat",
+          "31 - 40 lat",
+          "41 - 50 lat",
+          "powyżej 50 lat"
+        ]
+      ]
+    ]
+  ],
+  [
+    "Ból",
+    [
+      [
+        "Lokalizacja bólu na początku zachorowania",
+        1,
+        [
+          "prawa górna ćwiartka",
+          "lewa górna ćwiartka",
+          "górna połowa",
+          "prawa połowa",
+          "lewa połowa",
+          "centralny kwadrat",
+          "cały brzuch",
+          "prawa dolna ćwiartka",
+          "lewa dolna ćwiartka",
+          "dolna połowa"
+        ]
+      ],
+      [
+        "Lokalizacja bólu obecnie",
+        0,
+        [
+          "brak bólu",
+          "prawa górna ćwiartka",
+          "lewa górna ćwiartka",
+          "górna połowa",
+          "prawa połowa",
+          "lewa połowa",
+          "centralny kwadrat",
+          "cały brzuch",
+          "prawa dolna ćwiartka",
+          "lewa dolna ćwiartka",
+          "dolna połowa"
+        ]
+      ],
+      [
+        "Intensywność bólu",
+        0,
+        [
+          "łagodny/brak",
+          "umiarkowany",
+          "silny"
+        ]
+      ],
+      [
+        "Czynniki nasilające ból",
+        0,
+        [
+          "brak czynników",
+          "oddychanie",
+          "kaszel",
+          "ruchy ciała"
+        ]
+      ],
+      [
+        "Czynniki przynoszące ulgę",
+        0,
+        [
+          "brak czynników",
+          "wymioty",
+          "pozycja ciała"
+        ]
+      ],
+      [
+        "Progresja bólu",
+        1,
+        [
+          "ustepujący",
+          "bez zmian",
+          "nasilający się"
+        ]
+      ],
+      [
+        "Czas trwania bólu",
+        1,
+        [
+          "mniej niż 12 godzin",
+          "12 - 24 godzin",
+          "24 - 48 godzin",
+          "powyżej 48 godzin"
+        ]
+      ],
+      [
+        "Charakter bólu na początku zachorowania",
+        1,
+        [
+          "przerywany",
+          "stały",
+          "kolkowy"
+        ]
+      ],
+      [
+        "Charakter bólu obecnie",
+        0,
+        [
+          "brak bólu",
+          "przerywany",
+          "stały",
+          "kolkowy"
+        ]
+      ]
+    ]
+  ],
+  [
+    "Inne objawy",
+    [
+      [
+        "Nudności i wymioty",
+        0,
+        [
+          "brak",
+          "nudności bez wymiotów",
+          "nudności z wymiotami"
+        ]
+      ],
+      [
+        "Apetyt",
+        1,
+        [
+          "zmniejszony",
+          "normalny",
+          "zwiększony"
+        ]
+      ],
+      [
+        "Wypróżnienia",
+        1,
+        [
+          "biegunki",
+          "prawidłowe",
+          "zaparcia"
+        ]
+      ],
+      [
+        "Oddawanie moczu",
+        1,
+        [
+          "normalne",
+          "dysuria"
+        ]
+      ]
+    ]
+  ],
+  [
+    "Historia",
+    [
+      [
+        "Poprzednie niestrawności",
+        0,
+        [
+          "nie",
+          "tak"
+        ]
+      ],
+      [
+        "Żółtaczka w przeszłości",
+        0,
+        [
+          "nie",
+          "tak"
+        ]
+      ],
+      [
+        "Poprzednie operacje brzuszne",
+        0,
+        [
+          "nie",
+          "tak"
+        ]
+      ],
+      [
+        "Leki",
+        0,
+        [
+          "nie",
+          "tak"
+        ]
+      ]
+    ]
+  ],
+  [
+    "Ogólne badanie",
+    [
+      [
+        "Stan psychiczny",
+        1,
+        [
+          "pobudzony/cierpiący",
+          "prawidłowy",
+          "apatyczny"
+        ]
+      ],
+      [
+        "Skóra",
+        1,
+        [
+          "blada",
+          "prawidłowa",
+          "zaczerwieniona (twarz)"
+        ]
+      ],
+      [
+        "Temperatura (pacha)",
+        1,
+        [
+          "poniżej 36.5 stC",
+          "36.5 - 37 stC",
+          "37 - 37.5 stC",
+          "37.5 - 38 stC",
+          "38 - 39 stC",
+          "powyżej 39 stC"
+        ]
+      ],
+      [
+        "Tętno",
+        1,
+        [
+          "poniżej 60 /min",
+          "60 - 70 /min",
+          "70 - 80 /min",
+          "80 - 90 /min",
+          "90 - 100 /min",
+          "100 - 110 /min",
+          "110 - 120 /min",
+          "120 - 130 /min",
+          "powyżej 130 /min"
+        ]
+      ],
+      [
+        "Ciśnienie krwi skurczowe",
+        1,
+        [
+          "poniżej 100 mm Hg",
+          "100 - 110 mm Hg",
+          "110 - 120 mm Hg",
+          "120 - 130 mm Hg",
+          "130 - 140 mm Hg",
+          "140 - 150 mm Hg",
+          "150 - 160 mm Hg",
+          "powyżej 160 mm Hg"
+        ]
+      ],
+      [
+        "Ciśnienie krwi rozkurczowe",
+        1,
+        [
+          "poniżej 60 mm Hg",
+          "60 - 70 mm Hg",
+          "70 - 80 mm Hg",
+          "80 - 90 mm Hg",
+          "powyżej 90 mm Hg"
+        ]
+      ]
+    ]
+  ],
+  [
+    "Oglądanie brzucha",
+    [
+      [
+        "Ruchy oddechowe powłok brzusznych",
+        1,
+        [
+          "normalne",
+          "zniesione"
+        ]
+      ],
+      [
+        "Wzdęcia",
+        0,
+        [
+          "nie",
+          "tak"
+        ]
+      ]
+    ]
+  ],
+  [
+    "Badania palpacyjne",
+    [
+      [
+        "Umiejscowienie bolesności uciskowej",
+        0,
+        [
+          "brak bólu",
+          "prawa górna ćwiartka",
+          "lewa górna ćwiartka",
+          "górna połowa",
+          "prawa połowa",
+          "lewa połowa",
+          "centralny kwadrat",
+          "cały brzuch",
+          "prawa dolna ćwiartka",
+          "lewa dolna ćwiartka",
+          "dolna połowa"
+        ]
+      ],
+      [
+        "Objaw Blumberga",
+        0,
+        [
+          "negatywny",
+          "pozytywny"
+        ]
+      ],
+      [
+        "Obrona mięśniowa",
+        0,
+        [
+          "nie",
+          "tak"
+        ]
+      ],
+      [
+        "Wzmożone napięcie powłok brzusznych",
+        0,
+        [
+          "nie",
+          "tak"
+        ]
+      ],
+      [
+        "Opory patologiczne",
+        0,
+        [
+          "nie",
+          "tak"
+        ]
+      ],
+      [
+        "Objaw Murphy'ego",
+        0,
+        [
+          "negatywny",
+          "pozytywny"
+        ]
+      ]
+    ]
+  ],
+  [
+    "Inne badania",
+    [
+      [
+        "Perystaltyka jelit",
+        1,
+        [
+          "zniesiona",
+          "prawidłowa",
+          "wzmożona"
+        ]
+      ],
+      [
+        "Badanie per rectum",
+        1,
+        [
+          "stan normalny",
+          "bolesność uciskowa po stronie prawej",
+          "bolesność uciskowa po stronie lewej",
+          "bolesność uciskowa całej bańki odbytnicy",
+          "krwawienie"
+        ]
+      ]
+    ]
+  ],
+  [
+    "Choroba",
+    [
+      [
+        "Choroba",
+        1,
+        [
+          "Ostre zapalenie wyrostka",
+          "Zapalenie uchyłków jelit",
+          "Niedrożność mechaniczna jelit",
+          "Perforowany wrzód trawienny",
+          "Zapalenie woreczka żółciowego",
+          "Ostre zapalenie trzustki",
+          "Niecharakterystyczny ból brzucha",
+          "Inne przyczyny ostrego bólu brzucha"
+        ]
+      ]
+    ]
+  ]
+]
