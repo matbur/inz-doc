@@ -15,6 +15,33 @@ a = np.arange(10).reshape(5, -2)
 \end{verbatim}
 
 
+\chapter{Opis architektury aplikacji}
+
+\section{Schemat warstwy}
+
+\begin{verbatim}
+class Layer:
+    def __init__(self, shape, activation='sigmoid'):
+        ...
+
+    def feedforward(self, x: np.ndarray) -> np.ndarray:
+        ...
+
+    def calc_delta(self, d: np.ndarray = None):
+        ...
+
+    def calc_gradient(self):
+        ...
+
+    def update_weights(self):
+        ...
+\end{verbatim}
+\label{Schemat klasy Layer}
+
+Powyższy fragment kodu przedstawia schemat klasy Layer. Jest to implementacja jednej warstwy w sieci neuronowej.
+Klasa zawiera w sobie tablicę, która jest składa się z wag połączeń do poprzedniej warstwy.
+Przy tworzeniu instancji można podać funkcję aktywacji (domyślnie jest to sigmoid).
+
 
 \chapter{Nazwa rozdziału}
 
