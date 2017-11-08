@@ -44,10 +44,27 @@ def get_next():
 
 
 def row_from_list(l: list):
-    return ' & '.join(l).join([r'\hline ', r'\\'])
+    return ' & '.join(l)
 
 
-l = []
+l = [r'''
+\documentclass[12pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[english,polish]{babel}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+
+\begin{document}
+\begin{tabular}{|c|l|l|}
+''']
 for group, questions in d2.items():
     # ll = ['', '', f'{group}']
     # s = row_from_list(ll)
@@ -57,13 +74,18 @@ for group, questions in d2.items():
         answer, idx = answers.popitem(last=False)
         popitem = f'{idx} - {answer}'
         ll = [get_next(), question, popitem]
-        s = row_from_list(ll)
+        s = row_from_list(ll).join([r'\hline ', r'\\'])
         l.append(s)
         for answer, idx in answers.items():
             ll = ['', '', f'{idx} - {answer}']
-            s = row_from_list(ll)
+            s = row_from_list(ll).join([r'', r'\\'])
             l.append(s)
 
+l.append('''
+\end{tabular}
+
+\end{document}
+''')
 pprint(l)
 
 Path('file.tex').write_text('\n'.join(l))
