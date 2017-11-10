@@ -4,20 +4,58 @@
 \maketitle
 \tableofcontents
 
-\chapter{Wstęp}
-
-
 \pagebreak
 
-\begin{verbatim}
-# Jakis kod
-a = np.arange(10).reshape(5, -2)
-\end{verbatim}
+\chapter{Wstęp}
 
+\section{Cel projektu}
+
+\section{Motywacja}
+
+\chapter{Problem medyczny}
+
+Wybrany przeze mnie problem medyczny dotyczy klasyfikacji stanów ostrego brzucha.
+Za ten stan odpowiedzialne mogą być różne choroby, które zawsze wymagają interwejcji lekarza.
+% http://www.poradnikzdrowie.pl/zdrowie/uklad-pokarmowy/ostry-brzuch-przyczyny-objawy-leczenie-ostrego-brzucha_35445.html
+
+\section{Opis chorób}
+
+Do klasyfikacji jest 8 chorób, zatem sieć neuronowa będzie miała za zadanie przypisać 1 z 8 klas.
+Są to:
+\begin{enumerate}
+\item Ostre zapalenie wyrostka robaczkowego
+\item Zapalenie uchyłków jelit
+\item Niedrożnośc mechaniczna jelit
+\item Perforowany wrzód trawienny
+\item Zapalenie woreczka żółciowego
+\item Ostre zapalenie trzustki
+\item Niecharakterystyczny ból brzucha
+\item Inne przyczyny ostrego bólu brzucha
+\end{enumerate}
+
+\section{Opis cech}
+
+\section{Selekcja cech}
+
+\subsection{Test chi2}
+
+\chapter{Sieć neuronowa}
+
+\section{Wprowadzenie}
+
+\section{Neuron}
+
+\subsection{Funkcja aktywacji}
+
+\section{Model wielowarstwowy}
 
 \chapter{Opis architektury aplikacji}
 
 \section{Schemat warstwy}
+
+\section{Schemat modelu}
+
+\subsection{Proces uczenia}
 
 \begin{verbatim}
 class Layer:
@@ -43,17 +81,14 @@ Klasa zawiera w sobie tablicę, która jest składa się z wag połączeń do po
 Przy tworzeniu instancji można podać funkcję aktywacji (domyślnie jest to sigmoid).
 
 
-\chapter{Nazwa rozdziału}
 
-Tekst rozdziału
-
-
-\section{Sekcja}
-\label{Sec:Nazwa sekcji}
-
-Tekst sekcji
+\chapter{Przeprowadzone badania}
 
 \chapter{Podsumowanie}
+
+\section{Dalsze możliwości rozwoju}
+
+\section{Co mogłem zrobić lepiej}
 
 Tekst podsumowania
 
