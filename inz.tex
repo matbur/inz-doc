@@ -1,101 +1,443 @@
-\include{settings}
+\documentclass{report}
+
+\usepackage{listings}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[english,polish]{babel}\usepackage{indentfirst}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+
+\pagecolor{black}
+\color{white}
 
 \begin{document}
-\maketitle
-\tableofcontents
+    \tableofcontents
 
-\pagebreak
+    \chapter{Wstęp}
 
-\chapter{Wstęp}
+    \section{Cel projektu}
 
-\section{Cel projektu}
+    \section{Motywacja}
 
-\section{Motywacja}
+    \chapter{Problem medyczny}
 
-\chapter{Problem medyczny}
+    Wybrany przeze mnie problem medyczny dotyczy klasyfikacji stanów ostrego brzucha.
+    Za ten stan odpowiedzialne mogą być różne choroby, które zawsze wymagają interwejcji lekarza.
+    % http://www.poradnikzdrowie.pl/zdrowie/uklad-pokarmowy/ostry-brzuch-przyczyny-objawy-leczenie-ostrego-brzucha_35445.html
 
-Wybrany przeze mnie problem medyczny dotyczy klasyfikacji stanów ostrego brzucha.
-Za ten stan odpowiedzialne mogą być różne choroby, które zawsze wymagają interwejcji lekarza.
-% http://www.poradnikzdrowie.pl/zdrowie/uklad-pokarmowy/ostry-brzuch-przyczyny-objawy-leczenie-ostrego-brzucha_35445.html
+    \section{Opis chorób}
 
-\section{Opis chorób}
+    Do klasyfikacji jest 8 chorób, zatem sieć neuronowa będzie miała za zadanie przypisać 1 z 8 klas.
+    Są to:
+    \begin{enumerate}
+        \item Ostre zapalenie wyrostka robaczkowego
+        \item Zapalenie uchyłków jelit
+        \item Niedrożność mechaniczna jelit
+        \item Perforowany wrzód trawienny
+        \item Zapalenie woreczka żółciowego
+        \item Ostre zapalenie trzustki
+        \item Niecharakterystyczny ból brzucha
+        \item Inne przyczyny ostrego bólu brzucha
+    \end{enumerate}
 
-Do klasyfikacji jest 8 chorób, zatem sieć neuronowa będzie miała za zadanie przypisać 1 z 8 klas.
-Są to:
-\begin{enumerate}
-\item Ostre zapalenie wyrostka robaczkowego
-\item Zapalenie uchyłków jelit
-\item Niedrożnośc mechaniczna jelit
-\item Perforowany wrzód trawienny
-\item Zapalenie woreczka żółciowego
-\item Ostre zapalenie trzustki
-\item Niecharakterystyczny ból brzucha
-\item Inne przyczyny ostrego bólu brzucha
-\end{enumerate}
+    % histogram klas
+    Histogram pokazuje, że rozkład klas jest nierównomierny.
+    Na 476 obiektów aż 157 to 'Niecharakterystyczny ból brzucha' i 141 ma etykietę 'Ostre zapalenie wyrostka robaczkowego'.
+    Czyli do 2 klas należy ponad 60\% obiektów.
+    Może to mieć negatywny wpływ na jakość klasyfikacji.
 
-\section{Opis cech}
+    \section{Opis cech}
 
-\section{Selekcja cech}
+    Dane do tego problemu zawierają 31 cech.
+    Są to odpowiedzi z wywiadu medycznego i wyniki przeprowadzonych badań.
+    Możliwe wartości parametrów przedstawione są poniżej.
+    Jak widać wszystkie liczby są naturalne mniejsze niż 11, także normalizacja czy skalowanie danych nie jest konieczne.
 
-\subsection{Test chi2}
+    \begin{itemize}
+        \item Ogólne
+        \begin{enumerate}
+            \setcounter{enumi}{0}
+            \item Płeć
+            \begin{itemize}
+                \item 1 - męska
+                \item 2 - żeńska
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{1}
+            \item Wiek
+            \begin{itemize}
+                \item 1 - poniżej 20 lat
+                \item 2 - 20 - 30 lat
+                \item 3 - 21 - 30 lat
+                \item 4 - 31 - 40 lat
+                \item 5 - 41 - 50 lat
+                \item 6 - powyżej 50 lat
+            \end{itemize}
+        \end{enumerate}
+        \item Ból
+        \begin{enumerate}
+            \setcounter{enumi}{2}
+            \item Lokalizacja bólu na początku zachorowania
+            \begin{itemize}
+                \item 1 - prawa górna ćwiartka
+                \item 2 - lewa górna ćwiartka
+                \item 3 - górna połowa
+                \item 4 - prawa połowa
+                \item 5 - lewa połowa
+                \item 6 - centralny kwadrat
+                \item 7 - cały brzuch
+                \item 8 - prawa dolna ćwiartka
+                \item 9 - lewa dolna ćwiartka
+                \item 10 - dolna połowa
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{3}
+            \item Lokalizacja bólu obecnie
+            \begin{itemize}
+                \item 0 - brak bólu
+                \item 1 - prawa górna ćwiartka
+                \item 2 - lewa górna ćwiartka
+                \item 3 - górna połowa
+                \item 4 - prawa połowa
+                \item 5 - lewa połowa
+                \item 6 - centralny kwadrat
+                \item 7 - cały brzuch
+                \item 8 - prawa dolna ćwiartka
+                \item 9 - lewa dolna ćwiartka
+                \item 10 - dolna połowa
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{4}
+            \item Intensywność bólu
+            \begin{itemize}
+                \item 0 - łagodny/brak
+                \item 1 - umiarkowany
+                \item 2 - silny
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{5}
+            \item Czynniki nasilające ból
+            \begin{itemize}
+                \item 0 - brak czynników
+                \item 1 - oddychanie
+                \item 2 - kaszel
+                \item 3 - ruchy ciała
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{6}
+            \item Czynniki przynoszące ulgę
+            \begin{itemize}
+                \item 0 - brak czynników
+                \item 1 - wymioty
+                \item 2 - pozycja ciała
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{7}
+            \item Progresja bólu
+            \begin{itemize}
+                \item 1 - ustepujący
+                \item 2 - bez zmian
+                \item 3 - nasilający się
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{8}
+            \item Czas trwania bólu
+            \begin{itemize}
+                \item 1 - mniej niż 12 godzin
+                \item 2 - 12 - 24 godzin
+                \item 3 - 24 - 48 godzin
+                \item 4 - powyżej 48 godzin
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{9}
+            \item Charakter bólu na początku zachorowania
+            \begin{itemize}
+                \item 1 - przerywany
+                \item 2 - stały
+                \item 3 - kolkowy
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{10}
+            \item Charakter bólu obecnie
+            \begin{itemize}
+                \item 0 - brak bólu
+                \item 1 - przerywany
+                \item 2 - stały
+                \item 3 - kolkowy
+            \end{itemize}
+        \end{enumerate}
+        \item Inne objawy
+        \begin{enumerate}
+            \setcounter{enumi}{11}
+            \item Nudności i wymioty
+            \begin{itemize}
+                \item 0 - brak
+                \item 1 - nudności bez wymiotów
+                \item 2 - nudności z wymiotami
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{12}
+            \item Apetyt
+            \begin{itemize}
+                \item 1 - zmniejszony
+                \item 2 - normalny
+                \item 3 - zwiększony
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{13}
+            \item Wypróżnienia
+            \begin{itemize}
+                \item 1 - biegunki
+                \item 2 - prawidłowe
+                \item 3 - zaparcia
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{14}
+            \item Oddawanie moczu
+            \begin{itemize}
+                \item 1 - normalne
+                \item 2 - dysuria
+            \end{itemize}
+        \end{enumerate}
+        \item Historia
+        \begin{enumerate}
+            \setcounter{enumi}{15}
+            \item Poprzednie niestrawności
+            \begin{itemize}
+                \item 0 - nie
+                \item 1 - tak
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{16}
+            \item Żółtaczka w przeszłości
+            \begin{itemize}
+                \item 0 - nie
+                \item 1 - tak
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{17}
+            \item Poprzednie operacje brzuszne
+            \begin{itemize}
+                \item 0 - nie
+                \item 1 - tak
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{18}
+            \item Leki
+            \begin{itemize}
+                \item 0 - nie
+                \item 1 - tak
+            \end{itemize}
+        \end{enumerate}
+        \item Ogólne badanie
+        \begin{enumerate}
+            \setcounter{enumi}{19}
+            \item Stan psychiczny
+            \begin{itemize}
+                \item 1 - pobudzony/cierpiący
+                \item 2 - prawidłowy
+                \item 3 - apatyczny
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{20}
+            \item Skóra
+            \begin{itemize}
+                \item 1 - blada
+                \item 2 - prawidłowa
+                \item 3 - zaczerwieniona (twarz)
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{21}
+            \item Temperatura (pacha)
+            \begin{itemize}
+                \item 1 - poniżej 36.5 stC
+                \item 2 - 36.5 - 37 stC
+                \item 3 - 37 - 37.5 stC
+                \item 4 - 37.5 - 38 stC
+                \item 5 - 38 - 39 stC
+                \item 6 - powyżej 39 stC
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{22}
+            \item Tętno
+            \begin{itemize}
+                \item 1 - poniżej 60 /min
+                \item 2 - 60 - 70 /min
+                \item 3 - 70 - 80 /min
+                \item 4 - 80 - 90 /min
+                \item 5 - 90 - 100 /min
+                \item 6 - 100 - 110 /min
+                \item 7 - 110 - 120 /min
+                \item 8 - 120 - 130 /min
+                \item 9 - powyżej 130 /min
+            \end{itemize}
+        \end{enumerate}
+        \item Oglądanie brzucha
+        \begin{enumerate}
+            \setcounter{enumi}{23}
+            \item Ruchy oddechowe powłok brzusznych
+            \begin{itemize}
+                \item 1 - normalne
+                \item 2 - zniesione
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{24}
+            \item Wzdęcia
+            \begin{itemize}
+                \item 0 - nie
+                \item 1 - tak
+            \end{itemize}
+        \end{enumerate}
+        \item Badania palpacyjne
+        \begin{enumerate}
+            \setcounter{enumi}{25}
+            \item Umiejscowienie bolesności uciskowej
+            \begin{itemize}
+                \item 0 - brak bólu
+                \item 1 - prawa górna ćwiartka
+                \item 2 - lewa górna ćwiartka
+                \item 3 - górna połowa
+                \item 4 - prawa połowa
+                \item 5 - lewa połowa
+                \item 6 - centralny kwadrat
+                \item 7 - cały brzuch
+                \item 8 - prawa dolna ćwiartka
+                \item 9 - lewa dolna ćwiartka
+                \item 10 - dolna połowa
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{26}
+            \item Objaw Blumberga
+            \begin{itemize}
+                \item 0 - negatywny
+                \item 1 - pozytywny
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{27}
+            \item Obrona mięśniowa
+            \begin{itemize}
+                \item 0 - nie
+                \item 1 - tak
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{28}
+            \item Wzmożone napięcie powłok brzusznych
+            \begin{itemize}
+                \item 0 - nie
+                \item 1 - tak
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{29}
+            \item Opory patologiczne
+            \begin{itemize}
+                \item 0 - nie
+                \item 1 - tak
+            \end{itemize}
+        \end{enumerate}
+        \begin{enumerate}
+            \setcounter{enumi}{30}
+            \item Objaw Murphy'ego
+            \begin{itemize}
+                \item 0 - negatywny
+                \item 1 - pozytywny
+            \end{itemize}
+        \end{enumerate}
+    \end{itemize}
 
-\chapter{Sieć neuronowa}
+    \section{Selekcja cech}
 
-\section{Wprowadzenie}
+    Nie wszystkie cechy nadają się do procesu klasyfikacji, dlatego konieczne będzie przeprowadzenie selekcji cech.
 
-\section{Neuron}
+    \subsection{Test chi2}
 
-\subsection{Funkcja aktywacji}
+    Metoda, którą wybrałem to test chi2.
 
-\section{Model wielowarstwowy}
+    $$
+    \chi ^ 2 = \sum_{i=1}^{n}{ \frac{{(O_i - E_i) ^ 2}}{E_i}}
+    $$
 
-\chapter{Opis architektury aplikacji}
+    \chapter{Sieć neuronowa}
 
-\section{Schemat warstwy}
+    \section{Wprowadzenie}
 
-\section{Schemat modelu}
+    \section{Neuron}
 
-\subsection{Proces uczenia}
+    \subsection{Funkcja aktywacji}
 
-\begin{verbatim}
-class Layer:
-    def __init__(self, shape, activation='sigmoid'):
+    \section{Model wielowarstwowy}
+
+    \chapter{Opis architektury aplikacji}
+
+    \section{Schemat warstwy}
+
+    \section{Schemat modelu}
+
+    \subsection{Proces uczenia}
+
+    \begin{lstlisting}
+        class Layer:
+        def __init__(self, shape, activation='sigmoid'):
         ...
 
-    def feedforward(self, x: np.ndarray) -> np.ndarray:
+        def feedforward(self, x: np.ndarray) -> np.ndarray:
         ...
 
-    def calc_delta(self, d: np.ndarray = None):
+        def calc_delta(self, d: np.ndarray = None):
         ...
 
-    def calc_gradient(self):
+        def calc_gradient(self):
         ...
 
-    def update_weights(self):
+        def update_weights(self):
         ...
-\end{verbatim}
-\label{Schemat klasy Layer}
-
-Powyższy fragment kodu przedstawia schemat klasy Layer. Jest to implementacja jednej warstwy w sieci neuronowej.
-Klasa zawiera w sobie tablicę, która jest składa się z wag połączeń do poprzedniej warstwy.
-Przy tworzeniu instancji można podać funkcję aktywacji (domyślnie jest to sigmoid).
+    \end{lstlisting}
+    \label{Schemat klasy Layer}
 
 
+    Powyższy fragment kodu przedstawia schemat klasy Layer. Jest to implementacja jednej warstwy w sieci neuronowej.
+    Klasa zawiera w sobie tablicę, która jest składa się z wag połączeń do poprzedniej warstwy.
+    Przy tworzeniu instancji można podać funkcję aktywacji (domyślnie jest to sigmoid).
 
-\chapter{Przeprowadzone badania}
 
-\chapter{Podsumowanie}
 
-\section{Dalsze możliwości rozwoju}
+    \chapter{Przeprowadzone badania}
 
-\section{Co mogłem zrobić lepiej}
+    \chapter{Podsumowanie}
 
-Tekst podsumowania
+    \section{Dalsze możliwości rozwoju}
 
-\bibliography{./bibliography}
-\bibliographystyle{plain}
+    \section{Co mogłem zrobić lepiej}
 
-\listoffigures
-\listoftables
+    Tekst podsumowania
+
+    \bibliography{./bibliography}
+    \bibliographystyle{plain}
+
+    \listoffigures
+    \listoftables
 
 \end{document}
