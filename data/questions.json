@@ -188,14 +188,6 @@
         ]
       ],
       [
-        "Podobny ból w przeszłości",
-        0,
-        [
-          "nie",
-          "tak"
-        ]
-      ],
-      [
         "Poprzednie operacje brzuszne",
         0,
         [
@@ -259,31 +251,6 @@
           "110 - 120 /min",
           "120 - 130 /min",
           "powyżej 130 /min"
-        ]
-      ],
-      [
-        "Ciśnienie krwi skurczowe",
-        1,
-        [
-          "poniżej 100 mm Hg",
-          "100 - 110 mm Hg",
-          "110 - 120 mm Hg",
-          "120 - 130 mm Hg",
-          "130 - 140 mm Hg",
-          "140 - 150 mm Hg",
-          "150 - 160 mm Hg",
-          "powyżej 160 mm Hg"
-        ]
-      ],
-      [
-        "Ciśnienie krwi rozkurczowe",
-        1,
-        [
-          "poniżej 60 mm Hg",
-          "60 - 70 mm Hg",
-          "70 - 80 mm Hg",
-          "80 - 90 mm Hg",
-          "powyżej 90 mm Hg"
         ]
       ]
     ]
@@ -367,31 +334,6 @@
         [
           "negatywny",
           "pozytywny"
-        ]
-      ]
-    ]
-  ],
-  [
-    "Inne badania",
-    [
-      [
-        "Perystaltyka jelit",
-        1,
-        [
-          "zniesiona",
-          "prawidłowa",
-          "wzmożona"
-        ]
-      ],
-      [
-        "Badanie per rectum",
-        1,
-        [
-          "stan normalny",
-          "bolesność uciskowa po stronie prawej",
-          "bolesność uciskowa po stronie lewej",
-          "bolesność uciskowa całej bańki odbytnicy",
-          "krwawienie"
         ]
       ]
     ]

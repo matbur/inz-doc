@@ -63,26 +63,29 @@ l = [r'''
 \usepackage{hyperref}
 
 \begin{document}
-\begin{tabular}{|c|l|l|}
+\begin{itemize}
 ''']
+ccc = 0
 for group, questions in d2.items():
+    if group == 'Choroba':
+        continue
     # ll = ['', '', f'{group}']
     # s = row_from_list(ll)
-    s = rf'\multicolumn{{3}}{{|c|}}{{{group}}}'.join([r'\hline ', r'\\'])
+    s = rf'\item {group}'
     l.append(s)
     for question, answers in questions.items():
-        answer, idx = answers.popitem(last=False)
-        popitem = f'{idx} - {answer}'
-        ll = [get_next(), question, popitem]
-        s = row_from_list(ll).join([r'\hline ', r'\\'])
-        l.append(s)
+        l.append(r'\begin{enumerate}')
+        l.append(rf'\setcounter{{enumi}}{{{ccc}}}')
+        l.append(rf'\item {question}')
+        l.append(r'\begin{itemize}')
         for answer, idx in answers.items():
-            ll = ['', '', f'{idx} - {answer}']
-            s = row_from_list(ll).join([r'', r'\\'])
-            l.append(s)
+            l.append(rf'\item {idx} - {answer}')
+        l.append(r'\end{itemize}')
+        l.append(r'\end{enumerate}')
+        ccc += 1
 
 l.append('''
-\end{tabular}
+\end{itemize}
 
 \end{document}
 ''')
