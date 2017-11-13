@@ -370,15 +370,79 @@
 
     \section{Selekcja cech}
 
-    Nie wszystkie cechy nadają się do procesu klasyfikacji, dlatego konieczne będzie przeprowadzenie selekcji cech.
+    Selekcja cech jest procesem wymaganym, gdy dane nie są dobrej jakości w wielu algorytmach uczenia maszynowego.
+    Polega ona na wyborze podzbioru najlepszych cech według ustalonego kryterium.
+    Analitycy danych przeprowadzają selekcję z następujących powodów:
+    \begin{itemize}
+        \item uproszczenie modelu, w celu ułatwienia interpretacji przez badaczy,
+        \item skrócenie czasu treningu,
+        \item zmniejszenie wymiarowości modelu,
+        \item zwiększenie generalizacji poprzez uniknięcie zjawiska przeuczenia.
+    \end{itemize}
+    % https://en.wikipedia.org/wiki/Feature_selection
+    %Nie wszystkie cechy nadają się do procesu klasyfikacji, dlatego konieczne będzie przeprowadzenie selekcji cech.
 
     \subsection{Test chi2}
 
     Metoda, którą wybrałem to test chi2.
+    Jest to jedna z technik nieparametrycznych.
+    Nadaje się bardzo dobrze do oceny istotności statystycznej cechy.
+    Test ten polega na obliczeniu podanego poniżej wyrażenia dla każdej z cech i wybraniu takich, dla których wartość jest największa.
 
     $$
     \chi ^ 2 = \sum_{i=1}^{n}{ \frac{{(O_i - E_i) ^ 2}}{E_i}}
     $$
+
+    \noindent
+    Gdzie:
+    \begin{itemize}
+        \item $O_i$ - wartość mierzona,
+        \item $E_i$ - wartość oczekiwana,
+        \item $n$ - liczba obiektów.
+    \end{itemize}
+
+    Wartości testu dla wszystkich cech mają następujące wartości: \\
+
+    \begin{tabular}{|l|l|l|}
+        \hline L.p. & Cecha & Wartość chi2 \\
+        \hline 1 & Charakter bólu obecnie & 127.811 \\
+        \hline 2 & Czynniki przynoszące ulgę & 87.453 \\
+        \hline 3 & Nudności i wymioty & 84.633 \\
+        \hline 4 & Czas trwania bólu & 84.273 \\
+        \hline 5 & Umiejscowienie bolesności uciskowej & 77.456 \\
+        \hline 6 & Lokalizacja bólu obecnie & 70.865 \\
+        \hline 7 & Czynniki nasilające ból & 59.357 \\
+        \hline 8 & Tętno & 58.152 \\
+        \hline 9 & Apetyt & 54.489 \\
+        \hline 10 & Wypróżnienia & 42.184 \\
+        \hline 11 & Charakter bólu na początku zachorowania & 32.127 \\
+        \hline 12 & Lokalizacja bólu na początku zachorowania & 31.430 \\
+        \hline 13 & Ruchy oddechowe powłok brzusznych & 31.192 \\
+        \hline 14 & Progresja bólu & 30.502 \\
+        \hline 15 & Objaw Blumberga & 21.387 \\
+        \hline 16 & Wiek & 21.228 \\
+        \hline 17 & Skóra & 20.202 \\
+        \hline 18 & Intensywność bólu & 18.438 \\
+        \hline 19 & Temperatura (pacha) & 17.708 \\
+        \hline 20 & Stan psychiczny & 15.930 \\
+        \hline 21 & Leki & 15.554 \\
+        \hline 22 & Objaw Murphy'ego & 13.666 \\
+        \hline 23 & Obrona mięśniowa & 13.062 \\
+        \hline 24 & Oddawanie moczu & 12.322 \\
+        \hline 25 & Wzmożone napięcie powłok brzusznych & 11.406 \\
+        \hline 26 & Wzdęcia & 8.771 \\
+        \hline 27 & Opory patologiczne & 8.504 \\
+        \hline 28 & Poprzednie operacje brzuszne & 7.007 \\
+        \hline 29 & Płeć & 6.195 \\
+        \hline 30 & Poprzednie niestrawności & 4.470 \\
+        \hline 31 & Żółtaczka w przeszłości & 0.590 \\
+        \hline
+
+    \end{tabular} \\
+
+    Najlepszymi cechami są te, które mają wysoką wartość chi2.
+    Zatem ograniczając liczbę cech, do klasyfikacji brane będą te z góry tabeli.
+    Cechy o niskiej wartości, jak np. 'Żółtaczka w przeszłości', nie polepszą klasyfikacji, a mogą ją nawet pogorszyć.
 
     \chapter{Sieć neuronowa}
 
@@ -418,11 +482,10 @@
     \label{Schemat klasy Layer}
 
 
-    Powyższy fragment kodu przedstawia schemat klasy Layer. Jest to implementacja jednej warstwy w sieci neuronowej.
+    Powyższy fragment kodu przedstawia schemat klasy Layer.
+    Jest to implementacja jednej warstwy w sieci neuronowej.
     Klasa zawiera w sobie tablicę, która jest składa się z wag połączeń do poprzedniej warstwy.
     Przy tworzeniu instancji można podać funkcję aktywacji (domyślnie jest to sigmoid).
-
-
 
     \chapter{Przeprowadzone badania}
 
