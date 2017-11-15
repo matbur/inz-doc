@@ -7,6 +7,7 @@
 \usepackage[english,polish]{babel}\usepackage{indentfirst}
 \usepackage[T1]{fontenc}
 \usepackage{xcolor}
+\usepackage{graphicx}
 
 \pagecolor{black}
 \color{white}
@@ -442,17 +443,111 @@
 
     Najlepszymi cechami są te, które mają wysoką wartość chi2.
     Zatem ograniczając liczbę cech, do klasyfikacji brane będą te z góry tabeli.
-    Cechy o niskiej wartości, jak np. 'Żółtaczka w przeszłości', nie polepszą klasyfikacji, a mogą ją nawet pogorszyć.
+    Cechy o niskiej wartości, jak na przykład 'Żółtaczka w przeszłości', nie polepszą klasyfikacji, a mogą ją nawet pogorszyć.
+
+    \chapter{Techologie}
+
+    \section{Python}
+
+    \section{numpy}
+
+    \section{matplotlib}
+
+    \section{pandas}
+
+    \section{git}
 
     \chapter{Sieć neuronowa}
 
     \section{Wprowadzenie}
 
+    Sztuczna sieć neuronowa to pewna struktura matematyczna, która może być zaimplementowana programowo lub sprzętowo.
+    Początkowo taki twórcy takich modeli inspirowali się zwierzęcym mózgiem, w którym połączone ze sobą neurony tworzą sieć.
+    Taka sieć przetwarza sygnały wejściowe wykonując na nich pewne operacje.
+    Sieci wykorzystywane są często do rozwiązywania problemów klasyfikacji, z racji na ich zdolność uczenia.
+    Np. potrafią przetwarzać zdjęcia i opisywać, co się na nich znajduje.
+    Przed skorzystaniem z sieci należy ją nauczyć, co sprowadza się do przekazywania na wejście sieci danych uczących razem z poprawną klasą, do której dane obiekty należą.
+
     \section{Neuron}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{./img/neuron.png}
+        \caption{Schemat neuronu}
+        %        \label{}
+    \end{figure}
+
+    Neuron stanowi podstawowy budulec sztucznej sieci neuronowej.
+    Składa się z ustalonej liczby wejść, wraz z odpowiadającymi im wagami.
+    Ponadto neuron zawiera nieliniową funkcję aktywacji oraz jedno wyjście.
+    Jego zadanie to obliczenie iloczynu skalarnego wektora wejść z wektorem wag.
+    Dodatkowo możemy przyjąć, że bias jest dodatkowym wejściem neuronu o wartości 1.
+    Następnie obliczona suma ważona poddawana jest funkcji aktywacji i przekazywana na wyjście neuronu.
+    W procesie uczenia wagi w neuronie zmieniają się tak, by otrzymany błąd był jak najmniejszy.
 
     \subsection{Funkcja aktywacji}
 
+    Funkcja aktywacji to funkcja, która wykorzystywana jest w sztucznych sieciach neuronowych, a dokładniej w samym neuronie do zmiany wartości wyjścia.
+    Ma to na celu sprawienie, że sieć jest w stanie lepiej się uczyć nawet przy małej liczby neuronów.
+    W uczeniu maszynowym znanych jest wiele rodzajów takich funkcji.
+    W tej pracy opiszę tylko dwie, które użyłem do budowy sieci neuronowej.
+
+    \subsubsection{Sigmoid}
+
+    Pierwszą opisywaną funkcją jest sigmoid, zwana też 'sigmoidalną funkcją unipolarną'.
+    Bardzo dobrze nadaje się jako funkcja aktywacji, gdyż jej dziedzina to cały zbiór liczb rzeczywistych.
+    Ma tę cechę, że zbiór warości mieści się w zakresie (0, 1).
+    Jest to również wada, że szybko się 'nasyca'.
+    Kolejnym minusem tej funkcji jest to, że wartości nie zcentralizowane wokół zera.
+    Ponadto wykorzystuje funkcję $exp$, która jest kosztowna obliczeniowo.
+    Jej wzór to:
+    $$
+    \sigma(x) = \frac {1}{1+e^{-x}}
+    $$
+
+    % wykres sigmoid
+
+    \subsubsection{Tangens hiperboliczny}
+    Kolejna funkcja, która wykorzystywana jest w sieciach neuronowych to tangens hiperboliczny (tanh).
+    W tym przypadku również dziedziną jest zbiór liczb rzeczywistych.
+    Spłaszcza wyjście w zakresie (-1, 1).
+    Podobnie jak sigmoid szybko się 'nasyca'.
+    W przeciwieństwie do poprzedniej funkcji jest scentralizowany wokół zera.
+    Tanh również korzysta z funkcji $exp$.
+    Jej wzór to:
+    $$
+    tanh(x) = \frac {2}{1+e^{-2x}} - 1
+    $$
+
+    % wykres tanh
+
+
     \section{Model wielowarstwowy}
+
+    Kiedy pojedyncze neurony mają te same sygnały wejściowe, tworzą wówczas tak zwaną warstwę w sieci neuronowej.
+    Dlatego sieć neuronowa ma budowę warstwową.
+    Zawsze występuje warstwa wejściowa i wyjściowa.
+    Ponadto mogą występować warstwy ukryte.
+    Ich ilość zależy od rozwiązywanego problemu.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.9]{./img/mlp.jpg}
+        \caption{Schemat neuronu}
+        %        \label{}
+    \end{figure}
+
+    W warstwie wejściowej znajduje się tyle neuronów, ile jest badanych cech.
+    W moim przypadku będzie mniej niż 31.
+    Neurony w tej warstwie nie mają wag, lecz przekazują dalej dokładnie to, co otrzymały.
+
+    Liczba neuronów w warstwie wyjściowej również nie jest przypadkowa.
+    Warstwa ta składa się z takiej samej liczby neuronów, co liczba klas w zadanym problemie.
+    Problem medyczny, na którym pracuję dotyczy klasyfikacji ośmio klasowej, dlatego będzie osiem neuronów wyjściowych.
+    Każdy z nich będzie zwracał wartość przynależności do danej klasy.
+
+
+
 
     \chapter{Opis architektury aplikacji}
 
