@@ -449,11 +449,63 @@
 
     \section{Python}
 
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.4]{./img/python-logo.png}
+        \caption{Logo języka Python}
+        %        \label{}
+    \end{figure}
+
+    Python to wysoko poziomowy język programowania ogólnego przeznaczenia.
+    Stworzony został 26 lat temu przez holenderskiego programistę Guido van Rossuma.
+    Najpolularniejszy interpreter Pythona napisany jest w języku C.
+    Jednak w odróżnieniu od C, C++ i Javy, Python jest interpretowalny i nie używa się w nim nawiasów klamrowych do oddzielenia bloków kodu.
+    Jest przez to bardziej czytelny i nie odstrasza ludzi aspirujących do bycia programistami.
+    Zamias klamr stosuje się wcięcia w kodzie, które powinny wynosić 4 spacje na każdy poziom.
+    Od wersji 3.5 w Pythonie można jawnie stosować typowanie, czyli na przykład twórca funkcji może umieścić informację w kodzie, jakiego typu powinny być argumenty i jaki typ funkcja zwraca.
+    Dzięki temu czas potrzebny na zrozumienie cudzego kodu staje się krótszy.
+
+    Python ma wiele zastosowań:
+
+    \begin{itemize}
+        \item nauka programowania,
+        \item web development,
+        \item aplikacje konsolowe,
+        \item aplikacje okienkowe,
+        \item gry komputerowe,
+        \item naukowe,
+        \item analiza danych.
+    \end{itemize}
+
+    Od kilku lat Python zyskuje duże zainteresowanie naukowców z różnych dziedzin nauki z racji swojej prostoty i wszechstronności.
+    Powstało również wiele gotowych modułów do zastosowania w uczeniu maszynowym, ale nie będę używał ich w tym projekcie.
+
     \section{numpy}
+
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.4]{./img/numpy-logo.png}
+        \caption{Logo numpy}
+        %        \label{}
+    \end{figure}
 
     \section{matplotlib}
 
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.4]{./img/matplotlib-logo.png}
+        \caption{Logo matplotlib}
+        %        \label{}
+    \end{figure}
+
     \section{pandas}
+
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.4]{./img/pandas-logo.png}
+        \caption{Logo pandas}
+        %        \label{}
+    \end{figure}
 
     \section{git}
 
@@ -553,9 +605,6 @@
 
     \section{Schemat warstwy}
 
-    \section{Schemat modelu}
-
-    \subsection{Proces uczenia}
 
     \begin{lstlisting}
         class Layer:
@@ -576,11 +625,14 @@
     \end{lstlisting}
     \label{Schemat klasy Layer}
 
-
     Powyższy fragment kodu przedstawia schemat klasy Layer.
     Jest to implementacja jednej warstwy w sieci neuronowej.
     Klasa zawiera w sobie tablicę, która jest składa się z wag połączeń do poprzedniej warstwy.
     Przy tworzeniu instancji można podać funkcję aktywacji (domyślnie jest to sigmoid).
+
+    \section{Schemat modelu}
+
+    \subsection{Proces uczenia}
 
     \chapter{Przeprowadzone badania}
 
