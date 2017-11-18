@@ -402,7 +402,9 @@
         \item $n$ - liczba obiektów.
     \end{itemize}
 
-    Wartości testu dla wszystkich cech mają następujące wartości: \\
+    Wartości testu dla wszystkich cech mają następujące wartości:
+
+    \vspace{1em}
 
     \begin{tabular}{|l|l|l|}
         \hline L.p. & Cecha & Wartość chi2 \\
@@ -439,7 +441,9 @@
         \hline 31 & Żółtaczka w przeszłości & 0.590 \\
         \hline
 
-    \end{tabular} \\
+    \end{tabular}
+
+    \vspace{1em}
 
     Najlepszymi cechami są te, które mają wysoką wartość chi2.
     Zatem ograniczając liczbę cech, do klasyfikacji brane będą te z góry tabeli.
@@ -449,14 +453,14 @@
 
     \section{Python}
 
-    \begin{figure}
+    \begin{figure}[h!]
         \centering
         \includegraphics[scale=0.4]{./img/python-logo.png}
         \caption{Logo języka Python}
         %        \label{}
     \end{figure}
 
-    Python to wysoko poziomowy język programowania ogólnego przeznaczenia.
+    Python to otwarto-źródłowy, wysoko poziomowy język programowania ogólnego przeznaczenia.
     Stworzony został 26 lat temu przez holenderskiego programistę Guido van Rossuma.
     Najpolularniejszy interpreter Pythona napisany jest w języku C.
     Jednak w odróżnieniu od C, C++ i Javy, Python jest interpretowalny i nie używa się w nim nawiasów klamrowych do oddzielenia bloków kodu.
@@ -480,32 +484,59 @@
     Od kilku lat Python zyskuje duże zainteresowanie naukowców z różnych dziedzin nauki z racji swojej prostoty i wszechstronności.
     Powstało również wiele gotowych modułów do zastosowania w uczeniu maszynowym, ale nie będę używał ich w tym projekcie.
 
-    \section{numpy}
+    \section{NumPy}
 
-    \begin{figure}
+    \begin{figure}[h!]
         \centering
         \includegraphics[scale=0.4]{./img/numpy-logo.png}
-        \caption{Logo numpy}
+        \caption{Logo NumPy}
         %        \label{}
     \end{figure}
 
+    NumPy to otwarto-źródłowa biblioteka do Pythona służąca do obliczeń naukowych.
+    Umożliwia przechowywanie danych w wielowymiarowych tablicach i macierzach (tensorach) oraz wykonywanie skomplikowanych funkcji na nich.
+    Napisana została w większości w języku C, co sprawia, że kod wykonywany jest szybciej niż w samym Pythonie.
+    Tablice z NumPy są wykorzystywane w wielu bibliotekach, jako podstawowa struktura danych.
+    W tym projekcie używam jej do przechowywania wag w każdej warstwie sieci.
+
     \section{matplotlib}
 
-    \begin{figure}
+    \begin{figure}[h!]
         \centering
         \includegraphics[scale=0.4]{./img/matplotlib-logo.png}
         \caption{Logo matplotlib}
         %        \label{}
     \end{figure}
 
+    Matplotlib to najpopularniejsza biblioteka do tworzenia wykresów w Pythonie.
+    Wraz z biblioteką NumPy bardzo często wykorzystywana jest do analizy i wizualizacji danych.
+    Jest bardzo prosta w obsłudze.
+    W kilka linii jesteśmy w stanie stworzyć prosty wykres i wyeksportować go do pliku graficznego.
+    Wspiera takie typy wykresów jak:
+
+    \begin{itemize}
+        \item liniowy,
+        \item histogram,
+        \item punktowy,
+        \item 3D,
+        \item biegunowy.
+    \end{itemize}
+
+    Pozwala również wyświetlać obrazy w oknach z poziomu skryptu w Pythonie.
+
     \section{pandas}
 
-    \begin{figure}
+    \begin{figure}[h!]
         \centering
         \includegraphics[scale=0.4]{./img/pandas-logo.png}
         \caption{Logo pandas}
         %        \label{}
     \end{figure}
+
+    Pandas to biblioteka napisana w Pythonie służąca do manipulacji i analizy danych.
+    Oferuje struktury danych, które ułatwiają operowanie na plikach csv, json i xlsx.
+    Umożliwia operacje podobne do znanych z języka SQL.
+    Są to: grupowanie danych, sortowanie po indeksie lub po innej kolumnie, łączenie tabel i usuwanie duplikatów.
 
     \section{git}
 
@@ -522,7 +553,7 @@
 
     \section{Neuron}
 
-    \begin{figure}[H]
+    \begin{figure}[h!]
         \centering
         \includegraphics[scale=0.4]{./img/neuron.png}
         \caption{Schemat neuronu}
@@ -535,7 +566,7 @@
     Jego zadanie to obliczenie iloczynu skalarnego wektora wejść z wektorem wag.
     Dodatkowo możemy przyjąć, że bias jest dodatkowym wejściem neuronu o wartości 1.
     Następnie obliczona suma ważona poddawana jest funkcji aktywacji i przekazywana na wyjście neuronu.
-    W procesie uczenia wagi w neuronie zmieniają się tak, by otrzymany błąd był jak najmniejszy.
+    W procesie uczenia wagi w neuronie zmieniają się tak, by wyliczona wartość funkcji błędu była jak najmniejsza.
 
     \subsection{Funkcja aktywacji}
 
@@ -551,13 +582,18 @@
     Ma tę cechę, że zbiór warości mieści się w zakresie (0, 1).
     Jest to również wada, że szybko się 'nasyca'.
     Kolejnym minusem tej funkcji jest to, że wartości nie zcentralizowane wokół zera.
-    Ponadto wykorzystuje funkcję $exp$, która jest kosztowna obliczeniowo.
+    Ponadto wykorzystuje funkcję ekpotencjalną, która jest kosztowna obliczeniowo.
     Jej wzór to:
     $$
     \sigma(x) = \frac {1}{1+e^{-x}}
     $$
 
-    % wykres sigmoid
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=0.7]{./img/sigmoid.png}
+        \caption{Funkcja aktywacji - sigmoid}
+        %        \label{}
+    \end{figure}
 
     \subsubsection{Tangens hiperboliczny}
     Kolejna funkcja, która wykorzystywana jest w sieciach neuronowych to tangens hiperboliczny (tanh).
@@ -565,14 +601,18 @@
     Spłaszcza wyjście w zakresie (-1, 1).
     Podobnie jak sigmoid szybko się 'nasyca'.
     W przeciwieństwie do poprzedniej funkcji jest scentralizowany wokół zera.
-    Tanh również korzysta z funkcji $exp$.
+    Tanh również korzysta z funkcji ekpotencjalnej.
     Jej wzór to:
     $$
     tanh(x) = \frac {2}{1+e^{-2x}} - 1
     $$
 
-    % wykres tanh
-
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=0.7]{./img/tanh.png}
+        \caption{Funkcja aktywacji - tanh}
+        %        \label{}
+    \end{figure}
 
     \section{Model wielowarstwowy}
 
@@ -582,7 +622,7 @@
     Ponadto mogą występować warstwy ukryte.
     Ich ilość zależy od rozwiązywanego problemu.
 
-    \begin{figure}[H]
+    \begin{figure}[h!]
         \centering
         \includegraphics[scale=0.9]{./img/mlp.jpg}
         \caption{Schemat neuronu}
@@ -599,12 +639,9 @@
     Każdy z nich będzie zwracał wartość przynależności do danej klasy.
 
 
-
-
     \chapter{Opis architektury aplikacji}
 
     \section{Schemat warstwy}
-
 
     \begin{lstlisting}
         class Layer:
@@ -620,15 +657,35 @@
         def calc_gradient(self):
         ...
 
-        def update_weights(self):
+        def update_weights(self, learning_rate=.2):
         ...
     \end{lstlisting}
     \label{Schemat klasy Layer}
 
     Powyższy fragment kodu przedstawia schemat klasy Layer.
     Jest to implementacja jednej warstwy w sieci neuronowej.
+    Przypomina schemat struktury danych zwanej listą dwukierunkową, gdyż zawiera referencje do poprzedniej i następnej warstwy.
     Klasa zawiera w sobie tablicę, która jest składa się z wag połączeń do poprzedniej warstwy.
-    Przy tworzeniu instancji można podać funkcję aktywacji (domyślnie jest to sigmoid).
+
+    Przy tworzeniu instancji należy podać krotkę liczba oznaczającą kształt warstwy.
+    Dodatkowo można przekazać nazwę funkcji aktywacji, którą domyślnie jest to sigmoid.
+
+    Zadanie funkcji 'feedforward' to przyjęcie tablicy liczb z poprzedniej warstwy, obliczenie iloczynu skalarnego z aktualnymi wagami i poddanie wyjścia funkcją aktywacji.
+    Następnie funkcja powinna rekurencyjnie wywołać samą siebie na następnej warstwie jeśli nie jest ostatnia w sieci.
+    W przeciwnym przypadku zwraca wyliczone wyjście całej sieci.
+
+    Funkcja 'calc\_delta' wywoływana jest rekurencyjne, ale w przeciwnym kierunku.
+    Oblicza ona różnicę pomiędzy spodziewanym wyjściem warstwy a aktualnym.
+    Pozwoli to później skorygować wagi każdej warstwy.
+
+    Następna funkcja to 'calc\_gradient'.
+    Jest równnież wywoływana rekurencyjnie zaczynając od końca sieci.
+    Oblicza wartość gradientu na podstawie wyjścia warstwy oraz wartości delty.
+
+    Ostatnią funkcją jest 'update\_weights'.
+    Jak jej nazwa wskazuje, to właśnie ona zmienia wartości wag w warstwach odejmując iloczyn obliczonego gradientu ze współczynnikiem uczenia.
+    W miarę uczenia współczynnik uczenia może się zmieniać, dlatego uznałem, że to dobre miejsce na dostarczenie tego współczynnika warstwie sieci neuronowej.
+
 
     \section{Schemat modelu}
 
