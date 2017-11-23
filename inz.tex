@@ -8,6 +8,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{longtable}
 
 \pagecolor{black}
 \color{white}
@@ -42,7 +43,13 @@
         \item Inne przyczyny ostrego bólu brzucha
     \end{enumerate}
 
-    % histogram klas
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=0.7]{./img/histogram.png}
+        \caption{Histogram występowania chorób}
+        %        \label{}
+    \end{figure}
+
     Histogram pokazuje, że rozkład klas jest nierównomierny.
     Na 476 obiektów aż 157 to 'Niecharakterystyczny ból brzucha' i 141 ma etykietę 'Ostre zapalenie wyrostka robaczkowego'.
     Czyli do 2 klas należy ponad 60\% obiektów.
@@ -55,319 +62,7 @@
     Możliwe wartości parametrów przedstawione są poniżej.
     Jak widać wszystkie liczby są naturalne mniejsze niż 11, także normalizacja czy skalowanie danych nie jest konieczne.
 
-    \begin{itemize}
-        \item Ogólne
-        \begin{enumerate}
-            \setcounter{enumi}{0}
-            \item Płeć
-            \begin{itemize}
-                \item 1 - męska
-                \item 2 - żeńska
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{1}
-            \item Wiek
-            \begin{itemize}
-                \item 1 - poniżej 20 lat
-                \item 2 - 20 - 30 lat
-                \item 3 - 21 - 30 lat
-                \item 4 - 31 - 40 lat
-                \item 5 - 41 - 50 lat
-                \item 6 - powyżej 50 lat
-            \end{itemize}
-        \end{enumerate}
-        \item Ból
-        \begin{enumerate}
-            \setcounter{enumi}{2}
-            \item Lokalizacja bólu na początku zachorowania
-            \begin{itemize}
-                \item 1 - prawa górna ćwiartka
-                \item 2 - lewa górna ćwiartka
-                \item 3 - górna połowa
-                \item 4 - prawa połowa
-                \item 5 - lewa połowa
-                \item 6 - centralny kwadrat
-                \item 7 - cały brzuch
-                \item 8 - prawa dolna ćwiartka
-                \item 9 - lewa dolna ćwiartka
-                \item 10 - dolna połowa
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{3}
-            \item Lokalizacja bólu obecnie
-            \begin{itemize}
-                \item 0 - brak bólu
-                \item 1 - prawa górna ćwiartka
-                \item 2 - lewa górna ćwiartka
-                \item 3 - górna połowa
-                \item 4 - prawa połowa
-                \item 5 - lewa połowa
-                \item 6 - centralny kwadrat
-                \item 7 - cały brzuch
-                \item 8 - prawa dolna ćwiartka
-                \item 9 - lewa dolna ćwiartka
-                \item 10 - dolna połowa
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{4}
-            \item Intensywność bólu
-            \begin{itemize}
-                \item 0 - łagodny/brak
-                \item 1 - umiarkowany
-                \item 2 - silny
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{5}
-            \item Czynniki nasilające ból
-            \begin{itemize}
-                \item 0 - brak czynników
-                \item 1 - oddychanie
-                \item 2 - kaszel
-                \item 3 - ruchy ciała
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{6}
-            \item Czynniki przynoszące ulgę
-            \begin{itemize}
-                \item 0 - brak czynników
-                \item 1 - wymioty
-                \item 2 - pozycja ciała
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{7}
-            \item Progresja bólu
-            \begin{itemize}
-                \item 1 - ustepujący
-                \item 2 - bez zmian
-                \item 3 - nasilający się
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{8}
-            \item Czas trwania bólu
-            \begin{itemize}
-                \item 1 - mniej niż 12 godzin
-                \item 2 - 12 - 24 godzin
-                \item 3 - 24 - 48 godzin
-                \item 4 - powyżej 48 godzin
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{9}
-            \item Charakter bólu na początku zachorowania
-            \begin{itemize}
-                \item 1 - przerywany
-                \item 2 - stały
-                \item 3 - kolkowy
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{10}
-            \item Charakter bólu obecnie
-            \begin{itemize}
-                \item 0 - brak bólu
-                \item 1 - przerywany
-                \item 2 - stały
-                \item 3 - kolkowy
-            \end{itemize}
-        \end{enumerate}
-        \item Inne objawy
-        \begin{enumerate}
-            \setcounter{enumi}{11}
-            \item Nudności i wymioty
-            \begin{itemize}
-                \item 0 - brak
-                \item 1 - nudności bez wymiotów
-                \item 2 - nudności z wymiotami
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{12}
-            \item Apetyt
-            \begin{itemize}
-                \item 1 - zmniejszony
-                \item 2 - normalny
-                \item 3 - zwiększony
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{13}
-            \item Wypróżnienia
-            \begin{itemize}
-                \item 1 - biegunki
-                \item 2 - prawidłowe
-                \item 3 - zaparcia
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{14}
-            \item Oddawanie moczu
-            \begin{itemize}
-                \item 1 - normalne
-                \item 2 - dysuria
-            \end{itemize}
-        \end{enumerate}
-        \item Historia
-        \begin{enumerate}
-            \setcounter{enumi}{15}
-            \item Poprzednie niestrawności
-            \begin{itemize}
-                \item 0 - nie
-                \item 1 - tak
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{16}
-            \item Żółtaczka w przeszłości
-            \begin{itemize}
-                \item 0 - nie
-                \item 1 - tak
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{17}
-            \item Poprzednie operacje brzuszne
-            \begin{itemize}
-                \item 0 - nie
-                \item 1 - tak
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{18}
-            \item Leki
-            \begin{itemize}
-                \item 0 - nie
-                \item 1 - tak
-            \end{itemize}
-        \end{enumerate}
-        \item Ogólne badanie
-        \begin{enumerate}
-            \setcounter{enumi}{19}
-            \item Stan psychiczny
-            \begin{itemize}
-                \item 1 - pobudzony/cierpiący
-                \item 2 - prawidłowy
-                \item 3 - apatyczny
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{20}
-            \item Skóra
-            \begin{itemize}
-                \item 1 - blada
-                \item 2 - prawidłowa
-                \item 3 - zaczerwieniona (twarz)
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{21}
-            \item Temperatura (pacha)
-            \begin{itemize}
-                \item 1 - poniżej 36.5 stC
-                \item 2 - 36.5 - 37 stC
-                \item 3 - 37 - 37.5 stC
-                \item 4 - 37.5 - 38 stC
-                \item 5 - 38 - 39 stC
-                \item 6 - powyżej 39 stC
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{22}
-            \item Tętno
-            \begin{itemize}
-                \item 1 - poniżej 60 /min
-                \item 2 - 60 - 70 /min
-                \item 3 - 70 - 80 /min
-                \item 4 - 80 - 90 /min
-                \item 5 - 90 - 100 /min
-                \item 6 - 100 - 110 /min
-                \item 7 - 110 - 120 /min
-                \item 8 - 120 - 130 /min
-                \item 9 - powyżej 130 /min
-            \end{itemize}
-        \end{enumerate}
-        \item Oglądanie brzucha
-        \begin{enumerate}
-            \setcounter{enumi}{23}
-            \item Ruchy oddechowe powłok brzusznych
-            \begin{itemize}
-                \item 1 - normalne
-                \item 2 - zniesione
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{24}
-            \item Wzdęcia
-            \begin{itemize}
-                \item 0 - nie
-                \item 1 - tak
-            \end{itemize}
-        \end{enumerate}
-        \item Badania palpacyjne
-        \begin{enumerate}
-            \setcounter{enumi}{25}
-            \item Umiejscowienie bolesności uciskowej
-            \begin{itemize}
-                \item 0 - brak bólu
-                \item 1 - prawa górna ćwiartka
-                \item 2 - lewa górna ćwiartka
-                \item 3 - górna połowa
-                \item 4 - prawa połowa
-                \item 5 - lewa połowa
-                \item 6 - centralny kwadrat
-                \item 7 - cały brzuch
-                \item 8 - prawa dolna ćwiartka
-                \item 9 - lewa dolna ćwiartka
-                \item 10 - dolna połowa
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{26}
-            \item Objaw Blumberga
-            \begin{itemize}
-                \item 0 - negatywny
-                \item 1 - pozytywny
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{27}
-            \item Obrona mięśniowa
-            \begin{itemize}
-                \item 0 - nie
-                \item 1 - tak
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{28}
-            \item Wzmożone napięcie powłok brzusznych
-            \begin{itemize}
-                \item 0 - nie
-                \item 1 - tak
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{29}
-            \item Opory patologiczne
-            \begin{itemize}
-                \item 0 - nie
-                \item 1 - tak
-            \end{itemize}
-        \end{enumerate}
-        \begin{enumerate}
-            \setcounter{enumi}{30}
-            \item Objaw Murphy'ego
-            \begin{itemize}
-                \item 0 - negatywny
-                \item 1 - pozytywny
-            \end{itemize}
-        \end{enumerate}
-    \end{itemize}
+    \input{data/questions}
 
     \section{Selekcja cech}
 
@@ -406,42 +101,45 @@
 
     \vspace{1em}
 
-    \begin{tabular}{|l|l|l|}
-        \hline L.p. & Cecha & Wartość chi2 \\
-        \hline 1 & Charakter bólu obecnie & 127.811 \\
-        \hline 2 & Czynniki przynoszące ulgę & 87.453 \\
-        \hline 3 & Nudności i wymioty & 84.633 \\
-        \hline 4 & Czas trwania bólu & 84.273 \\
-        \hline 5 & Umiejscowienie bolesności uciskowej & 77.456 \\
-        \hline 6 & Lokalizacja bólu obecnie & 70.865 \\
-        \hline 7 & Czynniki nasilające ból & 59.357 \\
-        \hline 8 & Tętno & 58.152 \\
-        \hline 9 & Apetyt & 54.489 \\
-        \hline 10 & Wypróżnienia & 42.184 \\
-        \hline 11 & Charakter bólu na początku zachorowania & 32.127 \\
-        \hline 12 & Lokalizacja bólu na początku zachorowania & 31.430 \\
-        \hline 13 & Ruchy oddechowe powłok brzusznych & 31.192 \\
-        \hline 14 & Progresja bólu & 30.502 \\
-        \hline 15 & Objaw Blumberga & 21.387 \\
-        \hline 16 & Wiek & 21.228 \\
-        \hline 17 & Skóra & 20.202 \\
-        \hline 18 & Intensywność bólu & 18.438 \\
-        \hline 19 & Temperatura (pacha) & 17.708 \\
-        \hline 20 & Stan psychiczny & 15.930 \\
-        \hline 21 & Leki & 15.554 \\
-        \hline 22 & Objaw Murphy'ego & 13.666 \\
-        \hline 23 & Obrona mięśniowa & 13.062 \\
-        \hline 24 & Oddawanie moczu & 12.322 \\
-        \hline 25 & Wzmożone napięcie powłok brzusznych & 11.406 \\
-        \hline 26 & Wzdęcia & 8.771 \\
-        \hline 27 & Opory patologiczne & 8.504 \\
-        \hline 28 & Poprzednie operacje brzuszne & 7.007 \\
-        \hline 29 & Płeć & 6.195 \\
-        \hline 30 & Poprzednie niestrawności & 4.470 \\
-        \hline 31 & Żółtaczka w przeszłości & 0.590 \\
-        \hline
-
-    \end{tabular}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|l|l|l|}
+            \hline L.p. & Cecha & Wartość chi2 \\
+            \hline 1 & Charakter bólu obecnie & 127.811 \\
+            \hline 2 & Czynniki przynoszące ulgę & 87.453 \\
+            \hline 3 & Nudności i wymioty & 84.633 \\
+            \hline 4 & Czas trwania bólu & 84.273 \\
+            \hline 5 & Umiejscowienie bolesności uciskowej & 77.456 \\
+            \hline 6 & Lokalizacja bólu obecnie & 70.865 \\
+            \hline 7 & Czynniki nasilające ból & 59.357 \\
+            \hline 8 & Tętno & 58.152 \\
+            \hline 9 & Apetyt & 54.489 \\
+            \hline 10 & Wypróżnienia & 42.184 \\
+            \hline 11 & Charakter bólu na początku zachorowania & 32.127 \\
+            \hline 12 & Lokalizacja bólu na początku zachorowania & 31.430 \\
+            \hline 13 & Ruchy oddechowe powłok brzusznych & 31.192 \\
+            \hline 14 & Progresja bólu & 30.502 \\
+            \hline 15 & Objaw Blumberga & 21.387 \\
+            \hline 16 & Wiek & 21.228 \\
+            \hline 17 & Skóra & 20.202 \\
+            \hline 18 & Intensywność bólu & 18.438 \\
+            \hline 19 & Temperatura (pacha) & 17.708 \\
+            \hline 20 & Stan psychiczny & 15.930 \\
+            \hline 21 & Leki & 15.554 \\
+            \hline 22 & Objaw Murphy'ego & 13.666 \\
+            \hline 23 & Obrona mięśniowa & 13.062 \\
+            \hline 24 & Oddawanie moczu & 12.322 \\
+            \hline 25 & Wzmożone napięcie powłok brzusznych & 11.406 \\
+            \hline 26 & Wzdęcia & 8.771 \\
+            \hline 27 & Opory patologiczne & 8.504 \\
+            \hline 28 & Poprzednie operacje brzuszne & 7.007 \\
+            \hline 29 & Płeć & 6.195 \\
+            \hline 30 & Poprzednie niestrawności & 4.470 \\
+            \hline 31 & Żółtaczka w przeszłości & 0.590 \\
+            \hline
+        \end{tabular}
+        \caption{Tabela wartości chi2 dla wszystkich cech}
+    \end{table}
 
     \vspace{1em}
 

@@ -47,48 +47,47 @@ def row_from_list(l: list):
     return ' & '.join(l)
 
 
-l = [r'''
-\documentclass[12pt]{article}
-\usepackage{polski}
-\usepackage[utf8]{inputenc}
-\usepackage[margin=1in]{geometry}
-\usepackage[english,polish]{babel}
-\usepackage{graphicx}
-\usepackage{indentfirst}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{textcomp}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{hyperref}
-
+r'''
+\documentclass[11pt]{article}
+\usepackage{longtable}
 \begin{document}
-\begin{itemize}
+'''
+
+l = [r'''
+\begin{longtable}{|c|l|l|}
+    \caption{Wszystkie cechy z odpowiedziami}\\ \hline
+    \textbf{L.p.} & \textbf{Pytanie} & \textbf{Możliwe odpowiedzi} \\ \hline
+    \endfirsthead
+    \multicolumn{3}{c}
+    {\tablename\ \thetable\ -- \textit{Wszystkie cechy z odpowiedziami - c.d.}} \\ \hline
+    \textbf{L.p.} & \textbf{Pytanie} & \textbf{Możliwe odpowiedzi} \\ \hline
+    \endhead
+    \hline \multicolumn{3}{r}{\textit{Kontynuacja na następnej stronie}} \\
+    \endfoot
+    \hline
+    \endlastfoot
 ''']
 ccc = 0
 for group, questions in d2.items():
     if group == 'Choroba':
         continue
-    # ll = ['', '', f'{group}']
-    # s = row_from_list(ll)
-    s = rf'\item {group}'
+    s = rf'\multicolumn{{{3}}}{{|c|}}{{{group}}} \\ \hline'
     l.append(s)
     for question, answers in questions.items():
-        l.append(r'\begin{enumerate}')
-        l.append(rf'\setcounter{{enumi}}{{{ccc}}}')
-        l.append(rf'\item {question}')
-        l.append(r'\begin{itemize}')
-        for answer, idx in answers.items():
-            l.append(rf'\item {idx} - {answer}')
-        l.append(r'\end{itemize}')
-        l.append(r'\end{enumerate}')
         ccc += 1
+        ll = []
+        for answer, idx in answers.items():
+            ll.append(rf'{idx}) {answer} ')
+        s = r' \\ '.join(ll)
+        s = r'''\begin{tabular}[c]{l}''' + s + '\end{tabular}'
+        l.append(rf'{ccc} & {question} & {s} \\ \hline')
 
-l.append('''
-\end{itemize}
-
-\end{document}
+l.append(r'''
+\end{longtable}
 ''')
+'''
+\end{document}
+'''
 pprint(l)
 
-Path('file.tex').write_text('\n'.join(l))
+Path('./data/questions.tex').write_text('\n'.join(l))
