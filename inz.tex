@@ -101,45 +101,51 @@
 
     \vspace{1em}
 
-    \begin{table}[h!]
-        \centering
-        \begin{tabular}{|l|l|l|}
-            \hline L.p. & Cecha & Wartość chi2 \\
-            \hline 1 & Charakter bólu obecnie & 127.811 \\
-            \hline 2 & Czynniki przynoszące ulgę & 87.453 \\
-            \hline 3 & Nudności i wymioty & 84.633 \\
-            \hline 4 & Czas trwania bólu & 84.273 \\
-            \hline 5 & Umiejscowienie bolesności uciskowej & 77.456 \\
-            \hline 6 & Lokalizacja bólu obecnie & 70.865 \\
-            \hline 7 & Czynniki nasilające ból & 59.357 \\
-            \hline 8 & Tętno & 58.152 \\
-            \hline 9 & Apetyt & 54.489 \\
-            \hline 10 & Wypróżnienia & 42.184 \\
-            \hline 11 & Charakter bólu na początku zachorowania & 32.127 \\
-            \hline 12 & Lokalizacja bólu na początku zachorowania & 31.430 \\
-            \hline 13 & Ruchy oddechowe powłok brzusznych & 31.192 \\
-            \hline 14 & Progresja bólu & 30.502 \\
-            \hline 15 & Objaw Blumberga & 21.387 \\
-            \hline 16 & Wiek & 21.228 \\
-            \hline 17 & Skóra & 20.202 \\
-            \hline 18 & Intensywność bólu & 18.438 \\
-            \hline 19 & Temperatura (pacha) & 17.708 \\
-            \hline 20 & Stan psychiczny & 15.930 \\
-            \hline 21 & Leki & 15.554 \\
-            \hline 22 & Objaw Murphy'ego & 13.666 \\
-            \hline 23 & Obrona mięśniowa & 13.062 \\
-            \hline 24 & Oddawanie moczu & 12.322 \\
-            \hline 25 & Wzmożone napięcie powłok brzusznych & 11.406 \\
-            \hline 26 & Wzdęcia & 8.771 \\
-            \hline 27 & Opory patologiczne & 8.504 \\
-            \hline 28 & Poprzednie operacje brzuszne & 7.007 \\
-            \hline 29 & Płeć & 6.195 \\
-            \hline 30 & Poprzednie niestrawności & 4.470 \\
-            \hline 31 & Żółtaczka w przeszłości & 0.590 \\
-            \hline
-        \end{tabular}
-        \caption{Tabela wartości chi2 dla wszystkich cech}
-    \end{table}
+    \begin{longtable}{|c|l|l|}
+        \caption{Wartości chi2 dla wszystkich cech}\\ \hline
+        \textbf{L.p.} & \textbf{Cecha} & \textbf{Wartość chi2} \\ \hline
+        \endfirsthead
+        \multicolumn{3}{c}
+        {\tablename\ \thetable\ -- \textit{Wszystkie cechy z odpowiedziami - c.d.}} \\ \hline
+        \textbf{L.p.} & \textbf{Pytanie} & \textbf{Możliwe odpowiedzi} \\ \hline
+        \endhead
+        \hline \multicolumn{3}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        1 & Charakter bólu obecnie & 127.811 \\
+        \hline 2 & Czynniki przynoszące ulgę & 87.453 \\
+        \hline 3 & Nudności i wymioty & 84.633 \\
+        \hline 4 & Czas trwania bólu & 84.273 \\
+        \hline 5 & Umiejscowienie bolesności uciskowej & 77.456 \\
+        \hline 6 & Lokalizacja bólu obecnie & 70.865 \\
+        \hline 7 & Czynniki nasilające ból & 59.357 \\
+        \hline 8 & Tętno & 58.152 \\
+        \hline 9 & Apetyt & 54.489 \\
+        \hline 10 & Wypróżnienia & 42.184 \\
+        \hline 11 & Charakter bólu na początku zachorowania & 32.127 \\
+        \hline 12 & Lokalizacja bólu na początku zachorowania & 31.430 \\
+        \hline 13 & Ruchy oddechowe powłok brzusznych & 31.192 \\
+        \hline 14 & Progresja bólu & 30.502 \\
+        \hline 15 & Objaw Blumberga & 21.387 \\
+        \hline 16 & Wiek & 21.228 \\
+        \hline 17 & Skóra & 20.202 \\
+        \hline 18 & Intensywność bólu & 18.438 \\
+        \hline 19 & Temperatura (pacha) & 17.708 \\
+        \hline 20 & Stan psychiczny & 15.930 \\
+        \hline 21 & Leki & 15.554 \\
+        \hline 22 & Objaw Murphy'ego & 13.666 \\
+        \hline 23 & Obrona mięśniowa & 13.062 \\
+        \hline 24 & Oddawanie moczu & 12.322 \\
+        \hline 25 & Wzmożone napięcie powłok brzusznych & 11.406 \\
+        \hline 26 & Wzdęcia & 8.771 \\
+        \hline 27 & Opory patologiczne & 8.504 \\
+        \hline 28 & Poprzednie operacje brzuszne & 7.007 \\
+        \hline 29 & Płeć & 6.195 \\
+        \hline 30 & Poprzednie niestrawności & 4.470 \\
+        \hline 31 & Żółtaczka w przeszłości & 0.590 \\
+        \hline
+    \end{longtable}
 
     \vspace{1em}
 
@@ -236,7 +242,75 @@
     Umożliwia operacje podobne do znanych z języka SQL.
     Są to: grupowanie danych, sortowanie po indeksie lub po innej kolumnie, łączenie tabel i usuwanie duplikatów.
 
-    \section{git}
+    \section{Git}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=0.3]{./img/git-logo.png}
+        \caption{Logo Gita}
+        %        \label{}
+    \end{figure}
+
+    Git to rozproszony system kontroli wersji, czyli narzędzie do śledzenia zmian w plikach źródłowych.
+    Jest to oprogramowanie używane głównie do zarządzania kodem. ale może być używane również do trzymania historii innych plików.
+    Git ma na celu szybkość, spójność danych i wspieranie pracy rozproszonej wśród zespołów.
+    Nie wymaga ciągłego dostępu do Internetu.
+    Jest wykorzystywany w prawie wszystkich nowoczesnych projektach.
+
+    Git został napisany przez Linusa Torvaldsa w 2005 roku, jako narzędzie do tworzenia jądra Linuksa, gdyż żaden inny system kontroli wersji nie spełniał jego wymagań.
+
+    Główną strukturą w Gicie jest repozytorium.
+    Każde repozytorium przypisane jest do jednego projektu.
+    Posiada ono historię w formie grafu skierowanego, który jest drzewem.
+    Git umożliwia poruszanie się po tym drzewie pozwalając przeglądać repozytorium w danym stanie.
+
+    Praca z Gitem rozpoczyna się od sklonowania istniejącego repozytorium lub stworzenia nowego, pustego.
+    Użytkownik po zmianie jakiegoś pliku śledzonego przez Gita może zrobić 'commit', czyli zapisać obecny stan projektu.
+    Każdy 'commit' ma przypisaną wiadomość, w której twórca 'commita' informuje, co zmienił.
+    Po 'scommitowaniu' można zsynchronizować stan repozytorium z głównym serwerem.
+    Dopiero wtedy inni użytkownicy mogą zobaczyć, jakie zaszły zmiany i pobrać do siebie najnowszą wersję.
+
+    Git to potężne narzędzie, każdy programista powinien potrafić z niego korzystać.
+    Łatwo jest poznać podstawy Gita i nie wymaga dużo czasu opanowanie ich.
+    Zaawansowana znajomość Gita pozwala na robienie niesamowitych rzeczy w repozytorium.
+
+    W projekcie inżynierskim korzystam z Gita do zapisywania postępów w tworzeniu aplikacji.
+    Kod jest przechowywany na serwerze firmy GitHub.
+
+
+    \section{Docker}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale=0.4]{./img/docker-logo.png}
+        \caption{Logo Dockera}
+        %        \label{}
+    \end{figure}
+
+    Docker to otwarto-źródłowe narzędzie służące do konteneryzacji aplikacji.
+    Zapewnia dodatkową warstę abstrakcji nad systemem operacyjnym.
+    Działa zarówno na Linuksie, jak i na Windowsie.
+    Pierwsze wersje Dockera od 2013 roku napisane były w Pythonie, a kolejne w języku Go.
+
+    W wielu aplikacjach Docker używany jest w celu ułatwienia wdrożenie aplikacji na serwery produkcyjne.
+    Jest przydatny również w czasie wytwarzania dla deweloperów, gdyż idealnie nadaje się na środowisko testowe.
+
+    Docker udostępnia na swojej stronie internetowej wiele predefiniowanych obrazów z zainstalowanymi aplikacjami. które są gotowe do użycia.
+    Zalogowani użytkownicy mogą również publikować swoje własne obrazy zbudowane przez nich.
+    Pozwala to dzielić się swoją pracą z całą społecznością.
+
+    Praca z Dockerem polega na uruchomieniu kontenera z wybranego obrazu.
+    Obraz dockerowy to tak jakby zapisany stan maszyny wirtualnej.
+    Kontener jest konkretną uruchomioną instancją obrazu.
+
+    Poza oficjalnymi obrazami, istnieje również możliwość tworzenia własnych obrazów do poszczególnych aplikacji.
+    Polega to na stworzeniu pliku domyślnie o nazwie Dockerfile, gdzie podany jest obraz bazowy oraz lista komend do wykonania.
+    Po zbudowaniu obrazu jedną komendą, można uruchomiać kontenery.
+
+    W swoim projekcie inżynierskim korzystałem z Dockera, badania przeprowadzałem na serwerze, gdzie nie ma zainstalowanych wymaganych przeze mnie zależności.
+    Dlatego to było jedynym rozwiązaniem.
+
+
 
     \chapter{Sieć neuronowa}
 
