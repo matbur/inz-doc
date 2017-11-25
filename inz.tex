@@ -252,7 +252,7 @@
     \end{figure}
 
     Git to rozproszony system kontroli wersji, czyli narzędzie do śledzenia zmian w plikach źródłowych.
-    Jest to oprogramowanie używane głównie do zarządzania kodem. ale może być używane również do trzymania historii innych plików.
+    Jest to oprogramowanie używane głównie do zarządzania kodem, ale może być używane również do trzymania historii innych plików.
     Git ma na celu szybkość, spójność danych i wspieranie pracy rozproszonej wśród zespołów.
     Nie wymaga ciągłego dostępu do Internetu.
     Jest wykorzystywany w prawie wszystkich nowoczesnych projektach.
@@ -295,7 +295,7 @@
     W wielu aplikacjach Docker używany jest w celu ułatwienia wdrożenie aplikacji na serwery produkcyjne.
     Jest przydatny również w czasie wytwarzania dla deweloperów, gdyż idealnie nadaje się na środowisko testowe.
 
-    Docker udostępnia na swojej stronie internetowej wiele predefiniowanych obrazów z zainstalowanymi aplikacjami. które są gotowe do użycia.
+    Docker udostępnia na swojej stronie internetowej wiele predefiniowanych obrazów z zainstalowanymi aplikacjami, które są gotowe do użycia.
     Zalogowani użytkownicy mogą również publikować swoje własne obrazy zbudowane przez nich.
     Pozwala to dzielić się swoją pracą z całą społecznością.
 
@@ -419,6 +419,14 @@
 
     \subsection{Proces uczenia}\label{subsec:procesUczenia}
 
+    Uczenie sieci neuronowej, w którym znamy poprawne klasy dla danych uczących nazywamy uczeniem nadzorowanym lub uczeniem z nauczycielem.
+    Polega na porównaniu wyjścia sieci z wartością oczekiwaną i dostrajaniu wag w neuronach tak, by minimalizować pewną ustaloną funkcję błędu.
+
+    Korekcja wag odbywa się w procesie zwanym propagacją wsteczną.
+    Propagacja wsteczna korzysta z gradientowych metod optymalizacji, które są wydajne obliczeniowo i bardzo skuteczne do uczenia sieci.
+    Propagacja wsteczna wymaga również funkcję błędu.
+    W tym celu stosuje się tak zwany 'błąd średnio-kwadratowy', który jest obliczany następująco:
+
     \[
         Q(w_k) = \sum_{k=1}^{N}{(d_k - y_k) ^ 2}
     \]
@@ -432,6 +440,17 @@
         \item $d_k$ - poprawna wartość,
         \item $y_k$ - aktualna wartość,
     \end{itemize}
+
+    Algorytm jest wieloetapowy.
+    Pierwszym krokiem jest dostarczenie obiektu na wejście sieci i sprawdzenie jakie otrzymamy wyjście.
+    Następnie rekurencyjnie zmniejszana jest wartość funkcji błędu od końca sieci zmieniając wagi w kolejnych warstwach.
+
+    Tutaj korzysta się ze współczynnika uczenia.
+    Na początku powinien mieć ustaloną wartość, a następnie wraz z kolejnymi epokami uczenia może się zmniejszać.
+
+    Można to porównać do stania nad doliną górską, gdzie chcemy dość do najniższego punktu.
+    Najpierw należy ustalić kierunek marszu, by później kroczyć w tym kierunku.
+    Na początku kroki mogą być ogromne, ale w miarę schodzenia, powinniśmy je zmniejszać, by nie przekroczyć minimum.
 
     \chapter{Opis architektury aplikacji}\label{ch:opisArchitekturyAplikacji}
 
