@@ -33,17 +33,17 @@
     Do klasyfikacji jest 8 chorób, zatem sieć neuronowa będzie miała za zadanie przypisać 1 z 8 klas.
     Są to:
     \begin{enumerate}
-        \item Ostre zapalenie wyrostka robaczkowego
-        \item Zapalenie uchyłków jelit
-        \item Niedrożność mechaniczna jelit
-        \item Perforowany wrzód trawienny
-        \item Zapalenie woreczka żółciowego
-        \item Ostre zapalenie trzustki
-        \item Niecharakterystyczny ból brzucha
-        \item Inne przyczyny ostrego bólu brzucha
+        \item Ostre zapalenie wyrostka robaczkowego,
+        \item Zapalenie uchyłków jelit,
+        \item Niedrożność mechaniczna jelit,
+        \item Perforowany wrzód trawienny,
+        \item Zapalenie woreczka żółciowego,
+        \item Ostre zapalenie trzustki,
+        \item Niecharakterystyczny ból brzucha,
+        \item Inne przyczyny ostrego bólu brzucha.
     \end{enumerate}
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.7]{./img/histogram.png}
         \caption{Histogram występowania chorób}
@@ -51,7 +51,7 @@
     \end{figure}
 
     Histogram pokazuje, że rozkład klas jest nierównomierny.
-    Na 476 obiektów aż 157 to 'Niecharakterystyczny ból brzucha' i 141 ma etykietę 'Ostre zapalenie wyrostka robaczkowego'.
+    Na 476 obiektów aż 157 to „Niecharakterystyczny ból brzucha” i 141 ma etykietę „Ostre zapalenie wyrostka robaczkowego”.
     Czyli do 2 klas należy ponad 60\% obiektów.
     Może to mieć negatywny wpływ na jakość klasyfikacji.
 
@@ -107,7 +107,7 @@
         \endfirsthead
         \multicolumn{3}{c}
         {\tablename\ \thetable\ -- \textit{Wszystkie cechy z odpowiedziami - c.d.}} \\ \hline
-        \textbf{L.p.} & \textbf{Pytanie} & \textbf{Możliwe odpowiedzi} \\ \hline
+        \textbf{L.p.} & \textbf{Cecha} & \textbf{Wartość chi2} \\ \hline
         \endhead
         \hline \multicolumn{3}{r}{\textit{Kontynuacja na następnej stronie}} \\
         \endfoot
@@ -144,20 +144,19 @@
         \hline 29 & Płeć & 6.195 \\
         \hline 30 & Poprzednie niestrawności & 4.470 \\
         \hline 31 & Żółtaczka w przeszłości & 0.590 \\
-        \hline
     \end{longtable}
 
     \vspace{1em}
 
     Najlepszymi cechami są te, które mają wysoką wartość chi2.
     Zatem ograniczając liczbę cech, do klasyfikacji brane będą te z góry tabeli.
-    Cechy o niskiej wartości, jak na przykład 'Żółtaczka w przeszłości', nie polepszą klasyfikacji, a mogą ją nawet pogorszyć.
+    Cechy o niskiej wartości, jak na przykład „Żółtaczka w przeszłości”, nie polepszą klasyfikacji, a mogą ją nawet pogorszyć.
 
     \chapter{Techologie}\label{ch:techologie}
 
     \section{Python}\label{sec:python}
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.4]{./img/python-logo.png}
         \caption{Logo języka Python}
@@ -190,7 +189,7 @@
 
     \section{NumPy}\label{sec:numpy}
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.4]{./img/numpy-logo.png}
         \caption{Logo NumPy}
@@ -205,7 +204,7 @@
 
     \section{matplotlib}\label{sec:matplotlib}
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.4]{./img/matplotlib-logo.png}
         \caption{Logo matplotlib}
@@ -230,7 +229,7 @@
 
     \section{pandas}\label{sec:pandas}
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.4]{./img/pandas-logo.png}
         \caption{Logo pandas}
@@ -244,7 +243,7 @@
 
     \section{Git}\label{sec:git}
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.3]{./img/git-logo.png}
         \caption{Logo Gita}
@@ -265,9 +264,9 @@
     Git umożliwia poruszanie się po tym drzewie pozwalając przeglądać repozytorium w danym stanie.
 
     Praca z Gitem rozpoczyna się od sklonowania istniejącego repozytorium lub stworzenia nowego, pustego.
-    Użytkownik po zmianie jakiegoś pliku śledzonego przez Gita może zrobić 'commit', czyli zapisać obecny stan projektu.
-    Każdy 'commit' ma przypisaną wiadomość, w której twórca 'commita' informuje, co zmienił.
-    Po 'scommitowaniu' można zsynchronizować stan repozytorium z głównym serwerem.
+    Użytkownik po zmianie jakiegoś pliku śledzonego przez Gita może zrobić „commit”, czyli zapisać obecny stan projektu.
+    Każdy „commit” ma przypisaną wiadomość, w której twórca „commita” informuje, co zmienił.
+    Po „scommitowaniu” można zsynchronizować stan repozytorium z głównym serwerem.
     Dopiero wtedy inni użytkownicy mogą zobaczyć, jakie zaszły zmiany i pobrać do siebie najnowszą wersję.
 
     Git to potężne narzędzie, każdy programista powinien potrafić z niego korzystać.
@@ -280,7 +279,7 @@
 
     \section{Docker}\label{sec:docker}
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.4]{./img/docker-logo.png}
         \caption{Logo Dockera}
@@ -324,7 +323,7 @@
 
     \section{Neuron}\label{sec:neuron}
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.4]{./img/neuron.png}
         \caption{Schemat neuronu}
@@ -356,10 +355,10 @@
 
     \subsubsection{Sigmoid}
 
-    Pierwszą opisywaną funkcją jest sigmoid, zwana też 'sigmoidalną funkcją unipolarną'.
+    Pierwszą opisywaną funkcją jest sigmoid, zwana też „sigmoidalną funkcją unipolarną”.
     Bardzo dobrze nadaje się jako funkcja aktywacji, gdyż jej dziedzina to cały zbiór liczb rzeczywistych.
     Ma tę cechę, że zbiór warości mieści się w zakresie (0, 1).
-    Jest to również wada, że szybko się 'nasyca'.
+    Jest to również wada, że szybko się „nasyca”.
     Kolejnym minusem tej funkcji jest to, że wartości nie zcentralizowane wokół zera.
     Ponadto wykorzystuje funkcję ekpotencjalną, która jest kosztowna obliczeniowo.
     Jej wzór to:
@@ -367,9 +366,9 @@
         \sigma(x) = \frac {1}{1+e^{-x}}
     \]
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.7]{./img/sigmoid.png}
+        \includegraphics[scale=0.8]{./img/sigmoid.png}
         \caption{Funkcja aktywacji - sigmoid}
         %        \label{}
     \end{figure}
@@ -378,17 +377,17 @@
     Kolejna funkcja, która wykorzystywana jest w sieciach neuronowych to tangens hiperboliczny (tanh).
     W tym przypadku również dziedziną jest zbiór liczb rzeczywistych.
     Spłaszcza wyjście w zakresie (-1, 1).
-    Podobnie jak sigmoid szybko się 'nasyca'.
+    Podobnie jak sigmoid szybko się „nasyca”.
     W przeciwieństwie do poprzedniej funkcji jest scentralizowany wokół zera.
     Tanh również korzysta z funkcji ekpotencjalnej.
     Jej wzór to:
     \[
-        tanh(x) = \frac {2}{1+e^{-2x}} - 1
+        \tanh(x) = \frac {2}{1+e^{-2x}} - 1
     \]
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.7]{./img/tanh.png}
+        \includegraphics[scale=0.8]{./img/tanh.png}
         \caption{Funkcja aktywacji - tanh}
         %        \label{}
     \end{figure}
@@ -401,7 +400,7 @@
     Ponadto mogą występować warstwy ukryte.
     Ich ilość zależy od rozwiązywanego problemu.
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.9]{./img/mlp.jpg}
         \caption{Schemat neuronu}
@@ -425,7 +424,7 @@
     Korekcja wag odbywa się w procesie zwanym propagacją wsteczną.
     Propagacja wsteczna korzysta z gradientowych metod optymalizacji, które są wydajne obliczeniowo i bardzo skuteczne do uczenia sieci.
     Propagacja wsteczna wymaga również funkcję błędu.
-    W tym celu stosuje się tak zwany 'błąd średnio-kwadratowy', który jest obliczany następująco:
+    W tym celu stosuje się tak zwany „błąd średnio-kwadratowy”, który jest obliczany następująco:
 
     \[
         Q(w_k) = \sum_{k=1}^{N}{(d_k - y_k) ^ 2}
@@ -483,19 +482,19 @@
     Przy tworzeniu instancji należy podać krotkę liczba oznaczającą kształt warstwy.
     Dodatkowo można przekazać nazwę funkcji aktywacji, którą domyślnie jest to sigmoid.
 
-    Zadanie funkcji 'feedforward' to przyjęcie tablicy liczb z poprzedniej warstwy, obliczenie iloczynu skalarnego z aktualnymi wagami i poddanie wyjścia funkcją aktywacji.
+    Zadanie funkcji „feedforward” to przyjęcie tablicy liczb z poprzedniej warstwy, obliczenie iloczynu skalarnego z aktualnymi wagami i poddanie wyjścia funkcją aktywacji.
     Następnie funkcja powinna rekurencyjnie wywołać samą siebie na następnej warstwie jeśli nie jest ostatnia w sieci.
     W przeciwnym przypadku zwraca wyliczone wyjście całej sieci.
 
-    Funkcja 'calc\_delta' wywoływana jest rekurencyjne, ale w przeciwnym kierunku.
+    Funkcja „calc\_delta” wywoływana jest rekurencyjne, ale w przeciwnym kierunku.
     Oblicza ona różnicę pomiędzy spodziewanym wyjściem warstwy a aktualnym.
     Pozwoli to później skorygować wagi każdej warstwy.
 
-    Następna funkcja to 'calc\_gradient'.
+    Następna funkcja to „calc\_gradient”.
     Jest równnież wywoływana rekurencyjnie zaczynając od końca sieci.
     Oblicza wartość gradientu na podstawie wyjścia warstwy oraz wartości delty.
 
-    Ostatnią funkcją jest 'update\_weights'.
+    Ostatnią funkcją jest „update\_weights”.
     Jak jej nazwa wskazuje, to właśnie ona zmienia wartości wag w warstwach odejmując iloczyn obliczonego gradientu ze współczynnikiem uczenia.
     W miarę uczenia współczynnik uczenia może się zmieniać, dlatego uznałem, że to dobre miejsce na dostarczenie tego współczynnika warstwie sieci neuronowej.
 
@@ -510,7 +509,6 @@
         activation='sigmoid') -> Layer:
         ...
 
-
         net = input_data(shape=(None, 30))
         net = fully_connected(net, 24, activation='sigmoid')
         net = fully_connected(net, 16, activation='sigmoid')
@@ -519,15 +517,15 @@
     \end{lstlisting}
     \label{Tworzenie architektury sieci}
 
-    Funkcja 'input\_data' tworzy pierwszą warstwę sieci neuronowej.
+    Funkcja „input\_data” tworzy pierwszą warstwę sieci neuronowej.
     Jako argument przyjmuje krotkę z wymiarem danych, które będą przekazywane do sieci.
     Ustawia w instacji warstwy, flagę informującą, że jest to warstwa wejściowa i zwraca ją.
 
-    Druga ważna funkcja to 'fully\_ connected'.
+    Druga ważna funkcja to „fully\_ connected”.
     Pierwszym argumentem, który należy jej podać to istniejąca już sieć neuronowa składająca się z połączonych rekurencyjnie warstw.
-    'n\_units' to parametr, który jest liczbą neuronów w nowo utworzonej warstwie.
+    „n\_units” to parametr, który jest liczbą neuronów w nowo utworzonej warstwie.
     Na koniec można podać, jaką funkcję aktywacji ma mieć ta warstwa.
-    Gdy nie zostanie podana, to domyślnie będzie to 'sigmoid'.
+    Gdy nie zostanie podana, to domyślnie będzie to „sigmoid”.
     Ta funkcja ustawia odpowiednie flagi w instancji warstwy i przypisuje wskaźniki do następników i poprzedników, jak w liście dwu kierunkowej.
 
     Kilka kolejnych linii kodu to proces tworzenia całej sieci neuronowej.
@@ -566,7 +564,7 @@
     To z niej użytkownik aplikacji bezpośrednio korzysta.
     Model w inicjalizerze przyjmuje jeden argument - zaprojektowaną sieć neuronową.
 
-    Funcja 'fit' odpowiada za uczenienie sieci.
+    Funcja „fit” odpowiada za uczenienie sieci.
     Przyjmuje wiele argumentów w celu sprarametryzowania procesu.
     \begin{itemize}
         \item X\_inputs - tablica ze wszystkimi danymi uczącymi bez przypisanych im klas,
@@ -578,19 +576,62 @@
         \item train\_file - nazwa pliku w którym zapisywany jest postęp uczenia.
     \end{itemize}
 
-    Metoda 'fit' zbiera wszystkie możliwe dane z procesu uczenia, loguje je na konsolę i zapisuje do pliku.
+    Metoda „fit” zbiera wszystkie możliwe dane z procesu uczenia, loguje je na konsolę i zapisuje do pliku.
     Dzięki temu możliwe jest przeprowadzenie badań i porównanie efektywności uczenia dla różnych wartości parametrów.
 
-    Funkcje 'predict' i 'predict\_label' pozwalają skasyfikować wiele obiektów jednocześnie.
+    Funkcje „predict” i „predict\_label” pozwalają skasyfikować wiele obiektów jednocześnie.
     Przyjmują tylko tablicę z wartościami cech.
-    Jeśli potrzebne jest znać wsparcia wszystkich dla klas, to należy skorzystać z 'predict', a jeśli wystarczy informacja o najbardziej prawdopodobnej klasie, to można skorzystać z 'predict\_label'.
+    Jeśli potrzebne jest znać wsparcia wszystkich dla klas, to należy skorzystać z „predict”, a jeśli wystarczy informacja o najbardziej prawdopodobnej klasie, to można skorzystać z „predict\_label”.
 
-    Ostatnie ważne funkcje to 'save' i 'load'.
+    Ostatnie ważne funkcje to „save” i „load”.
     Obie potrzebują na wejściu nazwę pliku.
-    Funkcja 'save' zapisuje aktualne wagi do tego pliku w formie JSONa, a 'load' wczytuje je ustawia wagi we wszyskich warstwach.
+    Funkcja „save” zapisuje aktualne wagi do tego pliku w formie JSONa, a „load” wczytuje je ustawia wagi we wszyskich warstwach.
     Ważne jest, aby pamiętać, że architektura sieci musi się zgadzać.
 
     \chapter{Przeprowadzone badania}\label{ch:przeprowadzoneBadania}
+
+    Do badań nad wpływem różnych parametrów na jakość klasyfikacji stworzyłem 120 różnych modeli sieci neuronowej.
+    Modele te uczyły się na serwerze, który posiadał 30 CPU o nieznanych parametrach, z których wykorzystałem tylko 24 CPU.
+    Ponadto serwer miał do dyspozycji 100 GB pamięci RAM.
+    Czas uczenia wyniósł około 68 minut.
+
+    Dodatkowo przeprowadziłem te same badania na innym serwerze posiadającym tylko 1 CPU i 4 GB pamięci RAM.
+    Tutaj modelu uczyły się przez ponad 44 godziny.
+
+
+    \begin{longtable}{|c|l|l|}
+        \caption{Parametry uczenia sieci}\\ \hline
+        \textbf{L.p.} & \textbf{Parametr} & \textbf{Wartości} \\ \hline
+        \endfirsthead
+        \multicolumn{3}{c}
+        {\tablename\ \thetable\ -- \textit{Parametry uczenia sieci - c.d.}} \\ \hline
+        \textbf{L.p.} & \textbf{Parametr} & \textbf{Wartości} \\ \hline
+        \endhead
+        \hline \multicolumn{3}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        1 & architektura & \begin{tabular}[c]{@{}l@{}}
+                               1) 24, 16, 12, 8\\ 2) 16, 12, 8\\ 3) 16, 8\\ 4) 8
+        \end{tabular} \\ \hline
+        2 & funkcja aktywacji & \begin{tabular}[c]{@{}l@{}}
+                                    1) sigmoid\\ 2) tanh
+        \end{tabular} \\ \hline
+        3 & liczba cech & \begin{tabular}[c]{@{}l@{}}
+                              1) 30\\ 2) 20\\ 3) 10
+        \end{tabular} \\ \hline
+        4 & współczynnik uczenia & \begin{tabular}[c]{@{}l@{}}
+                                       1) od 0.2 do 0.2\\ 2) od 0.2 do 0.01\\ 3) od 0.2 do 0.001\\ 4) od 0.1 do 0.1\\ 5) od 0.1 do 0.01
+        \end{tabular} \\
+    \end{longtable}
+
+    Parametr „architektura” informuje ile jest warstw ukrytych i ile zawierają one neuronów.
+    Każda sieć na końcu ma 8 neuronów, ponieważ jest 8 możliwych klas.
+
+    „Współczynnik uczenia” to dwie liczby, wartość na początku uczenia i na końcu.
+    Jeśli jest powtórzona liczba, znaczy to, że był stały.
+    W przeciwnym wypadku zmieniał się liniowo z każdą kolejną epoką.
+
 
     \chapter{Podsumowanie}\label{ch:podsumowanie}
 
