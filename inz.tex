@@ -16,19 +16,19 @@
 \begin{document}
     \tableofcontents
 
-    \chapter{Wstęp}
+    \chapter{Wstęp}\label{ch:wstęp}
 
-    \section{Cel projektu}
+    \section{Cel projektu}\label{sec:celProjektu}
 
-    \section{Motywacja}
+    \section{Motywacja}\label{sec:motywacja}
 
-    \chapter{Problem medyczny}
+    \chapter{Problem medyczny}\label{ch:problemMedyczny}
 
     Wybrany przeze mnie problem medyczny dotyczy klasyfikacji stanów ostrego brzucha.
     Za ten stan odpowiedzialne mogą być różne choroby, które zawsze wymagają interwejcji lekarza.
     % http://www.poradnikzdrowie.pl/zdrowie/uklad-pokarmowy/ostry-brzuch-przyczyny-objawy-leczenie-ostrego-brzucha_35445.html
 
-    \section{Opis chorób}
+    \section{Opis chorób}\label{sec:opisChorób}
 
     Do klasyfikacji jest 8 chorób, zatem sieć neuronowa będzie miała za zadanie przypisać 1 z 8 klas.
     Są to:
@@ -55,7 +55,7 @@
     Czyli do 2 klas należy ponad 60\% obiektów.
     Może to mieć negatywny wpływ na jakość klasyfikacji.
 
-    \section{Opis cech}
+    \section{Opis cech}\label{sec:opisCech}
 
     Dane do tego problemu zawierają 31 cech.
     Są to odpowiedzi z wywiadu medycznego i wyniki przeprowadzonych badań.
@@ -64,7 +64,7 @@
 
     \input{data/questions}
 
-    \section{Selekcja cech}
+    \section{Selekcja cech}\label{sec:selekcjaCech}
 
     Selekcja cech jest procesem wymaganym, gdy dane nie są dobrej jakości w wielu algorytmach uczenia maszynowego.
     Polega ona na wyborze podzbioru najlepszych cech według ustalonego kryterium.
@@ -78,16 +78,16 @@
     % https://en.wikipedia.org/wiki/Feature_selection
     %Nie wszystkie cechy nadają się do procesu klasyfikacji, dlatego konieczne będzie przeprowadzenie selekcji cech.
 
-    \subsection{Test chi2}
+    \subsection{Test chi2}\label{subsec:testChi2}
 
     Metoda, którą wybrałem to test chi2.
     Jest to jedna z technik nieparametrycznych.
     Nadaje się bardzo dobrze do oceny istotności statystycznej cechy.
     Test ten polega na obliczeniu podanego poniżej wyrażenia dla każdej z cech i wybraniu takich, dla których wartość jest największa.
 
-    $$
-    \chi ^ 2 = \sum_{i=1}^{n}{ \frac{{(O_i - E_i) ^ 2}}{E_i}}
-    $$
+    \[
+        \chi ^ 2 = \sum_{i=1}^{n}{ \frac{{(O_i - E_i) ^ 2}}{E_i}}
+    \]
 
     \noindent
     Gdzie:
@@ -153,9 +153,9 @@
     Zatem ograniczając liczbę cech, do klasyfikacji brane będą te z góry tabeli.
     Cechy o niskiej wartości, jak na przykład 'Żółtaczka w przeszłości', nie polepszą klasyfikacji, a mogą ją nawet pogorszyć.
 
-    \chapter{Techologie}
+    \chapter{Techologie}\label{ch:techologie}
 
-    \section{Python}
+    \section{Python}\label{sec:python}
 
     \begin{figure}[h!]
         \centering
@@ -188,7 +188,7 @@
     Od kilku lat Python zyskuje duże zainteresowanie naukowców z różnych dziedzin nauki z racji swojej prostoty i wszechstronności.
     Powstało również wiele gotowych modułów do zastosowania w uczeniu maszynowym, ale nie będę używał ich w tym projekcie.
 
-    \section{NumPy}
+    \section{NumPy}\label{sec:numpy}
 
     \begin{figure}[h!]
         \centering
@@ -203,7 +203,7 @@
     Tablice z NumPy są wykorzystywane w wielu bibliotekach, jako podstawowa struktura danych.
     W tym projekcie używam jej do przechowywania wag w każdej warstwie sieci.
 
-    \section{matplotlib}
+    \section{matplotlib}\label{sec:matplotlib}
 
     \begin{figure}[h!]
         \centering
@@ -228,7 +228,7 @@
 
     Pozwala również wyświetlać obrazy w oknach z poziomu skryptu w Pythonie.
 
-    \section{pandas}
+    \section{pandas}\label{sec:pandas}
 
     \begin{figure}[h!]
         \centering
@@ -242,7 +242,7 @@
     Umożliwia operacje podobne do znanych z języka SQL.
     Są to: grupowanie danych, sortowanie po indeksie lub po innej kolumnie, łączenie tabel i usuwanie duplikatów.
 
-    \section{Git}
+    \section{Git}\label{sec:git}
 
     \begin{figure}[h!]
         \centering
@@ -278,7 +278,7 @@
     Kod jest przechowywany na serwerze firmy GitHub.
 
 
-    \section{Docker}
+    \section{Docker}\label{sec:docker}
 
     \begin{figure}[h!]
         \centering
@@ -297,7 +297,7 @@
 
     Docker udostępnia na swojej stronie internetowej wiele predefiniowanych obrazów z zainstalowanymi aplikacjami. które są gotowe do użycia.
     Zalogowani użytkownicy mogą również publikować swoje własne obrazy zbudowane przez nich.
-    Pozwala to dzielić się swoją pracą z całą społecznością.
+    Pozwala to dzielić się swoją pracą z całą społecznością.
 
     Praca z Dockerem polega na uruchomieniu kontenera z wybranego obrazu.
     Obraz dockerowy to tak jakby zapisany stan maszyny wirtualnej.
@@ -311,10 +311,9 @@
     Dlatego to było jedynym rozwiązaniem.
 
 
+    \chapter{Sieć neuronowa}\label{ch:siećNeuronowa}
 
-    \chapter{Sieć neuronowa}
-
-    \section{Wprowadzenie}
+    \section{Wprowadzenie}\label{sec:wprowadzenie}
 
     Sztuczna sieć neuronowa to pewna struktura matematyczna, która może być zaimplementowana programowo lub sprzętowo.
     Początkowo taki twórcy takich modeli inspirowali się zwierzęcym mózgiem, w którym połączone ze sobą neurony tworzą sieć.
@@ -323,7 +322,7 @@
     Np. potrafią przetwarzać zdjęcia i opisywać, co się na nich znajduje.
     Przed skorzystaniem z sieci należy ją nauczyć, co sprowadza się do przekazywania na wejście sieci danych uczących razem z poprawną klasą, do której dane obiekty należą.
 
-    \section{Neuron}
+    \section{Neuron}\label{sec:neuron}
 
     \begin{figure}[h!]
         \centering
@@ -331,6 +330,10 @@
         \caption{Schemat neuronu}
         %        \label{}
     \end{figure}
+
+    \[
+        s = \sum _{i=0}^{n} {w^{(i)} \cdot x^{(i)}} = w^T \cdot x
+    \]
 
     Neuron stanowi podstawowy budulec sztucznej sieci neuronowej.
     Składa się z ustalonej liczby wejść, wraz z odpowiadającymi im wagami.
@@ -340,12 +343,16 @@
     Następnie obliczona suma ważona poddawana jest funkcji aktywacji i przekazywana na wyjście neuronu.
     W procesie uczenia wagi w neuronie zmieniają się tak, by wyliczona wartość funkcji błędu była jak najmniejsza.
 
-    \subsection{Funkcja aktywacji}
+    \subsection{Funkcja aktywacji}\label{subsec:funkcjaAktywacji}
 
     Funkcja aktywacji to funkcja, która wykorzystywana jest w sztucznych sieciach neuronowych, a dokładniej w samym neuronie do zmiany wartości wyjścia.
     Ma to na celu sprawienie, że sieć jest w stanie lepiej się uczyć nawet przy małej liczby neuronów.
     W uczeniu maszynowym znanych jest wiele rodzajów takich funkcji.
     W tej pracy opiszę tylko dwie, które użyłem do budowy sieci neuronowej.
+
+    \[
+        y = f(s) = f(w^T \cdot x)
+    \]
 
     \subsubsection{Sigmoid}
 
@@ -356,9 +363,9 @@
     Kolejnym minusem tej funkcji jest to, że wartości nie zcentralizowane wokół zera.
     Ponadto wykorzystuje funkcję ekpotencjalną, która jest kosztowna obliczeniowo.
     Jej wzór to:
-    $$
-    \sigma(x) = \frac {1}{1+e^{-x}}
-    $$
+    \[
+        \sigma(x) = \frac {1}{1+e^{-x}}
+    \]
 
     \begin{figure}[h!]
         \centering
@@ -375,9 +382,9 @@
     W przeciwieństwie do poprzedniej funkcji jest scentralizowany wokół zera.
     Tanh również korzysta z funkcji ekpotencjalnej.
     Jej wzór to:
-    $$
-    tanh(x) = \frac {2}{1+e^{-2x}} - 1
-    $$
+    \[
+        tanh(x) = \frac {2}{1+e^{-2x}} - 1
+    \]
 
     \begin{figure}[h!]
         \centering
@@ -386,7 +393,7 @@
         %        \label{}
     \end{figure}
 
-    \section{Model wielowarstwowy}
+    \section{Model wielowarstwowy}\label{sec:modelWielowarstwowy}
 
     Kiedy pojedyncze neurony mają te same sygnały wejściowe, tworzą wówczas tak zwaną warstwę w sieci neuronowej.
     Dlatego sieć neuronowa ma budowę warstwową.
@@ -410,10 +417,25 @@
     Problem medyczny, na którym pracuję dotyczy klasyfikacji ośmio klasowej, dlatego będzie osiem neuronów wyjściowych.
     Każdy z nich będzie zwracał wartość przynależności do danej klasy.
 
+    \subsection{Proces uczenia}\label{subsec:procesUczenia}
 
-    \chapter{Opis architektury aplikacji}
+    \[
+        Q(w_k) = \sum_{k=1}^{N}{(d_k - y_k) ^ 2}
+    \]
 
-    \section{Schemat warstwy}
+    gdzie:
+
+    \begin{itemize}
+        \item $Q$ - błąd średniokwadratowy,
+        \item $w_k$ - wektor wag w k-tym neuronie,
+        \item $N$ - liczba danych uczących,
+        \item $d_k$ - poprawna wartość,
+        \item $y_k$ - aktualna wartość,
+    \end{itemize}
+
+    \chapter{Opis architektury aplikacji}\label{ch:opisArchitekturyAplikacji}
+
+    \section{Schemat warstwy}\label{sec:schematWarstwy}
 
     \begin{lstlisting}
         class Layer:
@@ -458,18 +480,104 @@
     Jak jej nazwa wskazuje, to właśnie ona zmienia wartości wag w warstwach odejmując iloczyn obliczonego gradientu ze współczynnikiem uczenia.
     W miarę uczenia współczynnik uczenia może się zmieniać, dlatego uznałem, że to dobre miejsce na dostarczenie tego współczynnika warstwie sieci neuronowej.
 
+    \section{Tworzenie architektury sieci}\label{sec:tworzenieArchitekturySieci}
 
-    \section{Schemat modelu}
+    \begin{lstlisting}
+        def input_data(shape: Tuple[Optional[int], int]) -> Layer:
+        ...
 
-    \subsection{Proces uczenia}
 
-    \chapter{Przeprowadzone badania}
+        def fully_connected(incoming: Layer, n_units: int,
+        activation='sigmoid') -> Layer:
+        ...
 
-    \chapter{Podsumowanie}
 
-    \section{Dalsze możliwości rozwoju}
+        net = input_data(shape=(None, 30))
+        net = fully_connected(net, 24, activation='sigmoid')
+        net = fully_connected(net, 16, activation='sigmoid')
+        net = fully_connected(net, 12, activation='sigmoid')
+        net = fully_connected(net, 8, activation='sigmoid')
+    \end{lstlisting}
+    \label{Tworzenie architektury sieci}
 
-    \section{Co mogłem zrobić lepiej}
+    Funkcja 'input\_data' tworzy pierwszą warstwę sieci neuronowej.
+    Jako argument przyjmuje krotkę z wymiarem danych, które będą przekazywane do sieci.
+    Ustawia w instacji warstwy, flagę informującą, że jest to warstwa wejściowa i zwraca ją.
+
+    Druga ważna funkcja to 'fully\_ connected'.
+    Pierwszym argumentem, który należy jej podać to istniejąca już sieć neuronowa składająca się z połączonych rekurencyjnie warstw.
+    'n\_units' to parametr, który jest liczbą neuronów w nowo utworzonej warstwie.
+    Na koniec można podać, jaką funkcję aktywacji ma mieć ta warstwa.
+    Gdy nie zostanie podana, to domyślnie będzie to 'sigmoid'.
+    Ta funkcja ustawia odpowiednie flagi w instancji warstwy i przypisuje wskaźniki do następników i poprzedników, jak w liście dwu kierunkowej.
+
+    Kilka kolejnych linii kodu to proces tworzenia całej sieci neuronowej.
+    Ta sieć przyjmuje 30 cech i może przypisać każdy obiekt do 8 klas.
+    Pomiędzy wejściem a wyjściem znajdują się 3 warstwy ukryte o rozmiarach 24, 16 i 12 neuronów odpowiednio.
+    Taka sieć jest gotowa przyjęcia danych i do nauki klasyfikacji.
+
+    \section{Schemat modelu}\label{sec:schematModelu}
+
+    \begin{lstlisting}
+        class Model:
+        def __init__(self, network: Layer):
+        ...
+
+        def fit(self, X_inputs: np.ndarray, Y_targets: np.ndarray,
+        validation_set: Tuple[np.ndarray, np.ndarray] = None,
+        learning_rate=None, n_epoch=10,
+        shuffle=False, train_file='train.json'):
+        ...
+
+        def predict(self, x: np.ndarray) -> np.ndarray:
+        ...
+
+        def predict_label(self, x: np.ndarray) -> int:
+        ...
+
+        def load(self, model_file: str):
+        ...
+
+        def save(self, model_file: str):
+        ...
+    \end{lstlisting}
+    \label{Schemat klasy Model}
+
+    Klasa Model jest nakładką na sieć neuronową.
+    To z niej użytkownik aplikacji bezpośrednio korzysta.
+    Model w inicjalizerze przyjmuje jeden argument - zaprojektowaną sieć neuronową.
+
+    Funcja 'fit' odpowiada za uczenienie sieci.
+    Przyjmuje wiele argumentów w celu sprarametryzowania procesu.
+    \begin{itemize}
+        \item X\_inputs - tablica ze wszystkimi danymi uczącymi bez przypisanych im klas,
+        \item Y\_targets - tablica zawierająca numery klas dla obiektów uczących,
+        \item validation\_set - krotka zawierająca dane testowe,
+        \item learning\_rate - krotka z 2 liczbami: współczynnikiem uczenia na początku i na końcu,
+        \item n\_epoch - liczba określająca liczbę epoch,
+        \item shuffle - flaga informująca o tym, czy dane uczące mają być pomieszane,
+        \item train\_file - nazwa pliku w którym zapisywany jest postęp uczenia.
+    \end{itemize}
+
+    Metoda 'fit' zbiera wszystkie możliwe dane z procesu uczenia, loguje je na konsolę i zapisuje do pliku.
+    Dzięki temu możliwe jest przeprowadzenie badań i porównanie efektywności uczenia dla różnych wartości parametrów.
+
+    Funkcje 'predict' i 'predict\_label' pozwalają skasyfikować wiele obiektów jednocześnie.
+    Przyjmują tylko tablicę z wartościami cech.
+    Jeśli potrzebne jest znać wsparcia wszystkich dla klas, to należy skorzystać z 'predict', a jeśli wystarczy informacja o najbardziej prawdopodobnej klasie, to można skorzystać z 'predict\_label'.
+
+    Ostatnie ważne funkcje to 'save' i 'load'.
+    Obie potrzebują na wejściu nazwę pliku.
+    Funkcja 'save' zapisuje aktualne wagi do tego pliku w formie JSONa, a 'load' wczytuje je ustawia wagi we wszyskich warstwach.
+    Ważne jest, aby pamiętać, że architektura sieci musi się zgadzać.
+
+    \chapter{Przeprowadzone badania}\label{ch:przeprowadzoneBadania}
+
+    \chapter{Podsumowanie}\label{ch:podsumowanie}
+
+    \section{Dalsze możliwości rozwoju}\label{sec:dalszeMozliwosciRozwoju}
+
+    \section{Co mogłem zrobić lepiej}\label{sec:coMoglemZrobicLepiej}
 
     Tekst podsumowania
 
