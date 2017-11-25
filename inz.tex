@@ -106,7 +106,7 @@
         \textbf{L.p.} & \textbf{Cecha} & \textbf{Wartość chi2} \\ \hline
         \endfirsthead
         \multicolumn{3}{c}
-        {\tablename\ \thetable\ -- \textit{Wszystkie cechy z odpowiedziami - c.d.}} \\ \hline
+        {\tablename\ \thetable\ -- \textit{Wartości chi2 dla wszystkich cech - c.d.}} \\ \hline
         \textbf{L.p.} & \textbf{Cecha} & \textbf{Wartość chi2} \\ \hline
         \endhead
         \hline \multicolumn{3}{r}{\textit{Kontynuacja na następnej stronie}} \\
@@ -628,10 +628,98 @@
     Parametr „architektura” informuje ile jest warstw ukrytych i ile zawierają one neuronów.
     Każda sieć na końcu ma 8 neuronów, ponieważ jest 8 możliwych klas.
 
+    Do badań użyłem różnej liczby cech.
+    Są to 30, 20 lub 10 cech o najwyższej wartości chi2.
+
     „Współczynnik uczenia” to dwie liczby, wartość na początku uczenia i na końcu.
     Jeśli jest powtórzona liczba, znaczy to, że był stały.
     W przeciwnym wypadku zmieniał się liniowo z każdą kolejną epoką.
 
+    \begin{longtable}{|c|l|l|l|l|l|}
+        \caption{Testowane modele}\\ \hline
+        \textbf{L.p.} & \textbf{Nazwa} & \textbf{Architektura}  & \textbf{Funkcja aktywacji} & \textbf{Liczba cech} & \textbf{Współczynnik uczenia} \\ \hline
+        \endfirsthead
+        \multicolumn{5}{c}
+        {\tablename\ \thetable\ -- \textit{Testowane modele - c.d.}} \\ \hline
+        \textbf{L.p.} & \textbf{Nazwa} & \textbf{Architektura}  & \textbf{Funkcja aktywacji} & \textbf{Liczba cech} & \textbf{Współczynnik uczenia} \\ \hline
+        \endhead
+        \hline \multicolumn{5}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+
+        1 & $M_1$ & 24\_16\_12\_8 & sigmoid & 30 & 0.2\_0.2 \\ \hline
+        2 & $M_1$ & 24\_16\_12\_8 & sigmoid & 30 & 0.2\_0.01 \\ \hline
+    \end{longtable}
+
+    \begin{longtable}{|c|l|l|l|l|}
+        \caption{Porównianie modeli $M_1$ i $M_2$}\\ \hline
+        \textbf{Epoka} & \textbf{$M_1$ - dokładność} & \textbf{$M_1$ - błąd}  & \textbf{$M_2$ - dokładność} & \textbf{$M_2$ - błąd} \\ \hline
+        \endfirsthead
+        \multicolumn{5}{c}
+        {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_1$ i $M_2$ - c.d.}} \\ \hline
+        \textbf{Epoka} & \textbf{$M_1$ - dokładność} & \textbf{$M_1$ - błąd}  & \textbf{$M_2$ - dokładność} & \textbf{$M_2$ - błąd} \\ \hline
+        \endhead
+        \hline \multicolumn{5}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        0 & 0.277 & 47.031 & 0.277 & 47.031 \\ \hline
+        10 & 0.513 & 37.573 & 0.563 & 33.302 \\ \hline
+        20 & 0.588 & 32.163 & 0.622 & 29.612 \\ \hline
+        30 & 0.622 & 27.482 & 0.597 & 30.062 \\ \hline
+        40 & 0.647 & 26.037 & 0.647 & 27.523 \\ \hline
+        50 & 0.655 & 27.505 & 0.655 & 27.221 \\ \hline
+        60 & 0.655 & 31.413 & 0.664 & 25.058 \\ \hline
+        70 & 0.655 & 29.571 & 0.723 & 22.468 \\ \hline
+        80 & 0.697 & 22.540 & 0.689 & 22.567 \\ \hline
+        90 & 0.714 & 22.712 & 0.731 & 22.202 \\ \hline
+        100 & 0.639 & 33.643 & 0.706 & 23.672 \\ \hline
+        110 & 0.672 & 30.809 & 0.756 & 21.424 \\ \hline
+        120 & 0.765 & 20.840 & 0.723 & 25.234 \\ \hline
+        130 & 0.773 & 19.664 & 0.714 & 23.904 \\ \hline
+        140 & 0.748 & 21.401 & 0.731 & 21.937 \\ \hline
+        150 & 0.739 & 22.939 & 0.739 & 20.739 \\ \hline
+        160 & 0.798 & 18.715 & 0.824 & 17.646 \\ \hline
+        170 & 0.748 & 20.608 & 0.790 & 17.594 \\ \hline
+        180 & 0.807 & 19.054 & 0.773 & 20.165 \\ \hline
+        190 & 0.790 & 20.590 & 0.824 & 16.881 \\ \hline
+        200 & 0.849 & 16.287 & 0.798 & 19.377 \\ \hline
+        210 & 0.798 & 16.966 & 0.815 & 18.842 \\ \hline
+        220 & 0.782 & 21.849 & 0.815 & 17.510 \\ \hline
+        230 & 0.765 & 20.966 & 0.824 & 17.073 \\ \hline
+        240 & 0.756 & 22.650 & 0.832 & 17.168 \\ \hline
+        250 & 0.849 & 16.440 & 0.815 & 17.868 \\ \hline
+        260 & 0.807 & 17.105 & 0.815 & 18.350 \\ \hline
+        270 & 0.824 & 16.844 & 0.824 & 17.483 \\ \hline
+        280 & 0.832 & 16.893 & 0.832 & 17.576 \\ \hline
+        290 & 0.815 & 17.927 & 0.832 & 17.544 \\ \hline
+        300 & 0.773 & 21.567 & 0.832 & 17.523 \\ \hline
+        310 & 0.655 & 35.103 & 0.832 & 17.505 \\ \hline
+        320 & 0.798 & 17.729 & 0.832 & 17.489 \\ \hline
+        330 & 0.857 & 13.654 & 0.832 & 17.475 \\ \hline
+        340 & 0.790 & 20.248 & 0.832 & 17.462 \\ \hline
+        350 & 0.790 & 19.990 & 0.832 & 17.450 \\ \hline
+        360 & 0.782 & 19.722 & 0.832 & 17.441 \\ \hline
+        370 & 0.739 & 24.702 & 0.832 & 17.433 \\ \hline
+        380 & 0.824 & 16.167 & 0.832 & 17.427 \\ \hline
+        390 & 0.815 & 18.179 & 0.832 & 17.423 \\ \hline
+        400 & 0.807 & 16.703 & 0.832 & 17.420 \\
+    \end{longtable}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.8]{./img/1.png}
+        \caption{Porównanie wartości błędu modeli $M_1$ i $M_2$}
+        %        \label{}
+    \end{figure}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.8]{./img/2.png}
+        \caption{Porównanie dokładności modeli $M_1$ i $M_2$}
+        %        \label{}
+    \end{figure}
 
     \chapter{Podsumowanie}\label{ch:podsumowanie}
 
