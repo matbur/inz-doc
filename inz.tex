@@ -1,19 +1,22 @@
-\documentclass{report}
+%\documentclass{report}
+%
+%\usepackage{listings}
+%\usepackage{polski}
+%\usepackage[utf8]{inputenc}
+%\usepackage[margin=1in]{geometry}
+%\usepackage[english,polish]{babel}\usepackage{indentfirst}
+%\usepackage[T1]{fontenc}
+%\usepackage{xcolor}
+%\usepackage{graphicx}
+%\usepackage{longtable}
 
-\usepackage{listings}
-\usepackage{polski}
-\usepackage[utf8]{inputenc}
-\usepackage[margin=1in]{geometry}
-\usepackage[english,polish]{babel}\usepackage{indentfirst}
-\usepackage[T1]{fontenc}
-\usepackage{xcolor}
-\usepackage{graphicx}
-\usepackage{longtable}
+%\pagecolor{black}
+%\color{white}
 
-\pagecolor{black}
-\color{white}
+\include{settings}
 
 \begin{document}
+    \maketitle
     \tableofcontents
 
     \chapter{Wstęp}\label{ch:wstęp}
@@ -455,24 +458,23 @@
 
     \section{Schemat warstwy}\label{sec:schematWarstwy}
 
-    \begin{lstlisting}
-        class Layer:
-        def __init__(self, shape, activation='sigmoid'):
+    \begin{python}[caption={Schemat klasy Layer}]
+class Layer:
+    def __init__(self, shape, activation='sigmoid'):
         ...
 
-        def feedforward(self, x: np.ndarray) -> np.ndarray:
+    def feedforward(self, x: np.ndarray) -> np.ndarray:
         ...
 
-        def calc_delta(self, d: np.ndarray = None):
+    def calc_delta(self, d: np.ndarray = None):
         ...
 
-        def calc_gradient(self):
+    def calc_gradient(self):
         ...
 
-        def update_weights(self, learning_rate=.2):
+    def update_weights(self, learning_rate=.2):
         ...
-    \end{lstlisting}
-    \label{Schemat klasy Layer}
+    \end{python}
 
     Powyższy fragment kodu przedstawia schemat klasy Layer.
     Jest to implementacja jednej warstwy w sieci neuronowej.
@@ -500,22 +502,21 @@
 
     \section{Tworzenie architektury sieci}\label{sec:tworzenieArchitekturySieci}
 
-    \begin{lstlisting}
-        def input_data(shape: Tuple[Optional[int], int]) -> Layer:
-        ...
+    \begin{python}[caption={Schemat tworzenia sieci}]
+def input_data(shape: Tuple[Optional[int], int]) -> Layer:
+    ...
 
 
-        def fully_connected(incoming: Layer, n_units: int,
-        activation='sigmoid') -> Layer:
-        ...
+def fully_connected(incoming: Layer, n_units: int,
+                    activation='sigmoid') -> Layer:
+    ...
 
-        net = input_data(shape=(None, 30))
-        net = fully_connected(net, 24, activation='sigmoid')
-        net = fully_connected(net, 16, activation='sigmoid')
-        net = fully_connected(net, 12, activation='sigmoid')
-        net = fully_connected(net, 8, activation='sigmoid')
-    \end{lstlisting}
-    \label{Tworzenie architektury sieci}
+net = input_data(shape=(None, 30))
+net = fully_connected(net, 24, activation='sigmoid')
+net = fully_connected(net, 16, activation='sigmoid')
+net = fully_connected(net, 12, activation='sigmoid')
+net = fully_connected(net, 8, activation='sigmoid')
+    \end{python}
 
     Funkcja „input\_data” tworzy pierwszą warstwę sieci neuronowej.
     Jako argument przyjmuje krotkę z wymiarem danych, które będą przekazywane do sieci.
@@ -535,30 +536,29 @@
 
     \section{Schemat modelu}\label{sec:schematModelu}
 
-    \begin{lstlisting}
-        class Model:
-        def __init__(self, network: Layer):
+    \begin{python}[caption={Schemat klasy Model}]
+class Model:
+    def __init__(self, network: Layer):
         ...
 
-        def fit(self, X_inputs: np.ndarray, Y_targets: np.ndarray,
-        validation_set: Tuple[np.ndarray, np.ndarray] = None,
-        learning_rate=None, n_epoch=10,
-        shuffle=False, train_file='train.json'):
+    def fit(self, X_inputs: np.ndarray, Y_targets: np.ndarray,
+            validation_set: Tuple[np.ndarray, np.ndarray] = None,
+            learning_rate=None, n_epoch=10,
+            shuffle=False, train_file='train.json'):
         ...
 
-        def predict(self, x: np.ndarray) -> np.ndarray:
+    def predict(self, x: np.ndarray) -> np.ndarray:
         ...
 
-        def predict_label(self, x: np.ndarray) -> int:
+    def predict_label(self, x: np.ndarray) -> int:
         ...
 
-        def load(self, model_file: str):
+    def load(self, model_file: str):
         ...
 
-        def save(self, model_file: str):
+    def save(self, model_file: str):
         ...
-    \end{lstlisting}
-    \label{Schemat klasy Model}
+    \end{python}
 
     Klasa Model jest nakładką na sieć neuronową.
     To z niej użytkownik aplikacji bezpośrednio korzysta.
@@ -650,21 +650,31 @@
 
         1 & $M_1$ & 24\_16\_12\_8 & sigmoid & 30 & 0.2\_0.2 \\ \hline
         2 & $M_1$ & 24\_16\_12\_8 & sigmoid & 30 & 0.2\_0.01 \\ \hline
+        3 & $M_1$ & 16\_8 & sigmoid & 10 & 0.2\_0.001 \\ \hline
+        4 & $M_1$ & 16\_8 & sigmoid & 20 & 0.2\_0.001 \\ \hline
+        5 & $M_1$ & 16\_8 & sigmoid & 30 & 0.2\_0.001 \\
     \end{longtable}
+
+    \section{Różne współczynniki uczenia}\label{sec:rozneWspolczynnikiUczenia}
+
+    Poniżej znajduje się tabela z przebiegu uczenia dwóch modeli o architekturze 24\_16\_12\_8, funkcji aktywacji sigmoid, uczonym na 30 cechach i różniącym się współczynnikiem uczenia.
+
 
     \begin{longtable}{|c|l|l|l|l|}
         \caption{Porównianie modeli $M_1$ i $M_2$}\\ \hline
-        \textbf{Epoka} & \textbf{$M_1$ - dokładność} & \textbf{$M_1$ - błąd}  & \textbf{$M_2$ - dokładność} & \textbf{$M_2$ - błąd} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_1$}} & \multicolumn{2}{c|}{\textbf{$M_2$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd}  & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
         \endfirsthead
         \multicolumn{5}{c}
         {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_1$ i $M_2$ - c.d.}} \\ \hline
-        \textbf{Epoka} & \textbf{$M_1$ - dokładność} & \textbf{$M_1$ - błąd}  & \textbf{$M_2$ - dokładność} & \textbf{$M_2$ - błąd} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_1$}} & \multicolumn{2}{c|}{\textbf{$M_2$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd}  & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
         \endhead
         \hline \multicolumn{5}{r}{\textit{Kontynuacja na następnej stronie}} \\
         \endfoot
         \hline
         \endlastfoot
-        0 & 0.277 & 47.031 & 0.277 & 47.031 \\ \hline
+        1 & 0.277 & 47.031 & 0.277 & 47.031 \\ \hline
         10 & 0.513 & 37.573 & 0.563 & 33.302 \\ \hline
         20 & 0.588 & 32.163 & 0.622 & 29.612 \\ \hline
         30 & 0.622 & 27.482 & 0.597 & 30.062 \\ \hline
@@ -709,15 +719,95 @@
 
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.8]{./img/1.png}
+        \includegraphics[scale=0.8]{./img/lr-error.png}
         \caption{Porównanie wartości błędu modeli $M_1$ i $M_2$}
         %        \label{}
     \end{figure}
 
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.8]{./img/2.png}
+        \includegraphics[scale=0.8]{././img/lr-accuracy.png}
         \caption{Porównanie dokładności modeli $M_1$ i $M_2$}
+        %        \label{}
+    \end{figure}
+
+    Wykres wartości błędu przedstawia błąd średniokwadratowy z procesu uczenia co 5 epokę.
+    Trend funkcji jest mniej więcej podobny, ale widać, że dla przypadku ze stałym współczynnikiem uczenia wartość błędu spada mniej gwałtownie.
+    Gdy zmniejsza się współczynnik uczenia trening przebiega bardzo agresywnie, czasem daje chwilowo lepsze wyniki, ale przez większość epok błąd jet większy.
+    Dla wykresu porówniania dokładności można wysnuć podobne wnioski, że lepiej jest zmniejszać współczynnik uczenia w trakcie nauki.
+
+    Dzieje się tak dlatego, że po wielu epokach, gdy współczynnik uczenia dalej jest relatywnie duży gradient pomija minimum i zaczyna rosnąć.
+
+    \section{Różna liczba cech}\label{sec:różnaLiczbaCech}
+
+    \begin{longtable}{|c|l|l|l|l|l|l|}
+        \caption{Porównianie modeli $M_3$, $M_4$ i $M_5$}\\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_3$}} & \multicolumn{2}{c|}{\textbf{$M_4$}}& \multicolumn{2}{c|}{\textbf{$M_5$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endfirsthead
+        \multicolumn{5}{c}
+        {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_3$, $M_4$ i $M_5$ - c.d.}} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_3$}} & \multicolumn{2}{c|}{\textbf{$M_4$}}& \multicolumn{2}{c|}{\textbf{$M_5$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endhead
+        \hline \multicolumn{5}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        1 & 0.538 & 41.299 & 0.496 & 41.714 & 0.462 & 43.907 \\ \hline
+        10 & 0.571 & 34.109 & 0.613 & 26.876 & 0.613 & 28.462 \\ \hline
+        20 & 0.647 & 29.445 & 0.714 & 24.232 & 0.655 & 23.769 \\ \hline
+        30 & 0.664 & 27.188 & 0.723 & 20.451 & 0.765 & 20.308 \\ \hline
+        40 & 0.672 & 26.045 & 0.782 & 17.584 & 0.765 & 18.426 \\ \hline
+        50 & 0.681 & 23.634 & 0.782 & 16.687 & 0.824 & 15.077 \\ \hline
+        60 & 0.739 & 21.233 & 0.790 & 16.759 & 0.849 & 14.902 \\ \hline
+        70 & 0.773 & 20.575 & 0.832 & 15.302 & 0.849 & 13.756 \\ \hline
+        80 & 0.765 & 22.901 & 0.849 & 14.367 & 0.874 & 12.665 \\ \hline
+        90 & 0.739 & 21.739 & 0.849 & 13.351 & 0.866 & 12.680 \\ \hline
+        100 & 0.765 & 21.240 & 0.857 & 13.708 & 0.857 & 12.414 \\ \hline
+        110 & 0.739 & 20.959 & 0.832 & 14.686 & 0.874 & 11.797 \\ \hline
+        120 & 0.756 & 20.595 & 0.866 & 13.803 & 0.874 & 11.426 \\ \hline
+        130 & 0.773 & 20.562 & 0.874 & 12.516 & 0.882 & 11.068 \\ \hline
+        140 & 0.798 & 20.210 & 0.874 & 12.519 & 0.891 & 10.854 \\ \hline
+        150 & 0.798 & 19.903 & 0.866 & 13.173 & 0.899 & 10.735 \\ \hline
+        160 & 0.798 & 19.924 & 0.882 & 12.943 & 0.908 & 10.647 \\ \hline
+        170 & 0.807 & 19.784 & 0.866 & 13.364 & 0.908 & 10.576 \\ \hline
+        180 & 0.807 & 19.581 & 0.849 & 13.898 & 0.908 & 10.529 \\ \hline
+        190 & 0.815 & 19.234 & 0.849 & 14.285 & 0.908 & 10.507 \\ \hline
+        200 & 0.807 & 18.782 & 0.849 & 13.564 & 0.908 & 10.536 \\ \hline
+        210 & 0.798 & 18.772 & 0.849 & 13.768 & 0.908 & 10.761 \\ \hline
+        220 & 0.782 & 18.848 & 0.857 & 13.938 & 0.874 & 11.259 \\ \hline
+        230 & 0.765 & 19.123 & 0.857 & 13.972 & 0.882 & 10.923 \\ \hline
+        240 & 0.773 & 18.967 & 0.866 & 13.971 & 0.908 & 10.914 \\ \hline
+        250 & 0.790 & 18.496 & 0.866 & 13.969 & 0.908 & 10.813 \\ \hline
+        260 & 0.790 & 18.480 & 0.866 & 13.976 & 0.899 & 10.745 \\ \hline
+        270 & 0.798 & 18.272 & 0.866 & 13.991 & 0.899 & 10.722 \\ \hline
+        280 & 0.807 & 18.269 & 0.857 & 14.007 & 0.891 & 10.729 \\ \hline
+        290 & 0.798 & 18.229 & 0.857 & 14.019 & 0.891 & 10.752 \\ \hline
+        300 & 0.798 & 18.170 & 0.857 & 14.027 & 0.891 & 10.780 \\ \hline
+        310 & 0.807 & 18.101 & 0.857 & 14.034 & 0.891 & 10.808 \\ \hline
+        320 & 0.807 & 18.028 & 0.857 & 14.040 & 0.891 & 10.834 \\ \hline
+        330 & 0.807 & 17.961 & 0.857 & 14.043 & 0.891 & 10.858 \\ \hline
+        340 & 0.815 & 17.909 & 0.857 & 14.043 & 0.891 & 10.880 \\ \hline
+        350 & 0.815 & 17.824 & 0.857 & 14.042 & 0.891 & 10.899 \\ \hline
+        360 & 0.815 & 17.725 & 0.857 & 14.040 & 0.891 & 10.917 \\ \hline
+        370 & 0.815 & 17.647 & 0.857 & 14.038 & 0.891 & 10.933 \\ \hline
+        380 & 0.807 & 17.589 & 0.857 & 14.035 & 0.891 & 10.948 \\ \hline
+        390 & 0.807 & 17.545 & 0.857 & 14.032 & 0.891 & 10.962 \\ \hline
+        400 & 0.807 & 17.523 & 0.857 & 14.032 & 0.891 & 10.972 \\
+    \end{longtable}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.8]{./img/feat-error.png}
+        \caption{Porównanie wartości błędu modeli $M_3$, $M_4$ i $M_5$}
+        %        \label{}
+    \end{figure}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.8]{././img/feat-accuracy.png}
+        \caption{Porównanie dokładności modeli $M_3$, $M_4$ i $M_5$}
         %        \label{}
     \end{figure}
 
