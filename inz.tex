@@ -1,22 +1,59 @@
-%\documentclass{report}
-%
-%\usepackage{listings}
-%\usepackage{polski}
-%\usepackage[utf8]{inputenc}
-%\usepackage[margin=1in]{geometry}
-%\usepackage[english,polish]{babel}\usepackage{indentfirst}
-%\usepackage[T1]{fontenc}
-%\usepackage{xcolor}
-%\usepackage{graphicx}
-%\usepackage{longtable}
+\documentclass{report}
+
+\usepackage{listings}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[english,polish]{babel}\usepackage{indentfirst}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{longtable}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            %
+}}
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
 
 %\pagecolor{black}
 %\color{white}
 
-\include{settings}
+%\include{settings}
 
 \begin{document}
-    \maketitle
+    %    \maketitle
     \tableofcontents
 
     \chapter{Wstęp}\label{ch:wstęp}
@@ -458,23 +495,7 @@
 
     \section{Schemat warstwy}\label{sec:schematWarstwy}
 
-    \begin{python}[caption={Schemat klasy Layer}]
-class Layer:
-    def __init__(self, shape, activation='sigmoid'):
-        ...
-
-    def feedforward(self, x: np.ndarray) -> np.ndarray:
-        ...
-
-    def calc_delta(self, d: np.ndarray = None):
-        ...
-
-    def calc_gradient(self):
-        ...
-
-    def update_weights(self, learning_rate=.2):
-        ...
-    \end{python}
+    \pythonexternal[caption={Schemat klasy Layer}]{./data/layer.py}
 
     Powyższy fragment kodu przedstawia schemat klasy Layer.
     Jest to implementacja jednej warstwy w sieci neuronowej.
@@ -502,21 +523,7 @@ class Layer:
 
     \section{Tworzenie architektury sieci}\label{sec:tworzenieArchitekturySieci}
 
-    \begin{python}[caption={Schemat tworzenia sieci}]
-def input_data(shape: Tuple[Optional[int], int]) -> Layer:
-    ...
-
-
-def fully_connected(incoming: Layer, n_units: int,
-                    activation='sigmoid') -> Layer:
-    ...
-
-net = input_data(shape=(None, 30))
-net = fully_connected(net, 24, activation='sigmoid')
-net = fully_connected(net, 16, activation='sigmoid')
-net = fully_connected(net, 12, activation='sigmoid')
-net = fully_connected(net, 8, activation='sigmoid')
-    \end{python}
+    \pythonexternal[caption={Schemat tworzenia sieci}]{./data/net.py}
 
     Funkcja „input\_data” tworzy pierwszą warstwę sieci neuronowej.
     Jako argument przyjmuje krotkę z wymiarem danych, które będą przekazywane do sieci.
@@ -536,29 +543,7 @@ net = fully_connected(net, 8, activation='sigmoid')
 
     \section{Schemat modelu}\label{sec:schematModelu}
 
-    \begin{python}[caption={Schemat klasy Model}]
-class Model:
-    def __init__(self, network: Layer):
-        ...
-
-    def fit(self, X_inputs: np.ndarray, Y_targets: np.ndarray,
-            validation_set: Tuple[np.ndarray, np.ndarray] = None,
-            learning_rate=None, n_epoch=10,
-            shuffle=False, train_file='train.json'):
-        ...
-
-    def predict(self, x: np.ndarray) -> np.ndarray:
-        ...
-
-    def predict_label(self, x: np.ndarray) -> int:
-        ...
-
-    def load(self, model_file: str):
-        ...
-
-    def save(self, model_file: str):
-        ...
-    \end{python}
+    \pythonexternal[caption={Schemat klasy Model}]{./data/model.py}
 
     Klasa Model jest nakładką na sieć neuronową.
     To z niej użytkownik aplikacji bezpośrednio korzysta.
@@ -717,12 +702,18 @@ class Model:
         400 & 0.807 & 16.703 & 0.832 & 17.420 \\
     \end{longtable}
 
+    Wykres wartości błędu przedstawia błąd średniokwadratowy z procesu uczenia co 5 epokę.
+    Trend funkcji jest mniej więcej podobny, ale widać, że dla przypadku ze stałym współczynnikiem uczenia wartość błędu spada mniej gwałtownie.
+    Gdy zmniejsza się współczynnik uczenia trening przebiega bardzo agresywnie, czasem daje chwilowo lepsze wyniki, ale przez większość epok błąd jet większy.
+
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.8]{./img/lr-error.png}
         \caption{Porównanie wartości błędu modeli $M_1$ i $M_2$}
         %        \label{}
     \end{figure}
+
+    Dla wykresu porówniania dokładności można wysnuć podobne wnioski, że lepiej jest zmniejszać współczynnik uczenia w trakcie nauki.
 
     \begin{figure}[h]
         \centering
@@ -731,14 +722,15 @@ class Model:
         %        \label{}
     \end{figure}
 
-    Wykres wartości błędu przedstawia błąd średniokwadratowy z procesu uczenia co 5 epokę.
-    Trend funkcji jest mniej więcej podobny, ale widać, że dla przypadku ze stałym współczynnikiem uczenia wartość błędu spada mniej gwałtownie.
-    Gdy zmniejsza się współczynnik uczenia trening przebiega bardzo agresywnie, czasem daje chwilowo lepsze wyniki, ale przez większość epok błąd jet większy.
-    Dla wykresu porówniania dokładności można wysnuć podobne wnioski, że lepiej jest zmniejszać współczynnik uczenia w trakcie nauki.
-
     Dzieje się tak dlatego, że po wielu epokach, gdy współczynnik uczenia dalej jest relatywnie duży gradient pomija minimum i zaczyna rosnąć.
 
     \section{Różna liczba cech}\label{sec:różnaLiczbaCech}
+
+    Drugie porównanie to modele o architekturze 16\_8, funkcji aktywacji sigmoid.
+    Trenowane były z malejącym współczynnikiem uczenia.
+    Parametr, który je różni, to liczba cech.
+    $M_3$ klasyfikuje korzystając z 10 cech o najwyższym współczynniku chi2.
+    $M_4$ dostaje 20 cech, a $M_5$ uczy się na prawie wszystkich cechach, czyli 30 najlepszych.
 
     \begin{longtable}{|c|l|l|l|l|l|l|}
         \caption{Porównianie modeli $M_3$, $M_4$ i $M_5$}\\ \hline
@@ -797,12 +789,20 @@ class Model:
         400 & 0.807 & 17.523 & 0.857 & 14.032 & 0.891 & 10.972 \\
     \end{longtable}
 
+    Z wykresu porównania wartości błędu uczenia tych modeli można wywnioskować, że liczba cech ma wpływ na jakość klasyfikacji.
+    Im więcej cech, tym model popełnia mniejszy błąd.
+    Od dwusetnej epoki błąd maleje bardzo wolno, dlatego można by przerwać wcześniej uczenie bez straty na jakości klasyfikacji.
+
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.8]{./img/feat-error.png}
         \caption{Porównanie wartości błędu modeli $M_3$, $M_4$ i $M_5$}
         %        \label{}
     \end{figure}
+
+    Wykres dokładności od epoki potwierdza, że dla tego zbioru danych warto użyć większej liczby cech, kosztem większego i bardziej skomplikowanego modelu.
+    Tak jak na poprzednim wykresie, tutaj też po dwusetnej nie widać żadnej poprawy, a nawet obniżenie jakości predykcji może wskazywać na przeuczenie klasyfikatora.
+    To znaczy, że za bardzo dostosował się do danych uczących tracąc zdolność do uogólniania.
 
     \begin{figure}[h]
         \centering
