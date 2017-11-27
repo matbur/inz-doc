@@ -632,12 +632,15 @@ showstringspaces=false            %
         \endfoot
         \hline
         \endlastfoot
-
         1 & $M_1$ & 24\_16\_12\_8 & sigmoid & 30 & 0.2\_0.2 \\ \hline
-        2 & $M_1$ & 24\_16\_12\_8 & sigmoid & 30 & 0.2\_0.01 \\ \hline
-        3 & $M_1$ & 16\_8 & sigmoid & 10 & 0.2\_0.001 \\ \hline
-        4 & $M_1$ & 16\_8 & sigmoid & 20 & 0.2\_0.001 \\ \hline
-        5 & $M_1$ & 16\_8 & sigmoid & 30 & 0.2\_0.001 \\
+        2 & $M_2$ & 24\_16\_12\_8 & sigmoid & 30 & 0.2\_0.01 \\ \hline
+        3 & $M_3$ & 16\_8 & sigmoid & 10 & 0.2\_0.001 \\ \hline
+        4 & $M_4$ & 16\_8 & sigmoid & 20 & 0.2\_0.001 \\ \hline
+        5 & $M_5$ & 16\_8 & sigmoid & 30 & 0.2\_0.001 \\ \hline
+        6 & $M_6$ & 8 & sigmoid & 30 & 0.1\_0.01 \\ \hline
+        7 & $M_7$ & 16\_8 & sigmoid & 30 & 0.1\_0.01 \\ \hline
+        8 & $M_8$ & 16\_12\_8 & sigmoid & 30 & 0.1\_0.01 \\ \hline
+        9 & $M_9$ & 24\_16\_12\_8 & sigmoid & 30 & 0.1\_0.01 \\
     \end{longtable}
 
     \section{Różne współczynniki uczenia}\label{sec:rozneWspolczynnikiUczenia}
@@ -734,15 +737,15 @@ showstringspaces=false            %
 
     \begin{longtable}{|c|l|l|l|l|l|l|}
         \caption{Porównianie modeli $M_3$, $M_4$ i $M_5$}\\ \hline
-        & \multicolumn{2}{c|}{\textbf{$M_3$}} & \multicolumn{2}{c|}{\textbf{$M_4$}}& \multicolumn{2}{c|}{\textbf{$M_5$}} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_3$}} & \multicolumn{2}{c|}{\textbf{$M_4$}} & \multicolumn{2}{c|}{\textbf{$M_5$}} \\ \hline
         \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
         \endfirsthead
-        \multicolumn{5}{c}
+        \multicolumn{7}{c}
         {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_3$, $M_4$ i $M_5$ - c.d.}} \\ \hline
-        & \multicolumn{2}{c|}{\textbf{$M_3$}} & \multicolumn{2}{c|}{\textbf{$M_4$}}& \multicolumn{2}{c|}{\textbf{$M_5$}} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_3$}} & \multicolumn{2}{c|}{\textbf{$M_4$}} & \multicolumn{2}{c|}{\textbf{$M_5$}} \\ \hline
         \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
         \endhead
-        \hline \multicolumn{5}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
         \endfoot
         \hline
         \endlastfoot
@@ -808,6 +811,94 @@ showstringspaces=false            %
         \centering
         \includegraphics[scale=0.8]{././img/feat-accuracy.png}
         \caption{Porównanie dokładności modeli $M_3$, $M_4$ i $M_5$}
+        %        \label{}
+    \end{figure}
+
+    \section{Różne architektury}\label{sec:różneArchitektury}
+
+    Kolejnej analizie poddano sieci neuronowe mające funkcję aktywacji sigmoid oraz 30 neuronów w warstwie wejściowej.
+    Współczynnik uczenia malał od $1.0$ do $0.01$ we wszystkich modelach tak samo.
+    Kolejne klasyfikatory miały następujące architektury 8, 16\_8, 16\_12\_8 i 24\_16\_12\_8.
+
+    Wydawać by się mogło, że im więcej warstw ukrytych, tym model dokonuje klasyfikacji z wyższą dokładnością.
+
+    \begin{longtable}{|c|l|l|l|l|l|l|l|l|}
+        \caption{Porównianie modeli $M_6$, $M_7$, $M_8$ i $M_9$}\\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_6$}} & \multicolumn{2}{c|}{\textbf{$M_7$}} & \multicolumn{2}{c|}{\textbf{$M_8$}} & \multicolumn{2}{c|}{\textbf{$M_9$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endfirsthead
+        \multicolumn{9}{c}
+        {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_6$, $M_7$, $M_8$ i $M_9$ - c.d.}} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_6$}} & \multicolumn{2}{c|}{\textbf{$M_7$}} & \multicolumn{2}{c|}{\textbf{$M_8$}} & \multicolumn{2}{c|}{\textbf{$M_9$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endhead
+        \hline \multicolumn{9}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        1 & 0.361 & 54.950 & 0.420 & 45.093 & 0.387 & 46.705 & 0.420 & 45.093 \\ \hline
+        10 & 0.630 & 28.059 & 0.605 & 28.339 & 0.563 & 33.505 & 0.605 & 28.339 \\ \hline
+        20 & 0.647 & 28.050 & 0.655 & 26.151 & 0.630 & 29.422 & 0.655 & 26.151 \\ \hline
+        30 & 0.697 & 26.420 & 0.723 & 22.149 & 0.647 & 27.208 & 0.723 & 22.149 \\ \hline
+        40 & 0.681 & 27.203 & 0.756 & 19.402 & 0.672 & 25.992 & 0.756 & 19.402 \\ \hline
+        50 & 0.697 & 26.257 & 0.824 & 16.846 & 0.697 & 24.958 & 0.824 & 16.846 \\ \hline
+        60 & 0.697 & 26.023 & 0.832 & 15.827 & 0.681 & 23.236 & 0.832 & 15.827 \\ \hline
+        70 & 0.706 & 25.647 & 0.832 & 15.026 & 0.681 & 22.635 & 0.832 & 15.026 \\ \hline
+        80 & 0.714 & 25.314 & 0.840 & 14.182 & 0.714 & 22.061 & 0.840 & 14.182 \\ \hline
+        90 & 0.723 & 24.919 & 0.840 & 13.757 & 0.748 & 21.656 & 0.840 & 13.757 \\ \hline
+        100 & 0.731 & 24.451 & 0.840 & 13.870 & 0.756 & 20.421 & 0.840 & 13.870 \\ \hline
+        110 & 0.723 & 24.131 & 0.849 & 13.930 & 0.773 & 19.475 & 0.849 & 13.930 \\ \hline
+        120 & 0.731 & 23.937 & 0.840 & 13.729 & 0.748 & 18.962 & 0.840 & 13.729 \\ \hline
+        130 & 0.723 & 24.139 & 0.840 & 13.372 & 0.765 & 18.062 & 0.840 & 13.372 \\ \hline
+        140 & 0.714 & 24.308 & 0.840 & 13.044 & 0.756 & 18.048 & 0.840 & 13.044 \\ \hline
+        150 & 0.714 & 24.331 & 0.840 & 12.807 & 0.756 & 18.073 & 0.840 & 12.807 \\ \hline
+        160 & 0.723 & 24.246 & 0.849 & 12.668 & 0.782 & 17.879 & 0.849 & 12.668 \\ \hline
+        170 & 0.731 & 24.122 & 0.849 & 12.622 & 0.782 & 17.810 & 0.849 & 12.622 \\ \hline
+        180 & 0.739 & 23.974 & 0.849 & 12.606 & 0.790 & 17.619 & 0.849 & 12.606 \\ \hline
+        190 & 0.739 & 23.798 & 0.849 & 12.606 & 0.807 & 17.330 & 0.849 & 12.606 \\ \hline
+        200 & 0.739 & 23.590 & 0.857 & 12.630 & 0.815 & 17.058 & 0.857 & 12.630 \\ \hline
+        210 & 0.748 & 23.349 & 0.857 & 12.693 & 0.815 & 16.827 & 0.857 & 12.693 \\ \hline
+        220 & 0.748 & 23.076 & 0.857 & 12.782 & 0.815 & 16.665 & 0.857 & 12.782 \\ \hline
+        230 & 0.748 & 22.790 & 0.857 & 13.083 & 0.807 & 16.587 & 0.857 & 13.083 \\ \hline
+        240 & 0.748 & 22.544 & 0.849 & 13.245 & 0.807 & 16.578 & 0.849 & 13.245 \\ \hline
+        250 & 0.765 & 22.413 & 0.849 & 13.167 & 0.815 & 16.604 & 0.849 & 13.167 \\ \hline
+        260 & 0.748 & 22.411 & 0.857 & 13.130 & 0.815 & 16.627 & 0.857 & 13.130 \\ \hline
+        270 & 0.731 & 22.462 & 0.849 & 13.109 & 0.824 & 16.603 & 0.849 & 13.109 \\ \hline
+        280 & 0.731 & 22.496 & 0.840 & 13.083 & 0.815 & 16.538 & 0.840 & 13.083 \\ \hline
+        290 & 0.739 & 22.517 & 0.840 & 13.056 & 0.815 & 16.464 & 0.840 & 13.056 \\ \hline
+        300 & 0.748 & 22.535 & 0.840 & 13.031 & 0.815 & 16.395 & 0.840 & 13.031 \\ \hline
+        310 & 0.748 & 22.553 & 0.840 & 13.008 & 0.815 & 16.340 & 0.840 & 13.008 \\ \hline
+        320 & 0.739 & 22.572 & 0.849 & 12.986 & 0.815 & 16.305 & 0.849 & 12.986 \\ \hline
+        330 & 0.739 & 22.591 & 0.849 & 12.966 & 0.815 & 16.291 & 0.849 & 12.966 \\ \hline
+        340 & 0.731 & 22.608 & 0.849 & 12.947 & 0.815 & 16.294 & 0.849 & 12.947 \\ \hline
+        350 & 0.731 & 22.622 & 0.857 & 12.930 & 0.815 & 16.310 & 0.857 & 12.930 \\ \hline
+        360 & 0.731 & 22.633 & 0.857 & 12.916 & 0.815 & 16.335 & 0.857 & 12.916 \\ \hline
+        370 & 0.731 & 22.639 & 0.857 & 12.906 & 0.815 & 16.367 & 0.857 & 12.906 \\ \hline
+        380 & 0.731 & 22.641 & 0.857 & 12.900 & 0.815 & 16.407 & 0.857 & 12.900 \\ \hline
+        390 & 0.731 & 22.640 & 0.857 & 12.897 & 0.815 & 16.454 & 0.857 & 12.897 \\ \hline
+        400 & 0.731 & 22.636 & 0.866 & 12.898 & 0.815 & 16.509 & 0.866 & 12.898 \\
+    \end{longtable}
+
+    Wykres wartości błędu pokazuje, że bardziej skomplikowana architekrura wcale nie zapewnia lepszych wyników.
+    Największy model $M_9$ przez prawie połowę okresu uczenia radził sobie najgorzej, a na koniec wyprzedził najmniejszy model $M_6$.
+
+    Najlepsze wyniki osiągnięto z jedną warstwą ukrytą w modelu $M_7$, potem z dwoma warstwami ukrytymi $M_8$.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.8]{./img/arch-error.png}
+        \caption{Porównanie wartości błędu modeli $M_6$, $M_7$, $M_8$ i $M_9$}
+        %        \label{}
+    \end{figure}
+
+    Zależność dokładności od epoki nie zmienia sytuacji.
+
+    Ponownie można było przerwać uczenie w okolicy epoki numer 200, gdyż dalsze trenowanie nie poprawiało rezultatów.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.8]{./img/arch-accuracy.png}
+        \caption{Porównanie dokładności modeli $M_6$, $M_7$, $M_8$ i $M_9$}
         %        \label{}
     \end{figure}
 
