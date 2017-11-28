@@ -1005,6 +1005,97 @@ showstringspaces=false            %
         %        \label{}
     \end{figure}
 
+    \section{Różne architektury - tanh}\label{sec:różneArchitektury-Tanh}
+
+    Zbadano proces ucznia sieci o funkcji aktywacji tanh i stałym współczynniku uczenia dla 30 cech.
+    Porównano modele o architekturach bez warstwy ukrytej, z jedną i z dwoma warstwami ukrytymi.
+
+    \noindent\begin{minipage}{\textwidth}
+                 \begin{longtable}{|c|l|l|l|l|l|l|}
+                     \caption{Porównianie modeli $M_{13}$, $M_{14}$ i $M_{15}$}\\ \hline
+                     & \multicolumn{2}{c|}{\textbf{$M_{13}$}} & \multicolumn{2}{c|}{\textbf{$M_{14}$}} & \multicolumn{2}{c|}{\textbf{$M_{15}$}} \\ \hline
+                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+                     \endfirsthead
+                     \multicolumn{7}{c}
+                     {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_{13}$, $M_{14}$ i $M_{15}$ - c.d.}} \\ \hline
+                     & \multicolumn{2}{c|}{\textbf{$M_{13}$}} & \multicolumn{2}{c|}{\textbf{$M_{14}$}} & \multicolumn{2}{c|}{\textbf{$M_{15}$}} \\ \hline
+                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+                     \endhead
+                     \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
+                     \endfoot
+                     \hline
+                     \endlastfoot
+                     1 & 0.202 & 548.499 & 0.050 & 287.852 & 0.118 & 63.359 \\ \hline
+                     10 & 0.202 & 576.500 & 0.328 & 237.090 & 0.319 & 48.922 \\ \hline
+                     20 & 0.193 & 576.500 & 0.118 & 277.368 & 0.294 & 48.806 \\ \hline
+                     30 & 0.277 & 576.500 & 0.118 & 220.278 & 0.328 & 48.924 \\ \hline
+                     40 & 0.277 & 576.500 & 0.118 & 271.187 & 0.328 & 49.436 \\ \hline
+                     50 & 0.277 & 576.500 & 0.277 & 268.174 & 0.538 & 47.290 \\ \hline
+                     60 & 0.277 & 576.500 & 0.328 & 259.154 & 0.353 & 50.235 \\ \hline
+                     70 & 0.277 & 576.500 & 0.328 & 292.961 & 0.328 & 48.984 \\ \hline
+                     80 & 0.277 & 576.500 & 0.277 & 259.343 & 0.395 & 48.063 \\ \hline
+                     90 & 0.277 & 576.500 & 0.277 & 247.395 & 0.328 & 48.988 \\ \hline
+                     100 & 0.277 & 576.499 & 0.277 & 278.024 & 0.328 & 48.974 \\ \hline
+                     110 & 0.277 & 560.500 & 0.118 & 293.126 & 0.328 & 48.972 \\ \hline
+                     120 & 0.277 & 560.500 & 0.118 & 318.174 & 0.328 & 47.771 \\ \hline
+                     130 & 0.277 & 560.500 & 0.118 & 317.897 & 0.328 & 48.945 \\ \hline
+                     140 & 0.277 & 560.500 & 0.328 & 246.111 & 0.328 & 48.834 \\ \hline
+                     150 & 0.277 & 560.500 & 0.328 & 293.770 & 0.328 & 48.849 \\ \hline
+                     160 & 0.277 & 560.500 & 0.328 & 276.355 & 0.521 & 45.437 \\ \hline
+                     170 & 0.277 & 560.500 & 0.067 & 308.603 & 0.303 & 51.606 \\ \hline
+                     180 & 0.277 & 560.500 & 0.328 & 282.134 & 0.328 & 48.819 \\ \hline
+                     190 & 0.277 & 560.500 & 0.118 & 269.000 & 0.353 & 48.910 \\ \hline
+                     200 & 0.277 & 560.500 & 0.277 & 252.517 & 0.328 & 48.791 \\ \hline
+                     210 & 0.277 & 560.500 & 0.067 & 311.607 & 0.328 & 48.796 \\ \hline
+                     220 & 0.277 & 560.499 & 0.084 & 284.886 & 0.328 & 48.796 \\ \hline
+                     230 & 0.277 & 560.499 & 0.277 & 275.749 & 0.328 & 48.795 \\ \hline
+                     240 & 0.277 & 560.499 & 0.118 & 308.011 & 0.328 & 48.795 \\ \hline
+                     250 & 0.277 & 560.498 & 0.328 & 265.692 & 0.328 & 48.796 \\ \hline
+                     260 & 0.277 & 560.466 & 0.328 & 257.700 & 0.328 & 48.798 \\ \hline
+                     270 & 0.277 & 560.500 & 0.328 & 282.665 & 0.328 & 48.801 \\ \hline
+                     280 & 0.277 & 560.500 & 0.118 & 259.123 & 0.328 & 48.801 \\ \hline
+                     290 & 0.277 & 540.500 & 0.118 & 235.230 & 0.328 & 48.802 \\ \hline
+                     300 & 0.277 & 540.500 & 0.118 & 266.620 & 0.328 & 48.800 \\ \hline
+                     310 & 0.277 & 540.500 & 0.050 & 276.539 & 0.328 & 48.798 \\ \hline
+                     320 & 0.277 & 540.500 & 0.328 & 271.965 & 0.328 & 48.796 \\ \hline
+                     330 & 0.277 & 540.500 & 0.328 & 253.050 & 0.328 & 48.794 \\ \hline
+                     340 & 0.277 & 540.500 & 0.118 & 221.669 & 0.328 & 48.794 \\ \hline
+                     350 & 0.277 & 540.499 & 0.118 & 216.252 & 0.328 & 48.797 \\ \hline
+                     360 & 0.277 & 540.499 & 0.328 & 223.183 & 0.328 & 48.799 \\ \hline
+                     370 & 0.277 & 540.499 & 0.118 & 250.361 & 0.328 & 48.802 \\ \hline
+                     380 & 0.277 & 540.499 & 0.118 & 259.041 & 0.328 & 48.803 \\ \hline
+                     390 & 0.277 & 540.499 & 0.277 & 256.229 & 0.328 & 48.802 \\ \hline
+                     400 & 0.277 & 540.499 & 0.118 & 260.246 & 0.328 & 48.800 \\ \hline
+                 \end{longtable}
+    \end{minipage}
+
+    %    Wykres wartości błędu pokazuje niespodziewanie, że ucząc model na 20 cechach otrzymano najmniejszy błąd.
+    %    10 cech daje również lepszy wynik niż 30, choć tu różnica jest mniejsza.
+
+    Przebieg wartości błędu pokazuje, że te modele w ogóle się nie uczyły.
+    Błąd jest stały dla modeli $M_{13}$ i $M_{15}$.
+    Model $M_{14}$ oscyluje wokół wartości 300, ale również się nie poprawia.
+
+    \begin{figure}[htp]
+        \centering
+        \includegraphics[scale=0.8]{./img/arch-error-tanh.png}
+        \caption{Porównanie wartości błędu modeli $M_{13}$, $M_{14}$ i $M_{15}$}
+        %        \label{}
+    \end{figure}
+
+    Wykres dokładności potwierdza brak możliwości nauki tych modeli.
+    Jak na poprzednim wykresie model bez warstwy ukrytej i ten z dwiema warstwami mają praktycznie stałe wartości dokładności.
+    Model $M_{15}$ jest wciąż trochę lepszy niż $M_{13}$ o około 5 punktów procentowych.
+
+    Model z jedną warstwą ukrytą intensywnie zmienia wagi, dlatego dokładność skacze w zakresie 5--32\%, co również jest bardzo małą skutecznością.
+
+    \begin{figure}[htp]
+        \centering
+        \includegraphics[scale=0.8]{././img/arch-accuracy-tanh.png}
+        \caption{Porównanie dokładności modeli $M_{13}$, $M_{14}$ i $M_{15}$}
+        %        \label{}
+    \end{figure}
+
     \chapter{Podsumowanie}\label{ch:podsumowanie}
 
     \section{Dalsze możliwości rozwoju}\label{sec:dalszeMozliwosciRozwoju}
