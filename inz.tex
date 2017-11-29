@@ -645,12 +645,18 @@ showstringspaces=false            %
                      7 & $M_{7}$ & 16\_8 & sigmoid & 30 & 0.1\_0.01 \\ \hline
                      8 & $M_{8}$ & 16\_12\_8 & sigmoid & 30 & 0.1\_0.01 \\ \hline
                      9 & $M_{9}$ & 24\_16\_12\_8 & sigmoid & 30 & 0.1\_0.01 \\ \hline
+
                      10 & $M_{10}$ & 24\_16\_12\_8 & tanh & 10 & 0.1\_0.01 \\ \hline
                      11 & $M_{11}$ & 24\_16\_12\_8 & tanh & 20 & 0.1\_0.01 \\ \hline
                      12 & $M_{12}$ & 24\_16\_12\_8 & tanh & 30 & 0.1\_0.01 \\ \hline
+
                      13 & $M_{13}$ & 8 & tanh & 30 & 0.2\_0.2 \\ \hline
                      14 & $M_{14}$ & 16\_8 & tanh & 30 & 0.2\_0.2 \\ \hline
                      15 & $M_{15}$ & 16\_12\_8 & tanh & 30 & 0.2\_0.2 \\ \hline
+
+                     16 & $M_{16}$ & 24\_16\_12\_8 & tanh & 30 & 0.1\_0.1 \\ \hline
+                     17 & $M_{17}$ & 24\_16\_12\_8 & tanh & 30 & 0.2\_0.001 \\ \hline
+                     18 & $M_{18}$ & 24\_16\_12\_8 & tanh & 30 & 0.2\_0.2 \\ \hline
                  \end{longtable}
     \end{minipage}
 
@@ -1072,9 +1078,6 @@ showstringspaces=false            %
                  \end{longtable}
     \end{minipage}
 
-    %    Wykres wartości błędu pokazuje niespodziewanie, że ucząc model na 20 cechach otrzymano najmniejszy błąd.
-    %    10 cech daje również lepszy wynik niż 30, choć tu różnica jest mniejsza.
-
     Przebieg wartości błędu pokazuje, że te modele w ogóle się nie uczyły.
     Błąd jest stały dla modeli $M_{13}$ i $M_{15}$.
     Model $M_{14}$ oscyluje wokół wartości 300, ale również się nie poprawia.
@@ -1099,9 +1102,132 @@ showstringspaces=false            %
         %        \label{}
     \end{figure}
 
+    \section{Różne współczynniki uczenia - tanh}\label{sec:rozneWspolczynnikiUczenia-Tanh}
+
+    %    Zbadano proces ucznia sieci o funkcji aktywacji tanh i stałym współczynniku uczenia dla 30 cech.
+    %    Porównano modele o architekturach bez warstwy ukrytej, z jedną i z dwoma warstwami ukrytymi.
+
+    Ostatnie badanie to największe modele z funkcją aktywacji tanh, uczone z na zbiorze danych zawierający 30 cech.
+    Kryterium porównania to współczynnik uczenia.
+
+    Poniżej znajduje się tabela z wynikami przebiegu uczenia.
+
+    \noindent\begin{minipage}{\textwidth}
+                 \begin{longtable}{|c|l|l|l|l|l|l|}
+                     \caption{Porównianie modeli $M_{16}$, $M_{17}$ i $M_{18}$}\\ \hline
+                     & \multicolumn{2}{c|}{\textbf{$M_{16}$}} & \multicolumn{2}{c|}{\textbf{$M_{17}$}} & \multicolumn{2}{c|}{\textbf{$M_{18}$}} \\ \hline
+                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+                     \endfirsthead
+                     \multicolumn{7}{c}
+                     {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_{16}$, $M_{17}$ i $M_{18}$ - c.d.}} \\ \hline
+                     & \multicolumn{2}{c|}{\textbf{$M_{16}$}} & \multicolumn{2}{c|}{\textbf{$M_{17}$}} & \multicolumn{2}{c|}{\textbf{$M_{18}$}} \\ \hline
+                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+                     \endhead
+                     \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
+                     \endfoot
+                     \hline
+                     \endlastfoot
+                     1 & 0.118 & 55.034 & 0.328 & 48.990 & 0.328 & 48.990 \\ \hline
+                     10 & 0.361 & 57.834 & 0.328 & 48.993 & 0.328 & 49.043 \\ \hline
+                     20 & 0.471 & 46.837 & 0.328 & 49.025 & 0.328 & 48.993 \\ \hline
+                     30 & 0.605 & 33.761 & 0.328 & 48.648 & 0.328 & 48.781 \\ \hline
+                     40 & 0.555 & 36.765 & 0.370 & 48.121 & 0.328 & 48.797 \\ \hline
+                     50 & 0.378 & 37.930 & 0.328 & 48.510 & 0.328 & 49.164 \\ \hline
+                     60 & 0.622 & 32.719 & 0.328 & 48.457 & 0.328 & 48.763 \\ \hline
+                     70 & 0.529 & 48.949 & 0.328 & 48.408 & 0.328 & 48.762 \\ \hline
+                     80 & 0.613 & 32.237 & 0.328 & 48.331 & 0.328 & 48.783 \\ \hline
+                     90 & 0.622 & 33.052 & 0.437 & 47.559 & 0.328 & 48.777 \\ \hline
+                     100 & 0.605 & 31.709 & 0.496 & 44.356 & 0.328 & 48.777 \\ \hline
+                     110 & 0.630 & 34.209 & 0.328 & 48.212 & 0.328 & 48.777 \\ \hline
+                     120 & 0.613 & 34.724 & 0.328 & 48.191 & 0.328 & 48.777 \\ \hline
+                     130 & 0.597 & 31.240 & 0.328 & 48.152 & 0.328 & 48.777 \\ \hline
+                     140 & 0.588 & 37.751 & 0.328 & 48.114 & 0.328 & 48.777 \\ \hline
+                     150 & 0.639 & 30.896 & 0.328 & 48.078 & 0.336 & 49.257 \\ \hline
+                     160 & 0.622 & 32.941 & 0.328 & 48.042 & 0.328 & 48.623 \\ \hline
+                     170 & 0.571 & 35.961 & 0.328 & 48.006 & 0.361 & 48.611 \\ \hline
+                     180 & 0.630 & 34.751 & 0.277 & 47.972 & 0.328 & 48.776 \\ \hline
+                     190 & 0.605 & 33.902 & 0.277 & 47.937 & 0.328 & 48.775 \\ \hline
+                     200 & 0.605 & 43.547 & 0.277 & 47.902 & 0.328 & 48.775 \\ \hline
+                     210 & 0.647 & 31.029 & 0.277 & 47.867 & 0.361 & 48.744 \\ \hline
+                     220 & 0.613 & 36.711 & 0.277 & 47.830 & 0.328 & 48.777 \\ \hline
+                     230 & 0.630 & 32.052 & 0.277 & 47.793 & 0.328 & 48.777 \\ \hline
+                     240 & 0.622 & 32.695 & 0.277 & 47.754 & 0.328 & 48.776 \\ \hline
+                     250 & 0.630 & 32.104 & 0.277 & 47.713 & 0.328 & 48.776 \\ \hline
+                     260 & 0.445 & 57.777 & 0.277 & 47.670 & 0.328 & 48.776 \\ \hline
+                     270 & 0.689 & 29.859 & 0.277 & 47.623 & 0.328 & 48.776 \\ \hline
+                     280 & 0.504 & 36.529 & 0.277 & 47.573 & 0.328 & 48.776 \\ \hline
+                     290 & 0.748 & 24.753 & 0.277 & 47.519 & 0.328 & 48.776 \\ \hline
+                     300 & 0.664 & 30.485 & 0.277 & 47.460 & 0.328 & 48.776 \\ \hline
+                     310 & 0.630 & 32.528 & 0.277 & 47.397 & 0.328 & 48.776 \\ \hline
+                     320 & 0.639 & 31.136 & 0.277 & 47.330 & 0.328 & 48.776 \\ \hline
+                     330 & 0.588 & 30.805 & 0.277 & 47.260 & 0.328 & 48.776 \\ \hline
+                     340 & 0.655 & 34.764 & 0.328 & 47.188 & 0.328 & 48.776 \\ \hline
+                     350 & 0.630 & 28.432 & 0.328 & 47.116 & 0.328 & 48.776 \\ \hline
+                     360 & 0.681 & 27.222 & 0.328 & 47.047 & 0.328 & 48.776 \\ \hline
+                     370 & 0.664 & 29.342 & 0.328 & 46.981 & 0.328 & 48.776 \\ \hline
+                     380 & 0.462 & 44.289 & 0.328 & 46.918 & 0.328 & 48.776 \\ \hline
+                     390 & 0.605 & 30.552 & 0.328 & 46.861 & 0.328 & 48.776 \\ \hline
+                     400 & 0.630 & 30.319 & 0.328 & 46.832 & 0.328 & 48.776 \\ \hline
+                 \end{longtable}
+    \end{minipage}
+
+    %    Przebieg wartości błędu pokazuje, że te modele w ogóle się nie uczyły.
+    %    Błąd jest stały dla modeli $M_{13}$ i $M_{15}$.
+    %    Model $M_{14}$ oscyluje wokół wartości 300, ale również się nie poprawia.
+
+    W tym przypadku również modele nie wykazywały żadnej poprawy w procesie uczenia.
+
+    Wartości błędu modelu ze stałym współczynnikiem równym $0.2$ były stałe przez wszyskie epoki równy około 49.
+    Podobnie model, któremu zmniejszano współczynnik od $0.2$ do $0.001$.
+
+    Co zaskakujące klasyfikator, który miał wpółczynnik równy $0.1$ bardzo dynamicznie aktualizował wagi, co pozwoliło zmniejszyć błąd nawet do 25 w epoce 290.
+
+    \begin{figure}[htp]
+        \centering
+        \includegraphics[scale=0.8]{./img/lr-error-tanh.png}
+        \caption{Porównanie wartości błędu modeli $M_{16}$, $M_{17}$ i $M_{18}$}
+        %        \label{}
+    \end{figure}
+
+    %    Wykres dokładności potwierdza brak możliwości nauki tych modeli.
+    %    Jak na poprzednim wykresie model bez warstwy ukrytej i ten z dwiema warstwami mają praktycznie stałe wartości dokładności.
+    %    Model $M_{15}$ jest wciąż trochę lepszy niż $M_{13}$ o około 5 punktów procentowych.
+    %
+    %    Model z jedną warstwą ukrytą intensywnie zmienia wagi, dlatego dokładność skacze w zakresie 5--32\%, co również jest bardzo małą skutecznością.
+
+    Na wykresie dokładności sytuacja jest podobna.
+    W modelu $M_{16}$ wartość dokładności bardzo gwałtownie skacze od około 50\% do 65\%.
+    Modele $M_{17}$ i $M_{18}$ nie polepszają się i po wszystkich epokach mają skuteczność taką jak na początku, czyli prawie 33\%.
+
+    \begin{figure}[htp]
+        \centering
+        \includegraphics[scale=0.8]{././img/lr-accuracy-tanh.png}
+        \caption{Porównanie dokładności modeli $M_{16}$, $M_{17}$ i $M_{18}$}
+        %        \label{}
+    \end{figure}
+
     \chapter{Podsumowanie}\label{ch:podsumowanie}
 
+    Nie wszystkie modele sieci neuronowej nadają się do rozwiązywania problemu klasyfikacji.
+    Niektóre modele radzą sobie dobrze, inne średnio, a jeszcze inne były zupełnie oporne na proces uczenia.
+    Badania przeprowadzone na wielu różnych klasyfikatorach pozwalają wyciągnąć ogólne wnioski.
+
+    Można zauważyć, że funkcja aktywacji sigmoid daje lepsze rezultaty niż tanh.
+    Każdy z modeli z funkcją aktywacji sigmoid osiągnął wynik ponad 65\% dokładności po wszystkich epokach uczenia, nawet do 89\%.
+    W przypadku tanh kilka najlepszych modeli nieznacznie przekroczyło próg 80\%, ale były też takie, którym nie udało się przeskoczyć 10\%.
+    Jest to gorszy wynik niż zgadywanie klasy.
+
+    Porównując wszystkie modele z różnymi architekturami trudno jest wysnuć jakieś ogólne wnioski.
+    Choć klasyfikator z 1 warstwą ukrytą często osiągał najlepsze wyniki.
+    Na drugim miejscu można by umieścić sieć z dwiema warstami ukrytymi.
+    Modele o architekturze 24\_16\_12\_8 i 8 zachowywały się podobnie pomimo różnic w budowie.
+
+    Bardzo wyraźną relację widać pomiędzy liczbą cech a osiągniętą dokładnością.
+    Można wywnioskować, że im więcej cech tym lepiej, przynajmniej dla tego zbioru danych.
+
     \section{Dalsze możliwości rozwoju}\label{sec:dalszeMozliwosciRozwoju}
+
+
 
     \section{Co mogłem zrobić lepiej}\label{sec:coMoglemZrobicLepiej}
 
