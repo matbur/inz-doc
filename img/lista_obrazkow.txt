@@ -1,2 +1,8 @@
 1. neuron : https://upload.wikimedia.org/wikipedia/commons/2/24/Neuron_McCullocha-Pittsa.svg
 2. mlp: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
+
+
+
+
+
+https://www.cs.toronto.edu/~hinton/absps/JMLRdropout.pdf
