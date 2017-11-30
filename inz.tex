@@ -61,13 +61,24 @@ showstringspaces=false            %
 
     \section{Cel projektu}\label{sec:celProjektu}
 
-    \section{Motywacja}\label{sec:motywacja}
+    Celem pracy jets zastosowanie sztucznych sieci neuronowych jako klasyfikatora w zadaniu diagnozowania stanów ostrego brzucha, ich komputerowa implementacja oraz przeprowadzenie badań eksperymentalnych na danych rzeczywistych w celu oceny skuteczności algorytmów.
+
+    \section{Zadania do wykonania}\label{sec:zadaniaDoWykonania}
+
+    \begin{enumerate}
+        \item Zapoznanie się z medycznym problemem diagnostycznym i danymi empirycznymi - sformułowanie problemu rozpoznawania (klasy, cechy),
+        \item Liczbowa ocena przydatności poszczególnych cech z zastosowaniem wybranej selekcji typu filtr - określenie rankingu cech,
+        \item Określenie typu i architektury sieci neuronowej jako klasyfikatora stanów ostrego brzucha - komputerowa implementacja klasyfikatora,
+        \item Zaplanowanie i przeprowadzenie badań eksperymentalnych - analiza wyników i sformułowanie wniosków,
+        \item Redakcja pracy dyplomowej.
+    \end{enumerate}
 
     \chapter{Problem medyczny}\label{ch:problemMedyczny}
 
     Wybrany przeze mnie problem medyczny dotyczy klasyfikacji stanów ostrego brzucha.
-    Za ten stan odpowiedzialne mogą być różne choroby, które zawsze wymagają interwejcji lekarza.
-    % http://www.poradnikzdrowie.pl/zdrowie/uklad-pokarmowy/ostry-brzuch-przyczyny-objawy-leczenie-ostrego-brzucha_35445.html
+    Jest to szereg objawów charakterystycznych dla różnych schorzeń internistycznych i chirurgicznych.
+    Za ten stan odpowiedzialne mogą być różne choroby.
+    Ostry brzuch jest zagrożeniem dla życia, dlatego zawsze wymaga interwencji lekarza~\cite{ostry-brzuch}.
 
     \section{Opis chorób}\label{sec:opisChorób}
 
@@ -84,14 +95,18 @@ showstringspaces=false            %
         \item Inne przyczyny ostrego bólu brzucha.
     \end{enumerate}
 
+    Trzy pierwsze choroby to ostre schorzenia jelit.
+    Kolejne trzy są ostrymi schorzeniami organów trawiennych.
+    Pozostałe to inne stany „ostrego brzucha”.
+
     \begin{figure}[htp]
         \centering
         \includegraphics[scale=0.7]{./img/histogram.png}
         \caption{Histogram występowania chorób}
-        %        \label{}
+        \label{hist}
     \end{figure}
 
-    Histogram pokazuje, że rozkład klas jest nierównomierny.
+    Histogram~\ref{hist} pokazuje, że rozkład klas jest nierównomierny.
     Na 476 obiektów aż 157 to „Niecharakterystyczny ból brzucha” i 141 ma etykietę „Ostre zapalenie wyrostka robaczkowego”.
     Czyli do 2 klas należy ponad 60\% obiektów.
     Może to mieć negatywny wpływ na jakość klasyfikacji.
@@ -116,19 +131,19 @@ showstringspaces=false            %
         \item zmniejszenie wymiarowości modelu,
         \item zwiększenie generalizacji poprzez uniknięcie zjawiska przeuczenia.
     \end{itemize}
-    % https://en.wikipedia.org/wiki/Feature_selection
-    %Nie wszystkie cechy nadają się do procesu klasyfikacji, dlatego konieczne będzie przeprowadzenie selekcji cech.
+
+    Nie wszystkie cechy nadają się do procesu klasyfikacji, dlatego konieczne jest przeprowadzenie selekcji cech.
 
     \subsection{Test chi2}\label{subsec:testChi2}
 
-    Metoda, którą wybrałem to test chi2.
+    Metoda, którą wybrano to test chi2~\cite{chi2}.
     Jest to jedna z technik nieparametrycznych.
     Nadaje się bardzo dobrze do oceny istotności statystycznej cechy.
     Test ten polega na obliczeniu podanego poniżej wyrażenia dla każdej z cech i wybraniu takich, dla których wartość jest największa.
 
-    \[
+    \begin{equation}
         \chi ^ 2 = \sum_{i=1}^{n}{ \frac{{(O_i - E_i) ^ 2}}{E_i}}
-    \]
+    \end{equation}
 
     \noindent
     Gdzie:
@@ -241,7 +256,7 @@ showstringspaces=false            %
     Umożliwia przechowywanie danych w wielowymiarowych tablicach i macierzach (tensorach) oraz wykonywanie skomplikowanych funkcji na nich.
     Napisana została w większości w języku C, co sprawia, że kod wykonywany jest szybciej niż w samym Pythonie.
     Tablice z NumPy są wykorzystywane w wielu bibliotekach, jako podstawowa struktura danych.
-    W tym projekcie używam jej do przechowywania wag w każdej warstwie sieci.
+    W tym projekcie użyto jej do przechowywania wag w każdej warstwie sieci.
 
     \section{matplotlib}\label{sec:matplotlib}
 
@@ -255,6 +270,7 @@ showstringspaces=false            %
     Matplotlib to najpopularniejsza biblioteka do tworzenia wykresów w Pythonie.
     Wraz z biblioteką NumPy bardzo często wykorzystywana jest do analizy i wizualizacji danych.
     Jest bardzo prosta w obsłudze.
+    Pozwala również wyświetlać obrazy w oknach z poziomu skryptu w Pythonie.
     W kilka linii jesteśmy w stanie stworzyć prosty wykres i wyeksportować go do pliku graficznego.
     Wspiera takie typy wykresów jak:
 
@@ -266,7 +282,7 @@ showstringspaces=false            %
         \item biegunowy.
     \end{itemize}
 
-    Pozwala również wyświetlać obrazy w oknach z poziomu skryptu w Pythonie.
+    Biblioteki tej użyto do wygenerowania wszyskich wykresów w tej pracy.
 
     \section{pandas}\label{sec:pandas}
 
@@ -281,6 +297,8 @@ showstringspaces=false            %
     Oferuje struktury danych, które ułatwiają operowanie na plikach csv, json i xlsx.
     Umożliwia operacje podobne do znanych z języka SQL.
     Są to: grupowanie danych, sortowanie po indeksie lub po innej kolumnie, łączenie tabel i usuwanie duplikatów.
+
+    W tym projekcie pandasy użyto do czytania plików csv i dostarczania danych do sieci neuronowej.
 
     \section{Git}\label{sec:git}
 
@@ -314,9 +332,8 @@ showstringspaces=false            %
     Łatwo jest poznać podstawy Gita i nie wymaga dużo czasu opanowanie ich.
     Zaawansowana znajomość Gita pozwala na robienie niesamowitych rzeczy w repozytorium.
 
-    W projekcie inżynierskim korzystam z Gita do zapisywania postępów w tworzeniu aplikacji.
+    W projekcie inżynierskim korzystano z Gita do zapisywania postępów w tworzeniu aplikacji.
     Kod jest przechowywany na serwerze firmy GitHub.
-
 
     \section{Docker}\label{sec:docker}
 
@@ -347,15 +364,13 @@ showstringspaces=false            %
     Polega to na stworzeniu pliku domyślnie o nazwie Dockerfile, gdzie podany jest obraz bazowy oraz lista komend do wykonania.
     Po zbudowaniu obrazu jedną komendą, można uruchomiać kontenery.
 
-    W swoim projekcie inżynierskim korzystałem z Dockera, badania przeprowadzałem na serwerze, gdzie nie ma zainstalowanych wymaganych przeze mnie zależności.
-    Dlatego to było jedynym rozwiązaniem.
-
+    W projekcie inżynierskim skorzystano z Dockera, badania przeprowadzałem na serwerze, gdzie nie ma zainstalowanych wymaganych zależności.
 
     \chapter{Sieć neuronowa}\label{ch:siećNeuronowa}
 
     \section{Wprowadzenie}\label{sec:wprowadzenie}
 
-    Sztuczna sieć neuronowa to pewna struktura matematyczna, która może być zaimplementowana programowo lub sprzętowo.
+    Sztuczna sieć neuronowa to pewna struktura matematyczna, która może być zaimplementowana programowo lub sprzętowo~\cite{neuron}.
     Początkowo taki twórcy takich modeli inspirowali się zwierzęcym mózgiem, w którym połączone ze sobą neurony tworzą sieć.
     Taka sieć przetwarza sygnały wejściowe wykonując na nich pewne operacje.
     Sieci wykorzystywane są często do rozwiązywania problemów klasyfikacji, z racji na ich zdolność uczenia.
@@ -371,15 +386,23 @@ showstringspaces=false            %
         %        \label{}
     \end{figure}
 
-    \[
+    \begin{equation}
         s = \sum _{i=0}^{n} {w^{(i)} \cdot x^{(i)}} = w^T \cdot x
-    \]
+        \label{neuron-eq}
+    \end{equation}
+
+    Gdzie:
+    \begin{itemize}
+        \item $s$ - pobudzenie neuronu,
+        \item $w^{(i)}$ - wektor wag i-tej warstwy,
+        \item $x^{(i)}$ - wektor wejściowy.
+    \end{itemize}
 
     Neuron stanowi podstawowy budulec sztucznej sieci neuronowej.
     Składa się z ustalonej liczby wejść, wraz z odpowiadającymi im wagami.
     Ponadto neuron zawiera nieliniową funkcję aktywacji oraz jedno wyjście.
     Jego zadanie to obliczenie iloczynu skalarnego wektora wejść z wektorem wag.
-    Dodatkowo możemy przyjąć, że bias jest dodatkowym wejściem neuronu o wartości 1.
+    Dodatkowo możemy przyjąć, że bias jest dodatkowym wejściem neuronu o wartości 1, jak pokazano w rówaniu~\ref{neuron-eq}.
     Następnie obliczona suma ważona poddawana jest funkcji aktywacji i przekazywana na wyjście neuronu.
     W procesie uczenia wagi w neuronie zmieniają się tak, by wyliczona wartość funkcji błędu była jak najmniejsza.
 
@@ -390,9 +413,16 @@ showstringspaces=false            %
     W uczeniu maszynowym znanych jest wiele rodzajów takich funkcji.
     W tej pracy opiszę tylko dwie, które użyłem do budowy sieci neuronowej.
 
-    \[
+    \begin{equation}
         y = f(s) = f(w^T \cdot x)
-    \]
+    \end{equation}
+
+    Gdzie:
+    \begin{itemize}
+        \item $y$ - wektor wyjść neuronów,
+        \item $f$ - funkcja aktywacji,
+        \item $s$ - pobudzenie neuronu.
+    \end{itemize}
 
     \subsubsection{Sigmoid}
 
@@ -402,10 +432,10 @@ showstringspaces=false            %
     Jest to również wada, że szybko się „nasyca”.
     Kolejnym minusem tej funkcji jest to, że wartości nie zcentralizowane wokół zera.
     Ponadto wykorzystuje funkcję ekpotencjalną, która jest kosztowna obliczeniowo.
-    Jej wzór to:
-    \[
+    Jej wzór to~\cite{sigmoid}:
+    \begin{equation}
         \sigma(x) = \frac {1}{1+e^{-x}}
-    \]
+    \end{equation}
 
     \begin{figure}[htp]
         \centering
@@ -420,11 +450,11 @@ showstringspaces=false            %
     Spłaszcza wyjście w zakresie (-1, 1).
     Podobnie jak sigmoid szybko się „nasyca”.
     W przeciwieństwie do poprzedniej funkcji jest scentralizowany wokół zera.
-    Tanh również korzysta z funkcji ekpotencjalnej.
+    Tanh również korzysta z funkcji ekpotencjalnej~\cite{cs231_neural_2}.
     Jej wzór to:
-    \[
+    \begin{equation}
         \tanh(x) = \frac {2}{1+e^{-2x}} - 1
-    \]
+    \end{equation}
 
     \begin{figure}[htp]
         \centering
@@ -467,18 +497,18 @@ showstringspaces=false            %
     Propagacja wsteczna wymaga również funkcję błędu.
     W tym celu stosuje się tak zwany „błąd średnio-kwadratowy”, który jest obliczany następująco:
 
-    \[
+    \begin{equation}
         Q(w_k) = \sum_{k=1}^{N}{(d_k - y_k) ^ 2}
-    \]
+    \end{equation}
 
-    gdzie:
+    Gdzie:
 
     \begin{itemize}
         \item $Q$ - błąd średniokwadratowy,
         \item $w_k$ - wektor wag w k-tym neuronie,
         \item $N$ - liczba danych uczących,
         \item $d_k$ - poprawna wartość,
-        \item $y_k$ - aktualna wartość,
+        \item $y_k$ - aktualna wartość.
     \end{itemize}
 
     Algorytm jest wieloetapowy.
@@ -487,6 +517,19 @@ showstringspaces=false            %
 
     Tutaj korzysta się ze współczynnika uczenia.
     Na początku powinien mieć ustaloną wartość, a następnie wraz z kolejnymi epokami uczenia może się zmniejszać.
+
+    Należy również wyznaczyć pochodne funkcji aktywacji.
+    Pierwsza pochodna funkcji sigmoid to równanie~\ref{der-sigmoid}, a tanh to~\ref{der-tanh}.
+
+    \begin{equation}
+        \sigma'(x) = \sigma(x) \cdot (1 - \sigma(x))
+        \label{der-sigmoid}
+    \end{equation}
+
+    \begin{equation}
+        \tanh'(x) = 1 - \tanh(x)^2
+        \label{der-tanh}
+    \end{equation}
 
     Można to porównać do stania nad doliną górską, gdzie chcemy dość do najniższego punktu.
     Najpierw należy ustalić kierunek marszu, by później kroczyć w tym kierunku.
@@ -530,7 +573,7 @@ showstringspaces=false            %
     Jako argument przyjmuje krotkę z wymiarem danych, które będą przekazywane do sieci.
     Ustawia w instacji warstwy, flagę informującą, że jest to warstwa wejściowa i zwraca ją.
 
-    Druga ważna funkcja to „fully\_ connected”.
+    Druga ważna funkcja to „fully\_connected”.
     Pierwszym argumentem, który należy jej podać to istniejąca już sieć neuronowa składająca się z połączonych rekurencyjnie warstw.
     „n\_units” to parametr, który jest liczbą neuronów w nowo utworzonej warstwie.
     Na koniec można podać, jaką funkcję aktywacji ma mieć ta warstwa.
@@ -660,69 +703,71 @@ showstringspaces=false            %
                  \end{longtable}
     \end{minipage}
 
-    \section{Różne współczynniki uczenia}\label{sec:rozneWspolczynnikiUczenia}
+    \section{Badania z funkcją sigmoid}\label{sec:badaniaZFunkcjąSigmoid}
+
+    \subsection{Różne współczynniki uczenia}\label{subsec:różneWspólczynnikiUczenia}
 
     Poniżej znajduje się tabela z przebiegu uczenia dwóch modeli o architekturze 24\_16\_12\_8, funkcji aktywacji sigmoid, uczonym na 30 cechach i różniącym się współczynnikiem uczenia.
 
 
-    \noindent\begin{minipage}{\textwidth}
-                 \begin{longtable}{|c|l|l|l|l|}
-                     \caption{Porównianie modeli $M_1$ i $M_2$}\\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_1$}} & \multicolumn{2}{c|}{\textbf{$M_2$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd}  & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
-                     \endfirsthead
-                     \multicolumn{5}{c}
-                     {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_1$ i $M_2$ - c.d.}} \\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_1$}} & \multicolumn{2}{c|}{\textbf{$M_2$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd}  & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
-                     \endhead
-                     \hline \multicolumn{5}{r}{\textit{Kontynuacja na następnej stronie}} \\
-                     \endfoot
-                     \hline
-                     \endlastfoot
-                     1 & 0.277 & 47.031 & 0.277 & 47.031 \\ \hline
-                     10 & 0.513 & 37.573 & 0.563 & 33.302 \\ \hline
-                     20 & 0.588 & 32.163 & 0.622 & 29.612 \\ \hline
-                     30 & 0.622 & 27.482 & 0.597 & 30.062 \\ \hline
-                     40 & 0.647 & 26.037 & 0.647 & 27.523 \\ \hline
-                     50 & 0.655 & 27.505 & 0.655 & 27.221 \\ \hline
-                     60 & 0.655 & 31.413 & 0.664 & 25.058 \\ \hline
-                     70 & 0.655 & 29.571 & 0.723 & 22.468 \\ \hline
-                     80 & 0.697 & 22.540 & 0.689 & 22.567 \\ \hline
-                     90 & 0.714 & 22.712 & 0.731 & 22.202 \\ \hline
-                     100 & 0.639 & 33.643 & 0.706 & 23.672 \\ \hline
-                     110 & 0.672 & 30.809 & 0.756 & 21.424 \\ \hline
-                     120 & 0.765 & 20.840 & 0.723 & 25.234 \\ \hline
-                     130 & 0.773 & 19.664 & 0.714 & 23.904 \\ \hline
-                     140 & 0.748 & 21.401 & 0.731 & 21.937 \\ \hline
-                     150 & 0.739 & 22.939 & 0.739 & 20.739 \\ \hline
-                     160 & 0.798 & 18.715 & 0.824 & 17.646 \\ \hline
-                     170 & 0.748 & 20.608 & 0.790 & 17.594 \\ \hline
-                     180 & 0.807 & 19.054 & 0.773 & 20.165 \\ \hline
-                     190 & 0.790 & 20.590 & 0.824 & 16.881 \\ \hline
-                     200 & 0.849 & 16.287 & 0.798 & 19.377 \\ \hline
-                     210 & 0.798 & 16.966 & 0.815 & 18.842 \\ \hline
-                     220 & 0.782 & 21.849 & 0.815 & 17.510 \\ \hline
-                     230 & 0.765 & 20.966 & 0.824 & 17.073 \\ \hline
-                     240 & 0.756 & 22.650 & 0.832 & 17.168 \\ \hline
-                     250 & 0.849 & 16.440 & 0.815 & 17.868 \\ \hline
-                     260 & 0.807 & 17.105 & 0.815 & 18.350 \\ \hline
-                     270 & 0.824 & 16.844 & 0.824 & 17.483 \\ \hline
-                     280 & 0.832 & 16.893 & 0.832 & 17.576 \\ \hline
-                     290 & 0.815 & 17.927 & 0.832 & 17.544 \\ \hline
-                     300 & 0.773 & 21.567 & 0.832 & 17.523 \\ \hline
-                     310 & 0.655 & 35.103 & 0.832 & 17.505 \\ \hline
-                     320 & 0.798 & 17.729 & 0.832 & 17.489 \\ \hline
-                     330 & 0.857 & 13.654 & 0.832 & 17.475 \\ \hline
-                     340 & 0.790 & 20.248 & 0.832 & 17.462 \\ \hline
-                     350 & 0.790 & 19.990 & 0.832 & 17.450 \\ \hline
-                     360 & 0.782 & 19.722 & 0.832 & 17.441 \\ \hline
-                     370 & 0.739 & 24.702 & 0.832 & 17.433 \\ \hline
-                     380 & 0.824 & 16.167 & 0.832 & 17.427 \\ \hline
-                     390 & 0.815 & 18.179 & 0.832 & 17.423 \\ \hline
-                     400 & 0.807 & 16.703 & 0.832 & 17.420 \\ \hline
-                 \end{longtable}
-    \end{minipage}
+    %    \noindent\begin{minipage}{\textwidth}
+    \begin{longtable}{|c|l|l|l|l|}
+        \caption{Porównianie modeli $M_1$ i $M_2$}\\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_1$}} & \multicolumn{2}{c|}{\textbf{$M_2$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd}  & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endfirsthead
+        \multicolumn{5}{c}
+        {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_1$ i $M_2$ - c.d.}} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_1$}} & \multicolumn{2}{c|}{\textbf{$M_2$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd}  & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endhead
+        \hline \multicolumn{5}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        1 & 0.277 & 47.031 & 0.277 & 47.031 \\ \hline
+        10 & 0.513 & 37.573 & 0.563 & 33.302 \\ \hline
+        20 & 0.588 & 32.163 & 0.622 & 29.612 \\ \hline
+        30 & 0.622 & 27.482 & 0.597 & 30.062 \\ \hline
+        40 & 0.647 & 26.037 & 0.647 & 27.523 \\ \hline
+        50 & 0.655 & 27.505 & 0.655 & 27.221 \\ \hline
+        60 & 0.655 & 31.413 & 0.664 & 25.058 \\ \hline
+        70 & 0.655 & 29.571 & 0.723 & 22.468 \\ \hline
+        80 & 0.697 & 22.540 & 0.689 & 22.567 \\ \hline
+        90 & 0.714 & 22.712 & 0.731 & 22.202 \\ \hline
+        100 & 0.639 & 33.643 & 0.706 & 23.672 \\ \hline
+        110 & 0.672 & 30.809 & 0.756 & 21.424 \\ \hline
+        120 & 0.765 & 20.840 & 0.723 & 25.234 \\ \hline
+        130 & 0.773 & 19.664 & 0.714 & 23.904 \\ \hline
+        140 & 0.748 & 21.401 & 0.731 & 21.937 \\ \hline
+        150 & 0.739 & 22.939 & 0.739 & 20.739 \\ \hline
+        160 & 0.798 & 18.715 & 0.824 & 17.646 \\ \hline
+        170 & 0.748 & 20.608 & 0.790 & 17.594 \\ \hline
+        180 & 0.807 & 19.054 & 0.773 & 20.165 \\ \hline
+        190 & 0.790 & 20.590 & 0.824 & 16.881 \\ \hline
+        200 & 0.849 & 16.287 & 0.798 & 19.377 \\ \hline
+        210 & 0.798 & 16.966 & 0.815 & 18.842 \\ \hline
+        220 & 0.782 & 21.849 & 0.815 & 17.510 \\ \hline
+        230 & 0.765 & 20.966 & 0.824 & 17.073 \\ \hline
+        240 & 0.756 & 22.650 & 0.832 & 17.168 \\ \hline
+        250 & 0.849 & 16.440 & 0.815 & 17.868 \\ \hline
+        260 & 0.807 & 17.105 & 0.815 & 18.350 \\ \hline
+        270 & 0.824 & 16.844 & 0.824 & 17.483 \\ \hline
+        280 & 0.832 & 16.893 & 0.832 & 17.576 \\ \hline
+        290 & 0.815 & 17.927 & 0.832 & 17.544 \\ \hline
+        300 & 0.773 & 21.567 & 0.832 & 17.523 \\ \hline
+        310 & 0.655 & 35.103 & 0.832 & 17.505 \\ \hline
+        320 & 0.798 & 17.729 & 0.832 & 17.489 \\ \hline
+        330 & 0.857 & 13.654 & 0.832 & 17.475 \\ \hline
+        340 & 0.790 & 20.248 & 0.832 & 17.462 \\ \hline
+        350 & 0.790 & 19.990 & 0.832 & 17.450 \\ \hline
+        360 & 0.782 & 19.722 & 0.832 & 17.441 \\ \hline
+        370 & 0.739 & 24.702 & 0.832 & 17.433 \\ \hline
+        380 & 0.824 & 16.167 & 0.832 & 17.427 \\ \hline
+        390 & 0.815 & 18.179 & 0.832 & 17.423 \\ \hline
+        400 & 0.807 & 16.703 & 0.832 & 17.420 \\ \hline
+    \end{longtable}
+    %    \end{minipage}
 
 
     Wykres wartości błędu przedstawia błąd średniokwadratowy z procesu uczenia co 5 epokę.
@@ -747,7 +792,7 @@ showstringspaces=false            %
         %        \label{}
     \end{figure}
 
-    \section{Różna liczba cech}\label{sec:różnaLiczbaCech}
+    \subsection{Różna liczba cech}\label{subsec:różnaLiczbaCech}
 
     Drugie porównanie to modele o architekturze 16\_8, funkcji aktywacji sigmoid.
     Trenowane były z malejącym współczynnikiem uczenia.
@@ -755,64 +800,64 @@ showstringspaces=false            %
     $M_3$ klasyfikuje korzystając z 10 cech o najwyższym współczynniku chi2.
     $M_4$ dostaje 20 cech, a $M_5$ uczy się na prawie wszystkich cechach, czyli 30 najlepszych.
 
-    \noindent\begin{minipage}{\textwidth}
-                 \begin{longtable}{|c|l|l|l|l|l|l|}
-                     \caption{Porównianie modeli $M_3$, $M_4$ i $M_5$}\\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_3$}} & \multicolumn{2}{c|}{\textbf{$M_4$}} & \multicolumn{2}{c|}{\textbf{$M_5$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
-                     \endfirsthead
-                     \multicolumn{7}{c}
-                     {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_3$, $M_4$ i $M_5$ - c.d.}} \\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_3$}} & \multicolumn{2}{c|}{\textbf{$M_4$}} & \multicolumn{2}{c|}{\textbf{$M_5$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
-                     \endhead
-                     \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
-                     \endfoot
-                     \hline
-                     \endlastfoot
-                     1 & 0.538 & 41.299 & 0.496 & 41.714 & 0.462 & 43.907 \\ \hline
-                     10 & 0.571 & 34.109 & 0.613 & 26.876 & 0.613 & 28.462 \\ \hline
-                     20 & 0.647 & 29.445 & 0.714 & 24.232 & 0.655 & 23.769 \\ \hline
-                     30 & 0.664 & 27.188 & 0.723 & 20.451 & 0.765 & 20.308 \\ \hline
-                     40 & 0.672 & 26.045 & 0.782 & 17.584 & 0.765 & 18.426 \\ \hline
-                     50 & 0.681 & 23.634 & 0.782 & 16.687 & 0.824 & 15.077 \\ \hline
-                     60 & 0.739 & 21.233 & 0.790 & 16.759 & 0.849 & 14.902 \\ \hline
-                     70 & 0.773 & 20.575 & 0.832 & 15.302 & 0.849 & 13.756 \\ \hline
-                     80 & 0.765 & 22.901 & 0.849 & 14.367 & 0.874 & 12.665 \\ \hline
-                     90 & 0.739 & 21.739 & 0.849 & 13.351 & 0.866 & 12.680 \\ \hline
-                     100 & 0.765 & 21.240 & 0.857 & 13.708 & 0.857 & 12.414 \\ \hline
-                     110 & 0.739 & 20.959 & 0.832 & 14.686 & 0.874 & 11.797 \\ \hline
-                     120 & 0.756 & 20.595 & 0.866 & 13.803 & 0.874 & 11.426 \\ \hline
-                     130 & 0.773 & 20.562 & 0.874 & 12.516 & 0.882 & 11.068 \\ \hline
-                     140 & 0.798 & 20.210 & 0.874 & 12.519 & 0.891 & 10.854 \\ \hline
-                     150 & 0.798 & 19.903 & 0.866 & 13.173 & 0.899 & 10.735 \\ \hline
-                     160 & 0.798 & 19.924 & 0.882 & 12.943 & 0.908 & 10.647 \\ \hline
-                     170 & 0.807 & 19.784 & 0.866 & 13.364 & 0.908 & 10.576 \\ \hline
-                     180 & 0.807 & 19.581 & 0.849 & 13.898 & 0.908 & 10.529 \\ \hline
-                     190 & 0.815 & 19.234 & 0.849 & 14.285 & 0.908 & 10.507 \\ \hline
-                     200 & 0.807 & 18.782 & 0.849 & 13.564 & 0.908 & 10.536 \\ \hline
-                     210 & 0.798 & 18.772 & 0.849 & 13.768 & 0.908 & 10.761 \\ \hline
-                     220 & 0.782 & 18.848 & 0.857 & 13.938 & 0.874 & 11.259 \\ \hline
-                     230 & 0.765 & 19.123 & 0.857 & 13.972 & 0.882 & 10.923 \\ \hline
-                     240 & 0.773 & 18.967 & 0.866 & 13.971 & 0.908 & 10.914 \\ \hline
-                     250 & 0.790 & 18.496 & 0.866 & 13.969 & 0.908 & 10.813 \\ \hline
-                     260 & 0.790 & 18.480 & 0.866 & 13.976 & 0.899 & 10.745 \\ \hline
-                     270 & 0.798 & 18.272 & 0.866 & 13.991 & 0.899 & 10.722 \\ \hline
-                     280 & 0.807 & 18.269 & 0.857 & 14.007 & 0.891 & 10.729 \\ \hline
-                     290 & 0.798 & 18.229 & 0.857 & 14.019 & 0.891 & 10.752 \\ \hline
-                     300 & 0.798 & 18.170 & 0.857 & 14.027 & 0.891 & 10.780 \\ \hline
-                     310 & 0.807 & 18.101 & 0.857 & 14.034 & 0.891 & 10.808 \\ \hline
-                     320 & 0.807 & 18.028 & 0.857 & 14.040 & 0.891 & 10.834 \\ \hline
-                     330 & 0.807 & 17.961 & 0.857 & 14.043 & 0.891 & 10.858 \\ \hline
-                     340 & 0.815 & 17.909 & 0.857 & 14.043 & 0.891 & 10.880 \\ \hline
-                     350 & 0.815 & 17.824 & 0.857 & 14.042 & 0.891 & 10.899 \\ \hline
-                     360 & 0.815 & 17.725 & 0.857 & 14.040 & 0.891 & 10.917 \\ \hline
-                     370 & 0.815 & 17.647 & 0.857 & 14.038 & 0.891 & 10.933 \\ \hline
-                     380 & 0.807 & 17.589 & 0.857 & 14.035 & 0.891 & 10.948 \\ \hline
-                     390 & 0.807 & 17.545 & 0.857 & 14.032 & 0.891 & 10.962 \\ \hline
-                     400 & 0.807 & 17.523 & 0.857 & 14.032 & 0.891 & 10.972 \\ \hline
-                 \end{longtable}
-    \end{minipage}
+    %    \noindent\begin{minipage}{\textwidth}
+    \begin{longtable}{|c|l|l|l|l|l|l|}
+        \caption{Porównianie modeli $M_3$, $M_4$ i $M_5$}\\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_3$}} & \multicolumn{2}{c|}{\textbf{$M_4$}} & \multicolumn{2}{c|}{\textbf{$M_5$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endfirsthead
+        \multicolumn{7}{c}
+        {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_3$, $M_4$ i $M_5$ - c.d.}} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_3$}} & \multicolumn{2}{c|}{\textbf{$M_4$}} & \multicolumn{2}{c|}{\textbf{$M_5$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endhead
+        \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        1 & 0.538 & 41.299 & 0.496 & 41.714 & 0.462 & 43.907 \\ \hline
+        10 & 0.571 & 34.109 & 0.613 & 26.876 & 0.613 & 28.462 \\ \hline
+        20 & 0.647 & 29.445 & 0.714 & 24.232 & 0.655 & 23.769 \\ \hline
+        30 & 0.664 & 27.188 & 0.723 & 20.451 & 0.765 & 20.308 \\ \hline
+        40 & 0.672 & 26.045 & 0.782 & 17.584 & 0.765 & 18.426 \\ \hline
+        50 & 0.681 & 23.634 & 0.782 & 16.687 & 0.824 & 15.077 \\ \hline
+        60 & 0.739 & 21.233 & 0.790 & 16.759 & 0.849 & 14.902 \\ \hline
+        70 & 0.773 & 20.575 & 0.832 & 15.302 & 0.849 & 13.756 \\ \hline
+        80 & 0.765 & 22.901 & 0.849 & 14.367 & 0.874 & 12.665 \\ \hline
+        90 & 0.739 & 21.739 & 0.849 & 13.351 & 0.866 & 12.680 \\ \hline
+        100 & 0.765 & 21.240 & 0.857 & 13.708 & 0.857 & 12.414 \\ \hline
+        110 & 0.739 & 20.959 & 0.832 & 14.686 & 0.874 & 11.797 \\ \hline
+        120 & 0.756 & 20.595 & 0.866 & 13.803 & 0.874 & 11.426 \\ \hline
+        130 & 0.773 & 20.562 & 0.874 & 12.516 & 0.882 & 11.068 \\ \hline
+        140 & 0.798 & 20.210 & 0.874 & 12.519 & 0.891 & 10.854 \\ \hline
+        150 & 0.798 & 19.903 & 0.866 & 13.173 & 0.899 & 10.735 \\ \hline
+        160 & 0.798 & 19.924 & 0.882 & 12.943 & 0.908 & 10.647 \\ \hline
+        170 & 0.807 & 19.784 & 0.866 & 13.364 & 0.908 & 10.576 \\ \hline
+        180 & 0.807 & 19.581 & 0.849 & 13.898 & 0.908 & 10.529 \\ \hline
+        190 & 0.815 & 19.234 & 0.849 & 14.285 & 0.908 & 10.507 \\ \hline
+        200 & 0.807 & 18.782 & 0.849 & 13.564 & 0.908 & 10.536 \\ \hline
+        210 & 0.798 & 18.772 & 0.849 & 13.768 & 0.908 & 10.761 \\ \hline
+        220 & 0.782 & 18.848 & 0.857 & 13.938 & 0.874 & 11.259 \\ \hline
+        230 & 0.765 & 19.123 & 0.857 & 13.972 & 0.882 & 10.923 \\ \hline
+        240 & 0.773 & 18.967 & 0.866 & 13.971 & 0.908 & 10.914 \\ \hline
+        250 & 0.790 & 18.496 & 0.866 & 13.969 & 0.908 & 10.813 \\ \hline
+        260 & 0.790 & 18.480 & 0.866 & 13.976 & 0.899 & 10.745 \\ \hline
+        270 & 0.798 & 18.272 & 0.866 & 13.991 & 0.899 & 10.722 \\ \hline
+        280 & 0.807 & 18.269 & 0.857 & 14.007 & 0.891 & 10.729 \\ \hline
+        290 & 0.798 & 18.229 & 0.857 & 14.019 & 0.891 & 10.752 \\ \hline
+        300 & 0.798 & 18.170 & 0.857 & 14.027 & 0.891 & 10.780 \\ \hline
+        310 & 0.807 & 18.101 & 0.857 & 14.034 & 0.891 & 10.808 \\ \hline
+        320 & 0.807 & 18.028 & 0.857 & 14.040 & 0.891 & 10.834 \\ \hline
+        330 & 0.807 & 17.961 & 0.857 & 14.043 & 0.891 & 10.858 \\ \hline
+        340 & 0.815 & 17.909 & 0.857 & 14.043 & 0.891 & 10.880 \\ \hline
+        350 & 0.815 & 17.824 & 0.857 & 14.042 & 0.891 & 10.899 \\ \hline
+        360 & 0.815 & 17.725 & 0.857 & 14.040 & 0.891 & 10.917 \\ \hline
+        370 & 0.815 & 17.647 & 0.857 & 14.038 & 0.891 & 10.933 \\ \hline
+        380 & 0.807 & 17.589 & 0.857 & 14.035 & 0.891 & 10.948 \\ \hline
+        390 & 0.807 & 17.545 & 0.857 & 14.032 & 0.891 & 10.962 \\ \hline
+        400 & 0.807 & 17.523 & 0.857 & 14.032 & 0.891 & 10.972 \\ \hline
+    \end{longtable}
+    %    \end{minipage}
 
     Z wykresu porównania wartości błędu uczenia tych modeli można wywnioskować, że liczba cech ma wpływ na jakość klasyfikacji.
     Im więcej cech, tym model popełnia mniejszy błąd.
@@ -836,7 +881,7 @@ showstringspaces=false            %
         %        \label{}
     \end{figure}
 
-    \section{Różne architektury}\label{sec:różneArchitektury}
+    \subsection{Różne architektury}\label{subsec:różneArchitektury}
 
     Kolejnej analizie poddano sieci neuronowe mające funkcję aktywacji sigmoid oraz 30 neuronów w warstwie wejściowej.
     Współczynnik uczenia malał od $1.0$ do $0.01$ we wszystkich modelach tak samo.
@@ -844,64 +889,64 @@ showstringspaces=false            %
 
     Wydawać by się mogło, że im więcej warstw ukrytych, tym model dokonuje klasyfikacji z wyższą dokładnością.
 
-    \noindent\begin{minipage}{\textwidth}
-                 \begin{longtable}{|c|l|l|l|l|l|l|l|l|}
-                     \caption{Porównianie modeli $M_6$, $M_7$, $M_8$ i $M_9$}\\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_6$}} & \multicolumn{2}{c|}{\textbf{$M_7$}} & \multicolumn{2}{c|}{\textbf{$M_8$}} & \multicolumn{2}{c|}{\textbf{$M_9$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} \\ \hline
-                     \endfirsthead
-                     \multicolumn{9}{c}
-                     {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_6$, $M_7$, $M_8$ i $M_9$ - c.d.}} \\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_6$}} & \multicolumn{2}{c|}{\textbf{$M_7$}} & \multicolumn{2}{c|}{\textbf{$M_8$}} & \multicolumn{2}{c|}{\textbf{$M_9$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} \\ \hline
-                     \endhead
-                     \hline \multicolumn{9}{r}{\textit{Kontynuacja na następnej stronie}} \\
-                     \endfoot
-                     \hline
-                     \endlastfoot
-                     1 & 0.361 & 54.950 & 0.420 & 45.093 & 0.387 & 46.705 & 0.387 & 46.968 \\ \hline
-                     10 & 0.630 & 28.059 & 0.605 & 28.339 & 0.563 & 33.505 & 0.521 & 46.049 \\ \hline
-                     20 & 0.647 & 28.050 & 0.655 & 26.151 & 0.630 & 29.422 & 0.580 & 31.339 \\ \hline
-                     30 & 0.697 & 26.420 & 0.723 & 22.149 & 0.647 & 27.208 & 0.630 & 29.242 \\ \hline
-                     40 & 0.681 & 27.203 & 0.756 & 19.402 & 0.672 & 25.992 & 0.613 & 28.203 \\ \hline
-                     50 & 0.697 & 26.257 & 0.824 & 16.846 & 0.697 & 24.958 & 0.630 & 27.234 \\ \hline
-                     60 & 0.697 & 26.023 & 0.832 & 15.827 & 0.681 & 23.236 & 0.647 & 27.873 \\ \hline
-                     70 & 0.706 & 25.647 & 0.832 & 15.026 & 0.681 & 22.635 & 0.639 & 27.101 \\ \hline
-                     80 & 0.714 & 25.314 & 0.840 & 14.182 & 0.714 & 22.061 & 0.647 & 26.490 \\ \hline
-                     90 & 0.723 & 24.919 & 0.840 & 13.757 & 0.748 & 21.656 & 0.655 & 27.194 \\ \hline
-                     100 & 0.731 & 24.451 & 0.840 & 13.870 & 0.756 & 20.421 & 0.664 & 26.650 \\ \hline
-                     110 & 0.723 & 24.131 & 0.849 & 13.930 & 0.773 & 19.475 & 0.664 & 26.430 \\ \hline
-                     120 & 0.731 & 23.937 & 0.840 & 13.729 & 0.748 & 18.962 & 0.664 & 26.588 \\ \hline
-                     130 & 0.723 & 24.139 & 0.840 & 13.372 & 0.765 & 18.062 & 0.681 & 25.698 \\ \hline
-                     140 & 0.714 & 24.308 & 0.840 & 13.044 & 0.756 & 18.048 & 0.672 & 25.671 \\ \hline
-                     150 & 0.714 & 24.331 & 0.840 & 12.807 & 0.756 & 18.073 & 0.655 & 25.225 \\ \hline
-                     160 & 0.723 & 24.246 & 0.849 & 12.668 & 0.782 & 17.879 & 0.681 & 24.412 \\ \hline
-                     170 & 0.731 & 24.122 & 0.849 & 12.622 & 0.782 & 17.810 & 0.723 & 23.230 \\ \hline
-                     180 & 0.739 & 23.974 & 0.849 & 12.606 & 0.790 & 17.619 & 0.739 & 22.015 \\ \hline
-                     190 & 0.739 & 23.798 & 0.849 & 12.606 & 0.807 & 17.330 & 0.748 & 21.055 \\ \hline
-                     200 & 0.739 & 23.590 & 0.857 & 12.630 & 0.815 & 17.058 & 0.765 & 20.394 \\ \hline
-                     210 & 0.748 & 23.349 & 0.857 & 12.693 & 0.815 & 16.827 & 0.782 & 19.212 \\ \hline
-                     220 & 0.748 & 23.076 & 0.857 & 12.782 & 0.815 & 16.665 & 0.790 & 18.236 \\ \hline
-                     230 & 0.748 & 22.790 & 0.857 & 13.083 & 0.807 & 16.587 & 0.798 & 17.815 \\ \hline
-                     240 & 0.748 & 22.544 & 0.849 & 13.245 & 0.807 & 16.578 & 0.798 & 17.523 \\ \hline
-                     250 & 0.765 & 22.413 & 0.849 & 13.167 & 0.815 & 16.604 & 0.798 & 17.386 \\ \hline
-                     260 & 0.748 & 22.411 & 0.857 & 13.130 & 0.815 & 16.627 & 0.798 & 17.369 \\ \hline
-                     270 & 0.731 & 22.462 & 0.849 & 13.109 & 0.824 & 16.603 & 0.798 & 17.412 \\ \hline
-                     280 & 0.731 & 22.496 & 0.840 & 13.083 & 0.815 & 16.538 & 0.798 & 17.466 \\ \hline
-                     290 & 0.739 & 22.517 & 0.840 & 13.056 & 0.815 & 16.464 & 0.807 & 17.510 \\ \hline
-                     300 & 0.748 & 22.535 & 0.840 & 13.031 & 0.815 & 16.395 & 0.807 & 17.540 \\ \hline
-                     310 & 0.748 & 22.553 & 0.840 & 13.008 & 0.815 & 16.340 & 0.790 & 17.565 \\ \hline
-                     320 & 0.739 & 22.572 & 0.849 & 12.986 & 0.815 & 16.305 & 0.790 & 17.598 \\ \hline
-                     330 & 0.739 & 22.591 & 0.849 & 12.966 & 0.815 & 16.291 & 0.790 & 17.628 \\ \hline
-                     340 & 0.731 & 22.608 & 0.849 & 12.947 & 0.815 & 16.294 & 0.790 & 17.612 \\ \hline
-                     350 & 0.731 & 22.622 & 0.857 & 12.930 & 0.815 & 16.310 & 0.790 & 17.569 \\ \hline
-                     360 & 0.731 & 22.633 & 0.857 & 12.916 & 0.815 & 16.335 & 0.790 & 17.530 \\ \hline
-                     370 & 0.731 & 22.639 & 0.857 & 12.906 & 0.815 & 16.367 & 0.790 & 17.497 \\ \hline
-                     380 & 0.731 & 22.641 & 0.857 & 12.900 & 0.815 & 16.407 & 0.790 & 17.469 \\ \hline
-                     390 & 0.731 & 22.640 & 0.857 & 12.897 & 0.815 & 16.454 & 0.790 & 17.447 \\ \hline
-                     400 & 0.731 & 22.636 & 0.866 & 12.898 & 0.815 & 16.509 & 0.790 & 17.429 \\ \hline
-                 \end{longtable}
-    \end{minipage}
+    %    \noindent\begin{minipage}{\textwidth}
+    \begin{longtable}{|c|l|l|l|l|l|l|l|l|}
+        \caption{Porównianie modeli $M_6$, $M_7$, $M_8$ i $M_9$}\\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_6$}} & \multicolumn{2}{c|}{\textbf{$M_7$}} & \multicolumn{2}{c|}{\textbf{$M_8$}} & \multicolumn{2}{c|}{\textbf{$M_9$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} \\ \hline
+        \endfirsthead
+        \multicolumn{9}{c}
+        {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_6$, $M_7$, $M_8$ i $M_9$ - c.d.}} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_6$}} & \multicolumn{2}{c|}{\textbf{$M_7$}} & \multicolumn{2}{c|}{\textbf{$M_8$}} & \multicolumn{2}{c|}{\textbf{$M_9$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} & \textbf{Dokł.} & \textbf{Błąd} \\ \hline
+        \endhead
+        \hline \multicolumn{9}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        1 & 0.361 & 54.950 & 0.420 & 45.093 & 0.387 & 46.705 & 0.387 & 46.968 \\ \hline
+        10 & 0.630 & 28.059 & 0.605 & 28.339 & 0.563 & 33.505 & 0.521 & 46.049 \\ \hline
+        20 & 0.647 & 28.050 & 0.655 & 26.151 & 0.630 & 29.422 & 0.580 & 31.339 \\ \hline
+        30 & 0.697 & 26.420 & 0.723 & 22.149 & 0.647 & 27.208 & 0.630 & 29.242 \\ \hline
+        40 & 0.681 & 27.203 & 0.756 & 19.402 & 0.672 & 25.992 & 0.613 & 28.203 \\ \hline
+        50 & 0.697 & 26.257 & 0.824 & 16.846 & 0.697 & 24.958 & 0.630 & 27.234 \\ \hline
+        60 & 0.697 & 26.023 & 0.832 & 15.827 & 0.681 & 23.236 & 0.647 & 27.873 \\ \hline
+        70 & 0.706 & 25.647 & 0.832 & 15.026 & 0.681 & 22.635 & 0.639 & 27.101 \\ \hline
+        80 & 0.714 & 25.314 & 0.840 & 14.182 & 0.714 & 22.061 & 0.647 & 26.490 \\ \hline
+        90 & 0.723 & 24.919 & 0.840 & 13.757 & 0.748 & 21.656 & 0.655 & 27.194 \\ \hline
+        100 & 0.731 & 24.451 & 0.840 & 13.870 & 0.756 & 20.421 & 0.664 & 26.650 \\ \hline
+        110 & 0.723 & 24.131 & 0.849 & 13.930 & 0.773 & 19.475 & 0.664 & 26.430 \\ \hline
+        120 & 0.731 & 23.937 & 0.840 & 13.729 & 0.748 & 18.962 & 0.664 & 26.588 \\ \hline
+        130 & 0.723 & 24.139 & 0.840 & 13.372 & 0.765 & 18.062 & 0.681 & 25.698 \\ \hline
+        140 & 0.714 & 24.308 & 0.840 & 13.044 & 0.756 & 18.048 & 0.672 & 25.671 \\ \hline
+        150 & 0.714 & 24.331 & 0.840 & 12.807 & 0.756 & 18.073 & 0.655 & 25.225 \\ \hline
+        160 & 0.723 & 24.246 & 0.849 & 12.668 & 0.782 & 17.879 & 0.681 & 24.412 \\ \hline
+        170 & 0.731 & 24.122 & 0.849 & 12.622 & 0.782 & 17.810 & 0.723 & 23.230 \\ \hline
+        180 & 0.739 & 23.974 & 0.849 & 12.606 & 0.790 & 17.619 & 0.739 & 22.015 \\ \hline
+        190 & 0.739 & 23.798 & 0.849 & 12.606 & 0.807 & 17.330 & 0.748 & 21.055 \\ \hline
+        200 & 0.739 & 23.590 & 0.857 & 12.630 & 0.815 & 17.058 & 0.765 & 20.394 \\ \hline
+        210 & 0.748 & 23.349 & 0.857 & 12.693 & 0.815 & 16.827 & 0.782 & 19.212 \\ \hline
+        220 & 0.748 & 23.076 & 0.857 & 12.782 & 0.815 & 16.665 & 0.790 & 18.236 \\ \hline
+        230 & 0.748 & 22.790 & 0.857 & 13.083 & 0.807 & 16.587 & 0.798 & 17.815 \\ \hline
+        240 & 0.748 & 22.544 & 0.849 & 13.245 & 0.807 & 16.578 & 0.798 & 17.523 \\ \hline
+        250 & 0.765 & 22.413 & 0.849 & 13.167 & 0.815 & 16.604 & 0.798 & 17.386 \\ \hline
+        260 & 0.748 & 22.411 & 0.857 & 13.130 & 0.815 & 16.627 & 0.798 & 17.369 \\ \hline
+        270 & 0.731 & 22.462 & 0.849 & 13.109 & 0.824 & 16.603 & 0.798 & 17.412 \\ \hline
+        280 & 0.731 & 22.496 & 0.840 & 13.083 & 0.815 & 16.538 & 0.798 & 17.466 \\ \hline
+        290 & 0.739 & 22.517 & 0.840 & 13.056 & 0.815 & 16.464 & 0.807 & 17.510 \\ \hline
+        300 & 0.748 & 22.535 & 0.840 & 13.031 & 0.815 & 16.395 & 0.807 & 17.540 \\ \hline
+        310 & 0.748 & 22.553 & 0.840 & 13.008 & 0.815 & 16.340 & 0.790 & 17.565 \\ \hline
+        320 & 0.739 & 22.572 & 0.849 & 12.986 & 0.815 & 16.305 & 0.790 & 17.598 \\ \hline
+        330 & 0.739 & 22.591 & 0.849 & 12.966 & 0.815 & 16.291 & 0.790 & 17.628 \\ \hline
+        340 & 0.731 & 22.608 & 0.849 & 12.947 & 0.815 & 16.294 & 0.790 & 17.612 \\ \hline
+        350 & 0.731 & 22.622 & 0.857 & 12.930 & 0.815 & 16.310 & 0.790 & 17.569 \\ \hline
+        360 & 0.731 & 22.633 & 0.857 & 12.916 & 0.815 & 16.335 & 0.790 & 17.530 \\ \hline
+        370 & 0.731 & 22.639 & 0.857 & 12.906 & 0.815 & 16.367 & 0.790 & 17.497 \\ \hline
+        380 & 0.731 & 22.641 & 0.857 & 12.900 & 0.815 & 16.407 & 0.790 & 17.469 \\ \hline
+        390 & 0.731 & 22.640 & 0.857 & 12.897 & 0.815 & 16.454 & 0.790 & 17.447 \\ \hline
+        400 & 0.731 & 22.636 & 0.866 & 12.898 & 0.815 & 16.509 & 0.790 & 17.429 \\ \hline
+    \end{longtable}
+    %    \end{minipage}
 
     Wykres wartości błędu pokazuje, że bardziej skomplikowana architekrura wcale nie zapewnia lepszych wyników.
     Największy model $M_9$ przez prawie połowę okresu uczenia radził sobie najgorzej, a na koniec wyprzedził najmniejszy model $M_6$.
@@ -927,71 +972,73 @@ showstringspaces=false            %
         %        \label{}
     \end{figure}
 
-    \section{Różna liczba cech - tanh}\label{sec:różnaLiczbaSech-Tanh}
+    \section{Badania z funkcją tanh}\label{sec:badaniaZFunkcjąTanh}
+
+    \subsection{Różna liczba cech}\label{subsec:różnaLiczbaCech2}
 
     W drugiej części przeanalizowano modele z inną funkcją aktywacji - tanh.
 
     Porównano sieci o architekturze 24\_16\_12\_8 z malejącym współczynnikiem uczenia od $0.1$ do $0.01$.
     Klasyfikatory różniły się ponownie liczbą cech.
 
-    \noindent\begin{minipage}{\textwidth}
-                 \begin{longtable}{|c|l|l|l|l|l|l|}
-                     \caption{Porównianie modeli $M_{10}$, $M_{11}$ i $M_{12}$}\\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_{10}$}} & \multicolumn{2}{c|}{\textbf{$M_{11}$}} & \multicolumn{2}{c|}{\textbf{$M_{12}$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
-                     \endfirsthead
-                     \multicolumn{7}{c}
-                     {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_{10}$, $M_{11}$ i $M_{12}$ - c.d.}} \\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_{10}$}} & \multicolumn{2}{c|}{\textbf{$M_{11}$}} & \multicolumn{2}{c|}{\textbf{$M_{12}$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
-                     \endhead
-                     \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
-                     \endfoot
-                     \hline
-                     \endlastfoot
-                     1 & 0.353 & 52.640 & 0.277 & 55.873 & 0.118 & 55.034 \\ \hline
-                     10 & 0.538 & 39.613 & 0.487 & 39.530 & 0.345 & 52.538 \\ \hline
-                     20 & 0.571 & 33.717 & 0.580 & 33.959 & 0.555 & 36.910 \\ \hline
-                     30 & 0.605 & 33.379 & 0.597 & 32.794 & 0.664 & 32.991 \\ \hline
-                     40 & 0.664 & 33.391 & 0.672 & 28.346 & 0.580 & 35.834 \\ \hline
-                     50 & 0.613 & 35.795 & 0.630 & 30.813 & 0.630 & 33.222 \\ \hline
-                     60 & 0.689 & 30.368 & 0.655 & 27.470 & 0.655 & 30.992 \\ \hline
-                     70 & 0.647 & 30.664 & 0.756 & 24.646 & 0.605 & 34.815 \\ \hline
-                     80 & 0.723 & 25.034 & 0.664 & 27.952 & 0.622 & 35.889 \\ \hline
-                     90 & 0.613 & 34.623 & 0.756 & 20.232 & 0.622 & 32.761 \\ \hline
-                     100 & 0.689 & 25.934 & 0.748 & 24.249 & 0.672 & 27.784 \\ \hline
-                     110 & 0.790 & 20.253 & 0.748 & 20.231 & 0.639 & 35.127 \\ \hline
-                     120 & 0.773 & 24.424 & 0.756 & 22.806 & 0.647 & 31.005 \\ \hline
-                     130 & 0.706 & 26.605 & 0.765 & 20.004 & 0.538 & 35.759 \\ \hline
-                     140 & 0.739 & 24.553 & 0.697 & 25.398 & 0.664 & 31.898 \\ \hline
-                     150 & 0.790 & 20.773 & 0.697 & 27.043 & 0.714 & 25.219 \\ \hline
-                     160 & 0.639 & 29.552 & 0.714 & 24.707 & 0.714 & 25.421 \\ \hline
-                     170 & 0.790 & 20.973 & 0.731 & 22.933 & 0.706 & 27.352 \\ \hline
-                     180 & 0.807 & 20.067 & 0.723 & 24.532 & 0.714 & 25.905 \\ \hline
-                     190 & 0.782 & 21.582 & 0.765 & 23.374 & 0.647 & 37.363 \\ \hline
-                     200 & 0.756 & 24.949 & 0.773 & 20.865 & 0.739 & 23.828 \\ \hline
-                     210 & 0.773 & 20.389 & 0.790 & 17.957 & 0.756 & 24.335 \\ \hline
-                     220 & 0.798 & 22.621 & 0.739 & 23.427 & 0.739 & 23.932 \\ \hline
-                     230 & 0.773 & 24.285 & 0.773 & 21.307 & 0.765 & 23.108 \\ \hline
-                     240 & 0.790 & 22.683 & 0.798 & 20.925 & 0.731 & 25.638 \\ \hline
-                     250 & 0.765 & 22.440 & 0.773 & 21.445 & 0.756 & 22.974 \\ \hline
-                     260 & 0.798 & 23.804 & 0.790 & 17.580 & 0.723 & 24.399 \\ \hline
-                     270 & 0.782 & 21.929 & 0.832 & 16.134 & 0.790 & 22.530 \\ \hline
-                     280 & 0.798 & 21.549 & 0.832 & 16.583 & 0.790 & 21.926 \\ \hline
-                     290 & 0.798 & 20.037 & 0.815 & 17.821 & 0.773 & 21.182 \\ \hline
-                     300 & 0.807 & 20.206 & 0.815 & 17.117 & 0.782 & 22.278 \\ \hline
-                     310 & 0.798 & 20.617 & 0.815 & 16.688 & 0.765 & 22.705 \\ \hline
-                     320 & 0.807 & 20.875 & 0.824 & 17.641 & 0.765 & 25.037 \\ \hline
-                     330 & 0.815 & 20.677 & 0.824 & 17.042 & 0.815 & 19.822 \\ \hline
-                     340 & 0.807 & 20.595 & 0.824 & 17.087 & 0.798 & 22.790 \\ \hline
-                     350 & 0.807 & 20.455 & 0.824 & 17.412 & 0.824 & 20.356 \\ \hline
-                     360 & 0.807 & 20.403 & 0.824 & 17.062 & 0.807 & 21.937 \\ \hline
-                     370 & 0.807 & 20.450 & 0.832 & 17.048 & 0.824 & 18.904 \\ \hline
-                     380 & 0.807 & 20.319 & 0.832 & 17.427 & 0.815 & 21.773 \\ \hline
-                     390 & 0.807 & 19.992 & 0.832 & 17.430 & 0.815 & 21.767 \\ \hline
-                     400 & 0.815 & 19.859 & 0.824 & 16.917 & 0.815 & 21.706 \\ \hline
-                 \end{longtable}
-    \end{minipage}
+    %    \noindent\begin{minipage}{\textwidth}
+    \begin{longtable}{|c|l|l|l|l|l|l|}
+        \caption{Porównianie modeli $M_{10}$, $M_{11}$ i $M_{12}$}\\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_{10}$}} & \multicolumn{2}{c|}{\textbf{$M_{11}$}} & \multicolumn{2}{c|}{\textbf{$M_{12}$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endfirsthead
+        \multicolumn{7}{c}
+        {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_{10}$, $M_{11}$ i $M_{12}$ - c.d.}} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_{10}$}} & \multicolumn{2}{c|}{\textbf{$M_{11}$}} & \multicolumn{2}{c|}{\textbf{$M_{12}$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endhead
+        \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        1 & 0.353 & 52.640 & 0.277 & 55.873 & 0.118 & 55.034 \\ \hline
+        10 & 0.538 & 39.613 & 0.487 & 39.530 & 0.345 & 52.538 \\ \hline
+        20 & 0.571 & 33.717 & 0.580 & 33.959 & 0.555 & 36.910 \\ \hline
+        30 & 0.605 & 33.379 & 0.597 & 32.794 & 0.664 & 32.991 \\ \hline
+        40 & 0.664 & 33.391 & 0.672 & 28.346 & 0.580 & 35.834 \\ \hline
+        50 & 0.613 & 35.795 & 0.630 & 30.813 & 0.630 & 33.222 \\ \hline
+        60 & 0.689 & 30.368 & 0.655 & 27.470 & 0.655 & 30.992 \\ \hline
+        70 & 0.647 & 30.664 & 0.756 & 24.646 & 0.605 & 34.815 \\ \hline
+        80 & 0.723 & 25.034 & 0.664 & 27.952 & 0.622 & 35.889 \\ \hline
+        90 & 0.613 & 34.623 & 0.756 & 20.232 & 0.622 & 32.761 \\ \hline
+        100 & 0.689 & 25.934 & 0.748 & 24.249 & 0.672 & 27.784 \\ \hline
+        110 & 0.790 & 20.253 & 0.748 & 20.231 & 0.639 & 35.127 \\ \hline
+        120 & 0.773 & 24.424 & 0.756 & 22.806 & 0.647 & 31.005 \\ \hline
+        130 & 0.706 & 26.605 & 0.765 & 20.004 & 0.538 & 35.759 \\ \hline
+        140 & 0.739 & 24.553 & 0.697 & 25.398 & 0.664 & 31.898 \\ \hline
+        150 & 0.790 & 20.773 & 0.697 & 27.043 & 0.714 & 25.219 \\ \hline
+        160 & 0.639 & 29.552 & 0.714 & 24.707 & 0.714 & 25.421 \\ \hline
+        170 & 0.790 & 20.973 & 0.731 & 22.933 & 0.706 & 27.352 \\ \hline
+        180 & 0.807 & 20.067 & 0.723 & 24.532 & 0.714 & 25.905 \\ \hline
+        190 & 0.782 & 21.582 & 0.765 & 23.374 & 0.647 & 37.363 \\ \hline
+        200 & 0.756 & 24.949 & 0.773 & 20.865 & 0.739 & 23.828 \\ \hline
+        210 & 0.773 & 20.389 & 0.790 & 17.957 & 0.756 & 24.335 \\ \hline
+        220 & 0.798 & 22.621 & 0.739 & 23.427 & 0.739 & 23.932 \\ \hline
+        230 & 0.773 & 24.285 & 0.773 & 21.307 & 0.765 & 23.108 \\ \hline
+        240 & 0.790 & 22.683 & 0.798 & 20.925 & 0.731 & 25.638 \\ \hline
+        250 & 0.765 & 22.440 & 0.773 & 21.445 & 0.756 & 22.974 \\ \hline
+        260 & 0.798 & 23.804 & 0.790 & 17.580 & 0.723 & 24.399 \\ \hline
+        270 & 0.782 & 21.929 & 0.832 & 16.134 & 0.790 & 22.530 \\ \hline
+        280 & 0.798 & 21.549 & 0.832 & 16.583 & 0.790 & 21.926 \\ \hline
+        290 & 0.798 & 20.037 & 0.815 & 17.821 & 0.773 & 21.182 \\ \hline
+        300 & 0.807 & 20.206 & 0.815 & 17.117 & 0.782 & 22.278 \\ \hline
+        310 & 0.798 & 20.617 & 0.815 & 16.688 & 0.765 & 22.705 \\ \hline
+        320 & 0.807 & 20.875 & 0.824 & 17.641 & 0.765 & 25.037 \\ \hline
+        330 & 0.815 & 20.677 & 0.824 & 17.042 & 0.815 & 19.822 \\ \hline
+        340 & 0.807 & 20.595 & 0.824 & 17.087 & 0.798 & 22.790 \\ \hline
+        350 & 0.807 & 20.455 & 0.824 & 17.412 & 0.824 & 20.356 \\ \hline
+        360 & 0.807 & 20.403 & 0.824 & 17.062 & 0.807 & 21.937 \\ \hline
+        370 & 0.807 & 20.450 & 0.832 & 17.048 & 0.824 & 18.904 \\ \hline
+        380 & 0.807 & 20.319 & 0.832 & 17.427 & 0.815 & 21.773 \\ \hline
+        390 & 0.807 & 19.992 & 0.832 & 17.430 & 0.815 & 21.767 \\ \hline
+        400 & 0.815 & 19.859 & 0.824 & 16.917 & 0.815 & 21.706 \\ \hline
+    \end{longtable}
+    %    \end{minipage}
 
     Wykres wartości błędu pokazuje niespodziewanie, że ucząc model na 20 cechach otrzymano najmniejszy błąd.
     10 cech daje również lepszy wynik niż 30, choć tu różnica jest mniejsza.
@@ -1014,69 +1061,69 @@ showstringspaces=false            %
         %        \label{}
     \end{figure}
 
-    \section{Różne architektury - tanh}\label{sec:różneArchitektury-Tanh}
+    \subsection{Różne architektury}\label{subsec:różneArchitektury2}
 
     Zbadano proces ucznia sieci o funkcji aktywacji tanh i stałym współczynniku uczenia dla 30 cech.
     Porównano modele o architekturach bez warstwy ukrytej, z jedną i z dwoma warstwami ukrytymi.
 
-    \noindent\begin{minipage}{\textwidth}
-                 \begin{longtable}{|c|l|l|l|l|l|l|}
-                     \caption{Porównianie modeli $M_{13}$, $M_{14}$ i $M_{15}$}\\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_{13}$}} & \multicolumn{2}{c|}{\textbf{$M_{14}$}} & \multicolumn{2}{c|}{\textbf{$M_{15}$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
-                     \endfirsthead
-                     \multicolumn{7}{c}
-                     {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_{13}$, $M_{14}$ i $M_{15}$ - c.d.}} \\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_{13}$}} & \multicolumn{2}{c|}{\textbf{$M_{14}$}} & \multicolumn{2}{c|}{\textbf{$M_{15}$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
-                     \endhead
-                     \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
-                     \endfoot
-                     \hline
-                     \endlastfoot
-                     1 & 0.202 & 548.499 & 0.050 & 287.852 & 0.118 & 63.359 \\ \hline
-                     10 & 0.202 & 576.500 & 0.328 & 237.090 & 0.319 & 48.922 \\ \hline
-                     20 & 0.193 & 576.500 & 0.118 & 277.368 & 0.294 & 48.806 \\ \hline
-                     30 & 0.277 & 576.500 & 0.118 & 220.278 & 0.328 & 48.924 \\ \hline
-                     40 & 0.277 & 576.500 & 0.118 & 271.187 & 0.328 & 49.436 \\ \hline
-                     50 & 0.277 & 576.500 & 0.277 & 268.174 & 0.538 & 47.290 \\ \hline
-                     60 & 0.277 & 576.500 & 0.328 & 259.154 & 0.353 & 50.235 \\ \hline
-                     70 & 0.277 & 576.500 & 0.328 & 292.961 & 0.328 & 48.984 \\ \hline
-                     80 & 0.277 & 576.500 & 0.277 & 259.343 & 0.395 & 48.063 \\ \hline
-                     90 & 0.277 & 576.500 & 0.277 & 247.395 & 0.328 & 48.988 \\ \hline
-                     100 & 0.277 & 576.499 & 0.277 & 278.024 & 0.328 & 48.974 \\ \hline
-                     110 & 0.277 & 560.500 & 0.118 & 293.126 & 0.328 & 48.972 \\ \hline
-                     120 & 0.277 & 560.500 & 0.118 & 318.174 & 0.328 & 47.771 \\ \hline
-                     130 & 0.277 & 560.500 & 0.118 & 317.897 & 0.328 & 48.945 \\ \hline
-                     140 & 0.277 & 560.500 & 0.328 & 246.111 & 0.328 & 48.834 \\ \hline
-                     150 & 0.277 & 560.500 & 0.328 & 293.770 & 0.328 & 48.849 \\ \hline
-                     160 & 0.277 & 560.500 & 0.328 & 276.355 & 0.521 & 45.437 \\ \hline
-                     170 & 0.277 & 560.500 & 0.067 & 308.603 & 0.303 & 51.606 \\ \hline
-                     180 & 0.277 & 560.500 & 0.328 & 282.134 & 0.328 & 48.819 \\ \hline
-                     190 & 0.277 & 560.500 & 0.118 & 269.000 & 0.353 & 48.910 \\ \hline
-                     200 & 0.277 & 560.500 & 0.277 & 252.517 & 0.328 & 48.791 \\ \hline
-                     210 & 0.277 & 560.500 & 0.067 & 311.607 & 0.328 & 48.796 \\ \hline
-                     220 & 0.277 & 560.499 & 0.084 & 284.886 & 0.328 & 48.796 \\ \hline
-                     230 & 0.277 & 560.499 & 0.277 & 275.749 & 0.328 & 48.795 \\ \hline
-                     240 & 0.277 & 560.499 & 0.118 & 308.011 & 0.328 & 48.795 \\ \hline
-                     250 & 0.277 & 560.498 & 0.328 & 265.692 & 0.328 & 48.796 \\ \hline
-                     260 & 0.277 & 560.466 & 0.328 & 257.700 & 0.328 & 48.798 \\ \hline
-                     270 & 0.277 & 560.500 & 0.328 & 282.665 & 0.328 & 48.801 \\ \hline
-                     280 & 0.277 & 560.500 & 0.118 & 259.123 & 0.328 & 48.801 \\ \hline
-                     290 & 0.277 & 540.500 & 0.118 & 235.230 & 0.328 & 48.802 \\ \hline
-                     300 & 0.277 & 540.500 & 0.118 & 266.620 & 0.328 & 48.800 \\ \hline
-                     310 & 0.277 & 540.500 & 0.050 & 276.539 & 0.328 & 48.798 \\ \hline
-                     320 & 0.277 & 540.500 & 0.328 & 271.965 & 0.328 & 48.796 \\ \hline
-                     330 & 0.277 & 540.500 & 0.328 & 253.050 & 0.328 & 48.794 \\ \hline
-                     340 & 0.277 & 540.500 & 0.118 & 221.669 & 0.328 & 48.794 \\ \hline
-                     350 & 0.277 & 540.499 & 0.118 & 216.252 & 0.328 & 48.797 \\ \hline
-                     360 & 0.277 & 540.499 & 0.328 & 223.183 & 0.328 & 48.799 \\ \hline
-                     370 & 0.277 & 540.499 & 0.118 & 250.361 & 0.328 & 48.802 \\ \hline
-                     380 & 0.277 & 540.499 & 0.118 & 259.041 & 0.328 & 48.803 \\ \hline
-                     390 & 0.277 & 540.499 & 0.277 & 256.229 & 0.328 & 48.802 \\ \hline
-                     400 & 0.277 & 540.499 & 0.118 & 260.246 & 0.328 & 48.800 \\ \hline
-                 \end{longtable}
-    \end{minipage}
+    %    \noindent\begin{minipage}{\textwidth}
+    \begin{longtable}{|c|l|l|l|l|l|l|}
+        \caption{Porównianie modeli $M_{13}$, $M_{14}$ i $M_{15}$}\\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_{13}$}} & \multicolumn{2}{c|}{\textbf{$M_{14}$}} & \multicolumn{2}{c|}{\textbf{$M_{15}$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endfirsthead
+        \multicolumn{7}{c}
+        {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_{13}$, $M_{14}$ i $M_{15}$ - c.d.}} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_{13}$}} & \multicolumn{2}{c|}{\textbf{$M_{14}$}} & \multicolumn{2}{c|}{\textbf{$M_{15}$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endhead
+        \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        1 & 0.202 & 548.499 & 0.050 & 287.852 & 0.118 & 63.359 \\ \hline
+        10 & 0.202 & 576.500 & 0.328 & 237.090 & 0.319 & 48.922 \\ \hline
+        20 & 0.193 & 576.500 & 0.118 & 277.368 & 0.294 & 48.806 \\ \hline
+        30 & 0.277 & 576.500 & 0.118 & 220.278 & 0.328 & 48.924 \\ \hline
+        40 & 0.277 & 576.500 & 0.118 & 271.187 & 0.328 & 49.436 \\ \hline
+        50 & 0.277 & 576.500 & 0.277 & 268.174 & 0.538 & 47.290 \\ \hline
+        60 & 0.277 & 576.500 & 0.328 & 259.154 & 0.353 & 50.235 \\ \hline
+        70 & 0.277 & 576.500 & 0.328 & 292.961 & 0.328 & 48.984 \\ \hline
+        80 & 0.277 & 576.500 & 0.277 & 259.343 & 0.395 & 48.063 \\ \hline
+        90 & 0.277 & 576.500 & 0.277 & 247.395 & 0.328 & 48.988 \\ \hline
+        100 & 0.277 & 576.499 & 0.277 & 278.024 & 0.328 & 48.974 \\ \hline
+        110 & 0.277 & 560.500 & 0.118 & 293.126 & 0.328 & 48.972 \\ \hline
+        120 & 0.277 & 560.500 & 0.118 & 318.174 & 0.328 & 47.771 \\ \hline
+        130 & 0.277 & 560.500 & 0.118 & 317.897 & 0.328 & 48.945 \\ \hline
+        140 & 0.277 & 560.500 & 0.328 & 246.111 & 0.328 & 48.834 \\ \hline
+        150 & 0.277 & 560.500 & 0.328 & 293.770 & 0.328 & 48.849 \\ \hline
+        160 & 0.277 & 560.500 & 0.328 & 276.355 & 0.521 & 45.437 \\ \hline
+        170 & 0.277 & 560.500 & 0.067 & 308.603 & 0.303 & 51.606 \\ \hline
+        180 & 0.277 & 560.500 & 0.328 & 282.134 & 0.328 & 48.819 \\ \hline
+        190 & 0.277 & 560.500 & 0.118 & 269.000 & 0.353 & 48.910 \\ \hline
+        200 & 0.277 & 560.500 & 0.277 & 252.517 & 0.328 & 48.791 \\ \hline
+        210 & 0.277 & 560.500 & 0.067 & 311.607 & 0.328 & 48.796 \\ \hline
+        220 & 0.277 & 560.499 & 0.084 & 284.886 & 0.328 & 48.796 \\ \hline
+        230 & 0.277 & 560.499 & 0.277 & 275.749 & 0.328 & 48.795 \\ \hline
+        240 & 0.277 & 560.499 & 0.118 & 308.011 & 0.328 & 48.795 \\ \hline
+        250 & 0.277 & 560.498 & 0.328 & 265.692 & 0.328 & 48.796 \\ \hline
+        260 & 0.277 & 560.466 & 0.328 & 257.700 & 0.328 & 48.798 \\ \hline
+        270 & 0.277 & 560.500 & 0.328 & 282.665 & 0.328 & 48.801 \\ \hline
+        280 & 0.277 & 560.500 & 0.118 & 259.123 & 0.328 & 48.801 \\ \hline
+        290 & 0.277 & 540.500 & 0.118 & 235.230 & 0.328 & 48.802 \\ \hline
+        300 & 0.277 & 540.500 & 0.118 & 266.620 & 0.328 & 48.800 \\ \hline
+        310 & 0.277 & 540.500 & 0.050 & 276.539 & 0.328 & 48.798 \\ \hline
+        320 & 0.277 & 540.500 & 0.328 & 271.965 & 0.328 & 48.796 \\ \hline
+        330 & 0.277 & 540.500 & 0.328 & 253.050 & 0.328 & 48.794 \\ \hline
+        340 & 0.277 & 540.500 & 0.118 & 221.669 & 0.328 & 48.794 \\ \hline
+        350 & 0.277 & 540.499 & 0.118 & 216.252 & 0.328 & 48.797 \\ \hline
+        360 & 0.277 & 540.499 & 0.328 & 223.183 & 0.328 & 48.799 \\ \hline
+        370 & 0.277 & 540.499 & 0.118 & 250.361 & 0.328 & 48.802 \\ \hline
+        380 & 0.277 & 540.499 & 0.118 & 259.041 & 0.328 & 48.803 \\ \hline
+        390 & 0.277 & 540.499 & 0.277 & 256.229 & 0.328 & 48.802 \\ \hline
+        400 & 0.277 & 540.499 & 0.118 & 260.246 & 0.328 & 48.800 \\ \hline
+    \end{longtable}
+    %    \end{minipage}
 
     Przebieg wartości błędu pokazuje, że te modele w ogóle się nie uczyły.
     Błąd jest stały dla modeli $M_{13}$ i $M_{15}$.
@@ -1102,78 +1149,71 @@ showstringspaces=false            %
         %        \label{}
     \end{figure}
 
-    \section{Różne współczynniki uczenia - tanh}\label{sec:rozneWspolczynnikiUczenia-Tanh}
-
-    %    Zbadano proces ucznia sieci o funkcji aktywacji tanh i stałym współczynniku uczenia dla 30 cech.
-    %    Porównano modele o architekturach bez warstwy ukrytej, z jedną i z dwoma warstwami ukrytymi.
+    \subsection{Różne współczynniki uczenia}\label{subsec:różneWspólczynnikiUczenia2}
 
     Ostatnie badanie to największe modele z funkcją aktywacji tanh, uczone z na zbiorze danych zawierający 30 cech.
     Kryterium porównania to współczynnik uczenia.
 
     Poniżej znajduje się tabela z wynikami przebiegu uczenia.
 
-    \noindent\begin{minipage}{\textwidth}
-                 \begin{longtable}{|c|l|l|l|l|l|l|}
-                     \caption{Porównianie modeli $M_{16}$, $M_{17}$ i $M_{18}$}\\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_{16}$}} & \multicolumn{2}{c|}{\textbf{$M_{17}$}} & \multicolumn{2}{c|}{\textbf{$M_{18}$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
-                     \endfirsthead
-                     \multicolumn{7}{c}
-                     {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_{16}$, $M_{17}$ i $M_{18}$ - c.d.}} \\ \hline
-                     & \multicolumn{2}{c|}{\textbf{$M_{16}$}} & \multicolumn{2}{c|}{\textbf{$M_{17}$}} & \multicolumn{2}{c|}{\textbf{$M_{18}$}} \\ \hline
-                     \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
-                     \endhead
-                     \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
-                     \endfoot
-                     \hline
-                     \endlastfoot
-                     1 & 0.118 & 55.034 & 0.328 & 48.990 & 0.328 & 48.990 \\ \hline
-                     10 & 0.361 & 57.834 & 0.328 & 48.993 & 0.328 & 49.043 \\ \hline
-                     20 & 0.471 & 46.837 & 0.328 & 49.025 & 0.328 & 48.993 \\ \hline
-                     30 & 0.605 & 33.761 & 0.328 & 48.648 & 0.328 & 48.781 \\ \hline
-                     40 & 0.555 & 36.765 & 0.370 & 48.121 & 0.328 & 48.797 \\ \hline
-                     50 & 0.378 & 37.930 & 0.328 & 48.510 & 0.328 & 49.164 \\ \hline
-                     60 & 0.622 & 32.719 & 0.328 & 48.457 & 0.328 & 48.763 \\ \hline
-                     70 & 0.529 & 48.949 & 0.328 & 48.408 & 0.328 & 48.762 \\ \hline
-                     80 & 0.613 & 32.237 & 0.328 & 48.331 & 0.328 & 48.783 \\ \hline
-                     90 & 0.622 & 33.052 & 0.437 & 47.559 & 0.328 & 48.777 \\ \hline
-                     100 & 0.605 & 31.709 & 0.496 & 44.356 & 0.328 & 48.777 \\ \hline
-                     110 & 0.630 & 34.209 & 0.328 & 48.212 & 0.328 & 48.777 \\ \hline
-                     120 & 0.613 & 34.724 & 0.328 & 48.191 & 0.328 & 48.777 \\ \hline
-                     130 & 0.597 & 31.240 & 0.328 & 48.152 & 0.328 & 48.777 \\ \hline
-                     140 & 0.588 & 37.751 & 0.328 & 48.114 & 0.328 & 48.777 \\ \hline
-                     150 & 0.639 & 30.896 & 0.328 & 48.078 & 0.336 & 49.257 \\ \hline
-                     160 & 0.622 & 32.941 & 0.328 & 48.042 & 0.328 & 48.623 \\ \hline
-                     170 & 0.571 & 35.961 & 0.328 & 48.006 & 0.361 & 48.611 \\ \hline
-                     180 & 0.630 & 34.751 & 0.277 & 47.972 & 0.328 & 48.776 \\ \hline
-                     190 & 0.605 & 33.902 & 0.277 & 47.937 & 0.328 & 48.775 \\ \hline
-                     200 & 0.605 & 43.547 & 0.277 & 47.902 & 0.328 & 48.775 \\ \hline
-                     210 & 0.647 & 31.029 & 0.277 & 47.867 & 0.361 & 48.744 \\ \hline
-                     220 & 0.613 & 36.711 & 0.277 & 47.830 & 0.328 & 48.777 \\ \hline
-                     230 & 0.630 & 32.052 & 0.277 & 47.793 & 0.328 & 48.777 \\ \hline
-                     240 & 0.622 & 32.695 & 0.277 & 47.754 & 0.328 & 48.776 \\ \hline
-                     250 & 0.630 & 32.104 & 0.277 & 47.713 & 0.328 & 48.776 \\ \hline
-                     260 & 0.445 & 57.777 & 0.277 & 47.670 & 0.328 & 48.776 \\ \hline
-                     270 & 0.689 & 29.859 & 0.277 & 47.623 & 0.328 & 48.776 \\ \hline
-                     280 & 0.504 & 36.529 & 0.277 & 47.573 & 0.328 & 48.776 \\ \hline
-                     290 & 0.748 & 24.753 & 0.277 & 47.519 & 0.328 & 48.776 \\ \hline
-                     300 & 0.664 & 30.485 & 0.277 & 47.460 & 0.328 & 48.776 \\ \hline
-                     310 & 0.630 & 32.528 & 0.277 & 47.397 & 0.328 & 48.776 \\ \hline
-                     320 & 0.639 & 31.136 & 0.277 & 47.330 & 0.328 & 48.776 \\ \hline
-                     330 & 0.588 & 30.805 & 0.277 & 47.260 & 0.328 & 48.776 \\ \hline
-                     340 & 0.655 & 34.764 & 0.328 & 47.188 & 0.328 & 48.776 \\ \hline
-                     350 & 0.630 & 28.432 & 0.328 & 47.116 & 0.328 & 48.776 \\ \hline
-                     360 & 0.681 & 27.222 & 0.328 & 47.047 & 0.328 & 48.776 \\ \hline
-                     370 & 0.664 & 29.342 & 0.328 & 46.981 & 0.328 & 48.776 \\ \hline
-                     380 & 0.462 & 44.289 & 0.328 & 46.918 & 0.328 & 48.776 \\ \hline
-                     390 & 0.605 & 30.552 & 0.328 & 46.861 & 0.328 & 48.776 \\ \hline
-                     400 & 0.630 & 30.319 & 0.328 & 46.832 & 0.328 & 48.776 \\ \hline
-                 \end{longtable}
-    \end{minipage}
-
-    %    Przebieg wartości błędu pokazuje, że te modele w ogóle się nie uczyły.
-    %    Błąd jest stały dla modeli $M_{13}$ i $M_{15}$.
-    %    Model $M_{14}$ oscyluje wokół wartości 300, ale również się nie poprawia.
+    %    \noindent\begin{minipage}{\textwidth}
+    \begin{longtable}{|c|l|l|l|l|l|l|}
+        \caption{Porównianie modeli $M_{16}$, $M_{17}$ i $M_{18}$}\\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_{16}$}} & \multicolumn{2}{c|}{\textbf{$M_{17}$}} & \multicolumn{2}{c|}{\textbf{$M_{18}$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endfirsthead
+        \multicolumn{7}{c}
+        {\tablename\ \thetable\ -- \textit{Porównianie modeli $M_{16}$, $M_{17}$ i $M_{18}$ - c.d.}} \\ \hline
+        & \multicolumn{2}{c|}{\textbf{$M_{16}$}} & \multicolumn{2}{c|}{\textbf{$M_{17}$}} & \multicolumn{2}{c|}{\textbf{$M_{18}$}} \\ \hline
+        \textbf{Epoka} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} & \textbf{Dokładność} & \textbf{Błąd} \\ \hline
+        \endhead
+        \hline \multicolumn{7}{r}{\textit{Kontynuacja na następnej stronie}} \\
+        \endfoot
+        \hline
+        \endlastfoot
+        1 & 0.118 & 55.034 & 0.328 & 48.990 & 0.328 & 48.990 \\ \hline
+        10 & 0.361 & 57.834 & 0.328 & 48.993 & 0.328 & 49.043 \\ \hline
+        20 & 0.471 & 46.837 & 0.328 & 49.025 & 0.328 & 48.993 \\ \hline
+        30 & 0.605 & 33.761 & 0.328 & 48.648 & 0.328 & 48.781 \\ \hline
+        40 & 0.555 & 36.765 & 0.370 & 48.121 & 0.328 & 48.797 \\ \hline
+        50 & 0.378 & 37.930 & 0.328 & 48.510 & 0.328 & 49.164 \\ \hline
+        60 & 0.622 & 32.719 & 0.328 & 48.457 & 0.328 & 48.763 \\ \hline
+        70 & 0.529 & 48.949 & 0.328 & 48.408 & 0.328 & 48.762 \\ \hline
+        80 & 0.613 & 32.237 & 0.328 & 48.331 & 0.328 & 48.783 \\ \hline
+        90 & 0.622 & 33.052 & 0.437 & 47.559 & 0.328 & 48.777 \\ \hline
+        100 & 0.605 & 31.709 & 0.496 & 44.356 & 0.328 & 48.777 \\ \hline
+        110 & 0.630 & 34.209 & 0.328 & 48.212 & 0.328 & 48.777 \\ \hline
+        120 & 0.613 & 34.724 & 0.328 & 48.191 & 0.328 & 48.777 \\ \hline
+        130 & 0.597 & 31.240 & 0.328 & 48.152 & 0.328 & 48.777 \\ \hline
+        140 & 0.588 & 37.751 & 0.328 & 48.114 & 0.328 & 48.777 \\ \hline
+        150 & 0.639 & 30.896 & 0.328 & 48.078 & 0.336 & 49.257 \\ \hline
+        160 & 0.622 & 32.941 & 0.328 & 48.042 & 0.328 & 48.623 \\ \hline
+        170 & 0.571 & 35.961 & 0.328 & 48.006 & 0.361 & 48.611 \\ \hline
+        180 & 0.630 & 34.751 & 0.277 & 47.972 & 0.328 & 48.776 \\ \hline
+        190 & 0.605 & 33.902 & 0.277 & 47.937 & 0.328 & 48.775 \\ \hline
+        200 & 0.605 & 43.547 & 0.277 & 47.902 & 0.328 & 48.775 \\ \hline
+        210 & 0.647 & 31.029 & 0.277 & 47.867 & 0.361 & 48.744 \\ \hline
+        220 & 0.613 & 36.711 & 0.277 & 47.830 & 0.328 & 48.777 \\ \hline
+        230 & 0.630 & 32.052 & 0.277 & 47.793 & 0.328 & 48.777 \\ \hline
+        240 & 0.622 & 32.695 & 0.277 & 47.754 & 0.328 & 48.776 \\ \hline
+        250 & 0.630 & 32.104 & 0.277 & 47.713 & 0.328 & 48.776 \\ \hline
+        260 & 0.445 & 57.777 & 0.277 & 47.670 & 0.328 & 48.776 \\ \hline
+        270 & 0.689 & 29.859 & 0.277 & 47.623 & 0.328 & 48.776 \\ \hline
+        280 & 0.504 & 36.529 & 0.277 & 47.573 & 0.328 & 48.776 \\ \hline
+        290 & 0.748 & 24.753 & 0.277 & 47.519 & 0.328 & 48.776 \\ \hline
+        300 & 0.664 & 30.485 & 0.277 & 47.460 & 0.328 & 48.776 \\ \hline
+        310 & 0.630 & 32.528 & 0.277 & 47.397 & 0.328 & 48.776 \\ \hline
+        320 & 0.639 & 31.136 & 0.277 & 47.330 & 0.328 & 48.776 \\ \hline
+        330 & 0.588 & 30.805 & 0.277 & 47.260 & 0.328 & 48.776 \\ \hline
+        340 & 0.655 & 34.764 & 0.328 & 47.188 & 0.328 & 48.776 \\ \hline
+        350 & 0.630 & 28.432 & 0.328 & 47.116 & 0.328 & 48.776 \\ \hline
+        360 & 0.681 & 27.222 & 0.328 & 47.047 & 0.328 & 48.776 \\ \hline
+        370 & 0.664 & 29.342 & 0.328 & 46.981 & 0.328 & 48.776 \\ \hline
+        380 & 0.462 & 44.289 & 0.328 & 46.918 & 0.328 & 48.776 \\ \hline
+        390 & 0.605 & 30.552 & 0.328 & 46.861 & 0.328 & 48.776 \\ \hline
+        400 & 0.630 & 30.319 & 0.328 & 46.832 & 0.328 & 48.776 \\ \hline
+    \end{longtable}
+    %    \end{minipage}
 
     W tym przypadku również modele nie wykazywały żadnej poprawy w procesie uczenia.
 
@@ -1223,20 +1263,30 @@ showstringspaces=false            %
     Modele o architekturze 24\_16\_12\_8 i 8 zachowywały się podobnie pomimo różnic w budowie.
 
     Bardzo wyraźną relację widać pomiędzy liczbą cech a osiągniętą dokładnością.
-    Można wywnioskować, że im więcej cech tym lepiej, przynajmniej dla tego zbioru danych.
+    Można wywnioskować, że~im więcej cech tym lepiej, przynajmniej dla tego zbioru danych.
+    Dla 10 cech najlepsze modele nie przekroczyły skuteczności 85\%, dla 20 cech kilka modeli osiągnęło próg 85\%.
+    Modele uczone na 30 cechach klasyfikowały z dokładnością nawet 89\%.
 
-    \section{Dalsze możliwości rozwoju}\label{sec:dalszeMozliwosciRozwoju}
+    \section{Dalsze możliwości rozwoju pracy}\label{sec:dalszeMożliwościRozwojuPracy}
 
+    Prace nad sztucznymi sieciami neuronowymi można by dalej rozwijać, na przykład implementując inne funkcje aktywacji.
+    Coraz większą popularność wśród badaczy zyskuje funkcja ReLU (Rectified Linear Unit) o wzorze $ReLU(x) = \max(0, x)$ lub Leaky ReLU zadaną wzorem $LReLU(x) = \max(x, 0.001x)$~\cite{cs231_neural_2}.
 
+    W celu unikania przeuczenia pomocne byłoby zastosowanie metody zwanej „dropout”.
+    Jest techniką polegającą na losowym odrzuceniu neuronów razem z ich połączeniami z sieci neuronowej podczas uczenia.
+    Chroni to neurony przed zbytnim adaptowaniem się do danych uczących~\cite{dropout}.
 
-    \section{Co mogłem zrobić lepiej}\label{sec:coMoglemZrobicLepiej}
-
-    Tekst podsumowania
-
-    \bibliography{./bibliography}
-    \bibliographystyle{plain}
+    Mając wiedzę medyczną o chorobach można problem klasyfikacji tego zbioru podzielić na 2 etapy.
+    Należy pogrupować choroby na 3 grupy w zależności od tego, której części narządów dotyczną.
+    Mianowicie podział odbywałby się na schorzenia jelit, organów trawiennych i inne stany ostrego brzucha.
+    Pierwszy etap to klasyfikacja z 3 klasami.
+    Następnie może nastąpić drugi etap klasyfikacji, gdzie choroby byłyby diagnozowane bardziej szczegółowo.
+    Takie podejście wymaga wytrenowania 4 modeli do rozwiązania problemu.
 
     \listoffigures
     \listoftables
+
+    \bibliography{./bibliography}
+    \bibliographystyle{plain}
 
 \end{document}

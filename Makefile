@@ -1,5 +1,8 @@
 inz.pdf: inz.tex bibliography.bib mgr.cls settings.tex
 	pdflatex -synctex=1 -interaction=nonstopmode inz.tex
+	bibtex inz
+	pdflatex -synctex=1 -interaction=nonstopmode inz.tex
+	pdflatex -synctex=1 -interaction=nonstopmode inz.tex
 
 
 .PHONY: clean
