@@ -1,60 +1,60 @@
-\documentclass{report}
-
-\usepackage{listings}
-\usepackage{polski}
-\usepackage[utf8]{inputenc}
-\usepackage[margin=1in]{geometry}
-\usepackage[english,polish]{babel}\usepackage{indentfirst}
-\usepackage[T1]{fontenc}
-\usepackage{xcolor}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{longtable}
-
-% Default fixed font does not support bold face
-\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
-\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
-
-% Custom colors
-\usepackage{color}
-\definecolor{deepblue}{rgb}{0,0,0.5}
-\definecolor{deepred}{rgb}{0.6,0,0}
-\definecolor{deepgreen}{rgb}{0,0.5,0}
-\newcommand\pythonstyle{\lstset{
-language=Python,
-basicstyle=\ttm,
-otherkeywords={self},             % Add keywords here
-keywordstyle=\ttb\color{deepblue},
-emph={MyClass,__init__},          % Custom highlighting
-emphstyle=\ttb\color{deepred},    % Custom highlighting style
-stringstyle=\color{deepgreen},
-frame=tb,                         % Any extra options here
-showstringspaces=false            %
-}}
-
-% Python environment
-\lstnewenvironment{python}[1][]
-{
-\pythonstyle
-\lstset{#1}
-}
-{}
-
-% Python for external files
-\newcommand\pythonexternal[2][]{{
-\pythonstyle
-\lstinputlisting[#1]{#2}}}
-
-% Python for inline
-\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+%\documentclass{report}
+%
+%\usepackage{listings}
+%\usepackage{polski}
+%\usepackage[utf8]{inputenc}
+%\usepackage[margin=1in]{geometry}
+%\usepackage[english,polish]{babel}\usepackage{indentfirst}
+%\usepackage[T1]{fontenc}
+%\usepackage{xcolor}
+%\usepackage{graphicx}
+%\usepackage{float}
+%\usepackage{longtable}
+%
+%% Default fixed font does not support bold face
+%\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+%\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+%
+%% Custom colors
+%\usepackage{color}
+%\definecolor{deepblue}{rgb}{0,0,0.5}
+%\definecolor{deepred}{rgb}{0.6,0,0}
+%\definecolor{deepgreen}{rgb}{0,0.5,0}
+%\newcommand\pythonstyle{\lstset{
+%language=Python,
+%basicstyle=\ttm,
+%otherkeywords={self},             % Add keywords here
+%keywordstyle=\ttb\color{deepblue},
+%emph={MyClass,__init__},          % Custom highlighting
+%emphstyle=\ttb\color{deepred},    % Custom highlighting style
+%stringstyle=\color{deepgreen},
+%frame=tb,                         % Any extra options here
+%showstringspaces=false            %
+%}}
+%
+%% Python environment
+%\lstnewenvironment{python}[1][]
+%{
+%\pythonstyle
+%\lstset{#1}
+%}
+%{}
+%
+%% Python for external files
+%\newcommand\pythonexternal[2][]{{
+%\pythonstyle
+%\lstinputlisting[#1]{#2}}}
+%
+%% Python for inline
+%\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
 
 %\pagecolor{black}
 %\color{white}
 
-%\include{settings}
+\include{settings}
 
 \begin{document}
-    %    \maketitle
+    \maketitle
     \tableofcontents
 
     \chapter{Wstęp}\label{ch:wstęp}
@@ -82,7 +82,7 @@ showstringspaces=false            %
 
     \section{Opis chorób}\label{sec:opisChorób}
 
-    Do klasyfikacji jest 8 chorób, zatem sieć neuronowa będzie miała za zadanie przypisać 1 z 8 klas.
+    Do klasyfikacji jest 8 chorób, zatem sieć neuronowa będzie miała za zadanie przypisać 1~z~8 klas.
     Są to:
     \begin{enumerate}
         \item Ostre zapalenie wyrostka robaczkowego,
@@ -114,7 +114,7 @@ showstringspaces=false            %
     \section{Opis cech}\label{sec:opisCech}
 
     Dane do tego problemu zawierają 31 cech.
-    Są to odpowiedzi z wywiadu medycznego i wyniki przeprowadzonych badań.
+    Są to odpowiedzi z wywiadu medycznego i~wyniki przeprowadzonych badań.
     Możliwe wartości parametrów przedstawione są poniżej.
     Jak widać wszystkie liczby są naturalne mniejsze niż 11, także normalizacja czy skalowanie danych nie jest konieczne.
 
@@ -225,7 +225,7 @@ showstringspaces=false            %
     Jednak w odróżnieniu od C, C++ i Javy, Python jest interpretowalny i nie używa się w nim nawiasów klamrowych do oddzielenia bloków kodu.
     Jest przez to bardziej czytelny i nie odstrasza ludzi aspirujących do bycia programistami.
     Zamias klamr stosuje się wcięcia w kodzie, które powinny wynosić 4 spacje na każdy poziom.
-    Od wersji 3.5 w Pythonie można jawnie stosować typowanie, czyli na przykład twórca funkcji może umieścić informację w kodzie, jakiego typu powinny być argumenty i jaki typ funkcja zwraca.
+    Od wersji 3.5 w Pythonie można jawnie stosować typowanie, czyli na przykład twórca funkcji może umieścić informację w~kodzie, jakiego typu powinny być argumenty i jaki typ funkcja zwraca.
     Dzięki temu czas potrzebny na zrozumienie cudzego kodu staje się krótszy.
 
     Python ma wiele zastosowań:
@@ -347,12 +347,12 @@ showstringspaces=false            %
     Docker to otwarto-źródłowe narzędzie służące do konteneryzacji aplikacji.
     Zapewnia dodatkową warstę abstrakcji nad systemem operacyjnym.
     Działa zarówno na Linuksie, jak i na Windowsie.
-    Pierwsze wersje Dockera od 2013 roku napisane były w Pythonie, a kolejne w języku Go.
+    Pierwsze wersje Dockera od 2013 roku napisane były w Pythonie, a~kolejne w języku Go.
 
     W wielu aplikacjach Docker używany jest w celu ułatwienia wdrożenie aplikacji na serwery produkcyjne.
     Jest przydatny również w czasie wytwarzania dla deweloperów, gdyż idealnie nadaje się na środowisko testowe.
 
-    Docker udostępnia na swojej stronie internetowej wiele predefiniowanych obrazów z zainstalowanymi aplikacjami, które są gotowe do użycia.
+    Docker udostępnia na swojej stronie internetowej wiele predefiniowanych obrazów z~zainstalowanymi aplikacjami, które są gotowe do użycia.
     Zalogowani użytkownicy mogą również publikować swoje własne obrazy zbudowane przez nich.
     Pozwala to dzielić się swoją pracą z całą społecznością.
 
@@ -374,7 +374,7 @@ showstringspaces=false            %
     Początkowo taki twórcy takich modeli inspirowali się zwierzęcym mózgiem, w którym połączone ze sobą neurony tworzą sieć.
     Taka sieć przetwarza sygnały wejściowe wykonując na nich pewne operacje.
     Sieci wykorzystywane są często do rozwiązywania problemów klasyfikacji, z racji na ich zdolność uczenia.
-    Np. potrafią przetwarzać zdjęcia i opisywać, co się na nich znajduje.
+    Na przykład potrafią przetwarzać zdjęcia i opisywać, co się na nich znajduje.
     Przed skorzystaniem z sieci należy ją nauczyć, co sprowadza się do przekazywania na wejście sieci danych uczących razem z poprawną klasą, do której dane obiekty należą.
 
     \section{Neuron}\label{sec:neuron}
@@ -605,7 +605,7 @@ showstringspaces=false            %
         \item train\_file - nazwa pliku w którym zapisywany jest postęp uczenia.
     \end{itemize}
 
-    Metoda „fit” zbiera wszystkie możliwe dane z procesu uczenia, loguje je na konsolę i zapisuje do pliku.
+    Metoda „fit” zbiera wszystkie możliwe dane z procesu uczenia, loguje je na konsolę i~zapisuje do pliku.
     Dzięki temu możliwe jest przeprowadzenie badań i porównanie efektywności uczenia dla różnych wartości parametrów.
 
     Funkcje „predict” i „predict\_label” pozwalają skasyfikować wiele obiektów jednocześnie.
@@ -1237,7 +1237,7 @@ showstringspaces=false            %
 
     Na wykresie dokładności sytuacja jest podobna.
     W modelu $M_{16}$ wartość dokładności bardzo gwałtownie skacze od około 50\% do 65\%.
-    Modele $M_{17}$ i $M_{18}$ nie polepszają się i po wszystkich epokach mają skuteczność taką jak na początku, czyli prawie 33\%.
+    Modele $M_{17}$ i $M_{18}$ nie polepszają się i~po wszystkich epokach mają skuteczność taką jak na początku, czyli prawie 33\%.
 
     \begin{figure}[htp]
         \centering
@@ -1253,7 +1253,7 @@ showstringspaces=false            %
     Badania przeprowadzone na wielu różnych klasyfikatorach pozwalają wyciągnąć ogólne wnioski.
 
     Można zauważyć, że funkcja aktywacji sigmoid daje lepsze rezultaty niż tanh.
-    Każdy z modeli z funkcją aktywacji sigmoid osiągnął wynik ponad 65\% dokładności po wszystkich epokach uczenia, nawet do 89\%.
+    Każdy z~modeli z funkcją aktywacji sigmoid osiągnął wynik ponad 65\% dokładności po wszystkich epokach uczenia, nawet do 89\%.
     W przypadku tanh kilka najlepszych modeli nieznacznie przekroczyło próg 80\%, ale były też takie, którym nie udało się przeskoczyć 10\%.
     Jest to gorszy wynik niż zgadywanie klasy.
 
@@ -1273,7 +1273,7 @@ showstringspaces=false            %
     Coraz większą popularność wśród badaczy zyskuje funkcja ReLU (Rectified Linear Unit) o wzorze $ReLU(x) = \max(0, x)$ lub Leaky ReLU zadaną wzorem $LReLU(x) = \max(x, 0.001x)$~\cite{cs231_neural_2}.
 
     W celu unikania przeuczenia pomocne byłoby zastosowanie metody zwanej „dropout”.
-    Jest techniką polegającą na losowym odrzuceniu neuronów razem z ich połączeniami z sieci neuronowej podczas uczenia.
+    Jest techniką polegającą na losowym odrzuceniu neuronów razem z ich połączeniami z~sieci neuronowej podczas uczenia.
     Chroni to neurony przed zbytnim adaptowaniem się do danych uczących~\cite{dropout}.
 
     Mając wiedzę medyczną o chorobach można problem klasyfikacji tego zbioru podzielić na 2 etapy.
