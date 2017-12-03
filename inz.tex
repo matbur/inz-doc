@@ -116,11 +116,13 @@
     Dane do tego problemu zawierają 31 cech.
     Są to odpowiedzi z wywiadu medycznego i~wyniki przeprowadzonych badań.
     Możliwe wartości parametrów przedstawione są poniżej.
-    Jak widać wszystkie liczby są naturalne mniejsze niż 11, także normalizacja czy skalowanie danych nie jest konieczne.
+    Jak widać wszystkie liczby są naturalne mniejsze niż 11, tak że normalizacja czy skalowanie danych nie jest konieczne.
 
     \input{data/questions}
 
     \section{Selekcja cech}\label{sec:selekcjaCech}
+
+    \subsection{Motywacja}\label{subsec:motywacja}
 
     Selekcja cech jest procesem wymaganym, gdy dane nie są dobrej jakości w wielu algorytmach uczenia maszynowego.
     Polega ona na wyborze podzbioru najlepszych cech według ustalonego kryterium.
@@ -387,15 +389,17 @@
     \end{figure}
 
     \begin{equation}
-        s = \sum _{i=0}^{n} {w^{(i)} \cdot x^{(i)}} = w^T \cdot x
+        s = \sum _{i=0}^{n} {w^{(i)} \cdot x^{(i)}} = w^T \cdot x,
         \label{neuron-eq}
     \end{equation}
 
-    Gdzie:
+    gdzie:
     \begin{itemize}
         \item $s$ - pobudzenie neuronu,
-        \item $w^{(i)}$ - wektor wag i-tej warstwy,
-        \item $x^{(i)}$ - wektor wejściowy.
+        \item $w$ - wektor wag,
+        \item $x$ - wektor wejściowy,
+        \item $w^{(i)}$ - i-ta wartość wektora wag,
+        \item $x^{(i)}$ - i-ta wektor wejściowego.
     \end{itemize}
 
     Neuron stanowi podstawowy budulec sztucznej sieci neuronowej.
@@ -474,7 +478,7 @@
     \begin{figure}[htp]
         \centering
         \includegraphics[scale=0.9]{./img/mlp.jpg}
-        \caption{Schemat neuronu}
+        \caption{Schemat sieci neuronowej}
         %        \label{}
     \end{figure}
 
@@ -498,10 +502,10 @@
     W tym celu stosuje się tak zwany „błąd średnio-kwadratowy”, który jest obliczany następująco:
 
     \begin{equation}
-        Q(w_k) = \sum_{k=1}^{N}{(d_k - y_k) ^ 2}
+        Q(w_k) = \sum_{k=1}^{N}{(d_k - y_k) ^ 2},
     \end{equation}
 
-    Gdzie:
+    gdzie:
 
     \begin{itemize}
         \item $Q$ - błąd średniokwadratowy,
@@ -630,11 +634,11 @@
 
     \noindent\begin{minipage}{\textwidth}
                  \begin{longtable}{|c|l|l|}
-                     \caption{Parametry uczenia sieci}\\ \hline
+                     \caption{Parametry sieci}\\ \hline
                      \textbf{L.p.} & \textbf{Parametr} & \textbf{Wartości} \\ \hline
                      \endfirsthead
                      \multicolumn{3}{c}
-                     {\tablename\ \thetable\ -- \textit{Parametry uczenia sieci - c.d.}} \\ \hline
+                     {\tablename\ \thetable\ -- \textit{Parametry sieci - c.d.}} \\ \hline
                      \textbf{L.p.} & \textbf{Parametr} & \textbf{Wartości} \\ \hline
                      \endhead
                      \hline \multicolumn{3}{r}{\textit{Kontynuacja na następnej stronie}} \\
@@ -669,11 +673,11 @@
     \noindent\begin{minipage}{\textwidth}
                  \begin{longtable}{|c|l|l|l|l|l|}
                      \caption{Testowane modele}\\ \hline
-                     \textbf{L.p.} & \textbf{Nazwa} & \textbf{Architektura}  & \textbf{Funkcja aktywacji} & \textbf{Liczba cech} & \textbf{Współczynnik uczenia} \\ \hline
+                     \textbf{L.p.} & \textbf{Nazwa} & \textbf{Architektura}  & \textbf{\begin{tabular}[c]{@{}c@{}}Funkcja\\ aktywacji\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Liczba\\ cech\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Współczynnik\\ uczenia\end{tabular}} \\ \hline
                      \endfirsthead
                      \multicolumn{5}{c}
                      {\tablename\ \thetable\ -- \textit{Testowane modele - c.d.}} \\ \hline
-                     \textbf{L.p.} & \textbf{Nazwa} & \textbf{Architektura}  & \textbf{Funkcja aktywacji} & \textbf{Liczba cech} & \textbf{Współczynnik uczenia} \\ \hline
+                     \textbf{L.p.} & \textbf{Nazwa} & \textbf{Architektura}  & \textbf{\begin{tabular}[c]{@{}c@{}}Funkcja\\ aktywacji\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Liczba\\ cech\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Współczynnik\\ uczenia\end{tabular}} \\ \hline
                      \endhead
                      \hline \multicolumn{5}{r}{\textit{Kontynuacja na następnej stronie}} \\
                      \endfoot
@@ -702,6 +706,8 @@
                      18 & $M_{18}$ & 24\_16\_12\_8 & tanh & 30 & 0.2\_0.2 \\ \hline
                  \end{longtable}
     \end{minipage}
+
+    \vspace{2em}
 
     \section{Badania z funkcją sigmoid}\label{sec:badaniaZFunkcjąSigmoid}
 
@@ -787,7 +793,7 @@
 
     \begin{figure}[htp]
         \centering
-        \includegraphics[scale=0.8]{././img/lr-accuracy.png}
+        \includegraphics[scale=0.8]{./img/lr-accuracy.png}
         \caption{Porównanie dokładności modeli $M_1$ i $M_2$}
         %        \label{}
     \end{figure}
@@ -876,7 +882,7 @@
 
     \begin{figure}[htp]
         \centering
-        \includegraphics[scale=0.8]{././img/feat-accuracy.png}
+        \includegraphics[scale=0.8]{./img/feat-accuracy.png}
         \caption{Porównanie dokładności modeli $M_3$, $M_4$ i $M_5$}
         %        \label{}
     \end{figure}
@@ -1056,7 +1062,7 @@
 
     \begin{figure}[htp]
         \centering
-        \includegraphics[scale=0.8]{././img/feat-accuracy-tanh.png}
+        \includegraphics[scale=0.8]{./img/feat-accuracy-tanh.png}
         \caption{Porównanie dokładności modeli $M_{10}$, $M_{11}$ i $M_{12}$}
         %        \label{}
     \end{figure}
@@ -1144,7 +1150,7 @@
 
     \begin{figure}[htp]
         \centering
-        \includegraphics[scale=0.8]{././img/arch-accuracy-tanh.png}
+        \includegraphics[scale=0.8]{./img/arch-accuracy-tanh.png}
         \caption{Porównanie dokładności modeli $M_{13}$, $M_{14}$ i $M_{15}$}
         %        \label{}
     \end{figure}
@@ -1241,12 +1247,14 @@
 
     \begin{figure}[htp]
         \centering
-        \includegraphics[scale=0.8]{././img/lr-accuracy-tanh.png}
+        \includegraphics[scale=0.8]{./img/lr-accuracy-tanh.png}
         \caption{Porównanie dokładności modeli $M_{16}$, $M_{17}$ i $M_{18}$}
         %        \label{}
     \end{figure}
 
     \chapter{Podsumowanie}\label{ch:podsumowanie}
+
+    \section{Wnioski z badań}\label{sec:wnioskiZBadań}
 
     Nie wszystkie modele sieci neuronowej nadają się do rozwiązywania problemu klasyfikacji.
     Niektóre modele radzą sobie dobrze, inne średnio, a jeszcze inne były zupełnie oporne na proces uczenia.
