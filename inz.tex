@@ -142,13 +142,13 @@
     Jest to jedna z technik nieparametrycznych.
     Nadaje się bardzo dobrze do oceny istotności statystycznej cechy.
     Test ten polega na obliczeniu podanego poniżej wyrażenia dla każdej z cech i wybraniu takich, dla których wartość jest największa.
+    Według tego wzoru obliczana jest wartość chi2:
 
     \begin{equation}
-        \chi ^ 2 = \sum_{i=1}^{n}{ \frac{{(O_i - E_i) ^ 2}}{E_i}}
+        \chi ^ 2 = \sum_{i=1}^{n}{ \frac{{(O_i - E_i) ^ 2}}{E_i}},
     \end{equation}
 
-    \noindent
-    Gdzie:
+    gdzie:
     \begin{itemize}
         \item $O_i$ - wartość mierzona,
         \item $E_i$ - wartość oczekiwana,
@@ -388,9 +388,14 @@
         %        \label{}
     \end{figure}
 
+    Neuron stanowi podstawowy budulec sztucznej sieci neuronowej.
+    Składa się z ustalonej liczby wejść, wraz z odpowiadającymi im wagami.
+    Ponadto neuron zawiera nieliniową funkcję aktywacji oraz jedno wyjście.
+    Jego zadanie to obliczenie iloczynu skalarnego wektora wejść z wektorem wag zgodnie ze wzorem:
+
     \begin{equation}
-        s = \sum _{i=0}^{n} {w^{(i)} \cdot x^{(i)}} = w^T \cdot x,
-        \label{neuron-eq}
+        s = \sum _{i=0}^{n} {w^{(i)} \cdot x^{(i)}} + w^{(0)} = w^T \cdot x + w^{(0)},
+        \label{neuron-eq1}
     \end{equation}
 
     gdzie:
@@ -399,34 +404,41 @@
         \item $w$ - wektor wag,
         \item $x$ - wektor wejściowy,
         \item $w^{(i)}$ - i-ta wartość wektora wag,
-        \item $x^{(i)}$ - i-ta wektor wejściowego.
+        \item $x^{(i)}$ - i-ta wektor wejściowego,
+        \item $w^{(0)}$ - bias.
     \end{itemize}
 
-    Neuron stanowi podstawowy budulec sztucznej sieci neuronowej.
-    Składa się z ustalonej liczby wejść, wraz z odpowiadającymi im wagami.
-    Ponadto neuron zawiera nieliniową funkcję aktywacji oraz jedno wyjście.
-    Jego zadanie to obliczenie iloczynu skalarnego wektora wejść z wektorem wag.
-    Dodatkowo możemy przyjąć, że bias jest dodatkowym wejściem neuronu o wartości 1, jak pokazano w rówaniu~\ref{neuron-eq}.
+    Dodatkowo możemy przyjąć, że bias jest dodatkowym wejściem neuronu o wartości 1.
+    Wtedy wzór na pobudzenie neuronu przyjmuje następującą postać:
+
+    \begin{equation}
+        s = \sum _{i=0}^{n} {w^{(i)} \cdot x^{(i)}} = w^T \cdot x,
+        \label{neuron-eq2}
+    \end{equation}
+
+    gdzie $x^{(0)} = 1$, a reszta symboli jak w~\ref{neuron-eq1}.
+
     Następnie obliczona suma ważona poddawana jest funkcji aktywacji i przekazywana na wyjście neuronu.
     W procesie uczenia wagi w neuronie zmieniają się tak, by wyliczona wartość funkcji błędu była jak najmniejsza.
 
     \subsection{Funkcja aktywacji}\label{subsec:funkcjaAktywacji}
 
-    Funkcja aktywacji to funkcja, która wykorzystywana jest w sztucznych sieciach neuronowych, a dokładniej w samym neuronie do zmiany wartości wyjścia.
-    Ma to na celu sprawienie, że sieć jest w stanie lepiej się uczyć nawet przy małej liczby neuronów.
-    W uczeniu maszynowym znanych jest wiele rodzajów takich funkcji.
-    W tej pracy opiszę tylko dwie, które użyłem do budowy sieci neuronowej.
+    Funkcja aktywacji to funkcja, która wykorzystywana jest w sztucznych sieciach neuronowych, a dokładniej w samym neuronie do zmiany wartości wyjścia według wzoru:
 
     \begin{equation}
-        y = f(s) = f(w^T \cdot x)
+        y = f(s) = f(w^T \cdot x),
     \end{equation}
 
-    Gdzie:
+    gdzie:
     \begin{itemize}
         \item $y$ - wektor wyjść neuronów,
         \item $f$ - funkcja aktywacji,
         \item $s$ - pobudzenie neuronu.
     \end{itemize}
+
+    Ma to na celu sprawienie, że sieć jest w stanie lepiej się uczyć nawet przy małej liczby neuronów.
+    W uczeniu maszynowym znanych jest wiele rodzajów takich funkcji.
+    W tej pracy opisano tylko dwie, które użyto do budowy sieci neuronowej.
 
     \subsubsection{Sigmoid}
 
@@ -437,6 +449,7 @@
     Kolejnym minusem tej funkcji jest to, że wartości nie zcentralizowane wokół zera.
     Ponadto wykorzystuje funkcję ekpotencjalną, która jest kosztowna obliczeniowo.
     Jej wzór to~\cite{sigmoid}:
+
     \begin{equation}
         \sigma(x) = \frac {1}{1+e^{-x}}
     \end{equation}
@@ -631,7 +644,6 @@
     Dodatkowo przeprowadziłem te same badania na innym serwerze posiadającym tylko 1 CPU i 4 GB pamięci RAM.
     Tutaj modelu uczyły się przez ponad 44 godziny.
 
-
     \noindent\begin{minipage}{\textwidth}
                  \begin{longtable}{|c|l|l|}
                      \caption{Parametry sieci}\\ \hline
@@ -715,7 +727,6 @@
 
     Poniżej znajduje się tabela z przebiegu uczenia dwóch modeli o architekturze 24\_16\_12\_8, funkcji aktywacji sigmoid, uczonym na 30 cechach i różniącym się współczynnikiem uczenia.
 
-
     %    \noindent\begin{minipage}{\textwidth}
     \begin{longtable}{|c|l|l|l|l|}
         \caption{Porównianie modeli $M_1$ i $M_2$}\\ \hline
@@ -774,7 +785,6 @@
         400 & 0.807 & 16.703 & 0.832 & 17.420 \\ \hline
     \end{longtable}
     %    \end{minipage}
-
 
     Wykres wartości błędu przedstawia błąd średniokwadratowy z procesu uczenia co 5 epokę.
     Trend funkcji jest mniej więcej podobny, ale widać, że dla przypadku ze stałym współczynnikiem uczenia wartość błędu spada mniej gwałtownie.
@@ -1234,12 +1244,6 @@
         \caption{Porównanie wartości błędu modeli $M_{16}$, $M_{17}$ i $M_{18}$}
         %        \label{}
     \end{figure}
-
-    %    Wykres dokładności potwierdza brak możliwości nauki tych modeli.
-    %    Jak na poprzednim wykresie model bez warstwy ukrytej i ten z dwiema warstwami mają praktycznie stałe wartości dokładności.
-    %    Model $M_{15}$ jest wciąż trochę lepszy niż $M_{13}$ o około 5 punktów procentowych.
-    %
-    %    Model z jedną warstwą ukrytą intensywnie zmienia wagi, dlatego dokładność skacze w zakresie 5--32\%, co również jest bardzo małą skutecznością.
 
     Na wykresie dokładności sytuacja jest podobna.
     W modelu $M_{16}$ wartość dokładności bardzo gwałtownie skacze od około 50\% do 65\%.
