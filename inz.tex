@@ -116,7 +116,6 @@
     Dane do tego problemu zawierają 31 cech.
     Są to odpowiedzi z wywiadu medycznego i~wyniki przeprowadzonych badań.
     Możliwe wartości parametrów przedstawione są poniżej.
-    Jak widać wszystkie liczby są naturalne mniejsze niż 11, tak że normalizacja czy skalowanie danych nie jest konieczne.
 
     \input{data/questions}
 
@@ -145,14 +144,33 @@
     Według tego wzoru obliczana jest wartość chi2:
 
     \begin{equation}
-        \chi ^ 2 = \sum_{i=1}^{n}{ \frac{{(O_i - E_i) ^ 2}}{E_i}},
+        \chi^2_i = \sum_{k=1}^{n}{ \frac{{(O_k - E_k) ^ 2}}{E_k}},
     \end{equation}
 
     gdzie:
     \begin{itemize}
-        \item $O_i$ - wartość mierzona,
-        \item $E_i$ - wartość oczekiwana,
-        \item $n$ - liczba obiektów.
+        \item $\chi^2_i$ - wartość chi2 i-tej cechy,
+        \item $O_k$ - wartość mierzona k-tej klasy,
+        \item $E_k$ - wartość oczekiwana k-tej klasy,
+        \item $n$ - liczba klas.
+    \end{itemize}
+
+    Wartości mierzone i oczekiwane mają wyznaczane są według wzorów:
+
+    \begin{equation}
+        O_k = \sum_{j=1}^{N} (x_i^{(j)} \cdot \mathbbm{1}_{y^{(j)}=k}),
+    \end{equation}
+
+
+    \begin{equation}
+        E_k = \frac{1}{N} \sum_{j=1}^{N} {x_i^{(j)}} \cdot \sum_{j=1}^{N} {\mathbbm{1}_{y^{(j)}=k}},
+    \end{equation}
+
+    gdzie:
+    \begin{itemize}
+        \item $N$ - liczba obiektów,
+        \item $x_i^{(j)}$ - j-ta wartość wektora i-tej cechy,
+        \item $y^{(j)}$ - numer klasy j-tego obiektu.
     \end{itemize}
 
     Wartości testu dla wszystkich cech mają następujące wartości:
@@ -685,11 +703,23 @@
     \noindent\begin{minipage}{\textwidth}
                  \begin{longtable}{|c|l|l|l|l|l|}
                      \caption{Testowane modele}\\ \hline
-                     \textbf{L.p.} & \textbf{Nazwa} & \textbf{Architektura}  & \textbf{\begin{tabular}[c]{@{}c@{}}Funkcja\\ aktywacji\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Liczba\\ cech\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Współczynnik\\ uczenia\end{tabular}} \\ \hline
+                     \textbf{L.p.} & \textbf{Nazwa} & \textbf{Architektura}  & \textbf{\begin{tabular}[c]{@{}c@{}}
+                                                                                           Funkcja\\ aktywacji
+                     \end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}
+                                                  Liczba\\ cech
+                     \end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}
+                                                  Współczynnik\\ uczenia
+                     \end{tabular}} \\ \hline
                      \endfirsthead
                      \multicolumn{5}{c}
                      {\tablename\ \thetable\ -- \textit{Testowane modele - c.d.}} \\ \hline
-                     \textbf{L.p.} & \textbf{Nazwa} & \textbf{Architektura}  & \textbf{\begin{tabular}[c]{@{}c@{}}Funkcja\\ aktywacji\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Liczba\\ cech\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Współczynnik\\ uczenia\end{tabular}} \\ \hline
+                     \textbf{L.p.} & \textbf{Nazwa} & \textbf{Architektura}  & \textbf{\begin{tabular}[c]{@{}c@{}}
+                                                                                           Funkcja\\ aktywacji
+                     \end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}
+                                                  Liczba\\ cech
+                     \end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}
+                                                  Współczynnik\\ uczenia
+                     \end{tabular}} \\ \hline
                      \endhead
                      \hline \multicolumn{5}{r}{\textit{Kontynuacja na następnej stronie}} \\
                      \endfoot
