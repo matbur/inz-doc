@@ -673,7 +673,7 @@
                 \twocolumn
               \fi}
 \newcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-                    \thispagestyle{empty}%
+                    \thispagestyle{headings}%
                     \global\@topnum\z@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
@@ -893,6 +893,7 @@
 \setcounter{tocdepth}{2}
 \newcommand\tableofcontents{%
     \chapter*{\contentsname
+    \thispagestyle{empty}
         \@mkboth{%
            \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
     \@starttoc{toc}%
