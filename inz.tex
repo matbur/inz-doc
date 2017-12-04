@@ -401,6 +401,8 @@
 
     \section{Neuron}\label{sec:neuron}
 
+    \subsection{Budowa neuronu}\label{subsec:budowaNeuronu}
+
     \begin{figure}[htp]
         \centering
         \includegraphics[scale=0.4]{./img/neuron.png}
@@ -487,10 +489,10 @@
     Spłaszcza wyjście w zakresie (-1, 1).
     Podobnie jak sigmoida szybko się „nasyca”.
     W przeciwieństwie do poprzedniej funkcji jest scentralizowany wokół zera.
-    Tanh również korzysta z funkcji ekpotencjalnej~\cite{cs231_neural_2}.
+    Tanh również korzysta z~funkcji ekpotencjalnej~\cite{cs231_neural_2}.
     Jej wzór to:
     \begin{equation}
-        \tanh(x) = \frac {2}{1+e^{-2x}} - 1
+        \tanh(x) = \frac {2}{1+e^{-2x}} - 1.
     \end{equation}
 
     \begin{figure}[htp]
@@ -501,6 +503,8 @@
     \end{figure}
 
     \section{Model wielowarstwowy}\label{sec:modelWielowarstwowy}
+
+    \subsection{Budowa sieci neuronowej}\label{subsec:budowaSieciNeuronowej}
 
     Kiedy pojedyncze neurony mają te same sygnały wejściowe, tworzą wówczas tak zwaną warstwę w sieci neuronowej.
     Dlatego sieć neuronowa ma budowę warstwową.
@@ -516,7 +520,7 @@
     \end{figure}
 
     W warstwie wejściowej znajduje się tyle neuronów, ile jest badanych cech.
-    W moim przypadku będzie mniej niż 31.
+    Dla analizowanego zbioru danych będzie ich mniej niż 31.
     Neurony w tej warstwie nie mają wag, lecz przekazują dalej dokładnie to, co otrzymały.
 
     Liczba neuronów w warstwie wyjściowej również nie jest przypadkowa.
@@ -531,44 +535,85 @@
 
     Korekcja wag odbywa się w procesie zwanym propagacją wsteczną.
     Propagacja wsteczna korzysta z gradientowych metod optymalizacji, które są wydajne obliczeniowo i bardzo skuteczne do uczenia sieci.
-    Propagacja wsteczna wymaga również funkcję błędu.
-    W tym celu stosuje się tak zwany „błąd średnio-kwadratowy”, który jest obliczany następująco:
-
-    \begin{equation}
-        Q(w_k) = \sum_{k=1}^{N}{(d_k - y_k) ^ 2},
-    \end{equation}
-
-    gdzie:
-
-    \begin{itemize}
-        \item $Q$ - błąd średniokwadratowy,
-        \item $w_k$ - wektor wag w k-tym neuronie,
-        \item $N$ - liczba danych uczących,
-        \item $d_k$ - poprawna wartość,
-        \item $y_k$ - aktualna wartość.
-    \end{itemize}
+%    Propagacja wsteczna wymaga również funkcję błędu.
+%    W tym celu stosuje się tak zwany „błąd średnio-kwadratowy”, który jest obliczany następująco:
+%
+%    \begin{equation}
+%        Q(w_k) = \sum_{k=1}^{N}{(d_k - y_k) ^ 2},
+%    \end{equation}
+%
+%    gdzie:
+%
+%    \begin{itemize}
+%        \item $Q$ - błąd średniokwadratowy,
+%        \item $w_k$ - wektor wag w k-tym neuronie,
+%        \item $N$ - liczba danych uczących,
+%        \item $d_k$ - poprawna wartość,
+%        \item $y_k$ - aktualna wartość.
+%    \end{itemize}
 
     Algorytm jest wieloetapowy.
     Pierwszym krokiem jest dostarczenie obiektu na wejście sieci i sprawdzenie jakie otrzymamy wyjście.
     Następnie rekurencyjnie zmniejszana jest wartość funkcji błędu od końca sieci zmieniając wagi w kolejnych warstwach.
+    Dla każdego obiektu uczącego należy znaleźć wartość delty, która może być obliczona na dwa sposoby.
 
-    Tutaj korzysta się ze współczynnika uczenia.
+    Dla warstwy wyjściowej delta liczona jest z tego wzoru:
+
+    \begin{equation}
+        \Delta_i = (y_i - d) \cdot f'(s_i),
+    \end{equation}
+
+    a dla wszystkich warstw ukrytych z tego:
+
+    \begin{equation}
+        \Delta_i = (\Delta_{i+1} * W_{i+1}^T) \cdot f'(s_i),
+    \end{equation}
+
+    gdzie:
+    \begin{itemize}
+        \item $\Delta_i$ - delta i-tej warstwy,
+        \item $y_i$ - wyjście i-tej warstwy,
+        \item $d$ - poprawna wartość w kodowaniu „1 z n”,
+        \item $f'$ - pochodna funkcji aktywacji,
+        \item $s_i$ - pobudzenie neuronu,
+        \item $W_i$ - tablica wag i-tej warstwy z biasem,
+        \item operator $*$ - mnożenie macierzy,
+        \item operator $\cdot$ - mnożenie element po elemencie.
+    \end{itemize}
+
+    Na podstawie delty obliczany jest gradient i aktualizowana jest tablica wag:
+
+    \begin{equation}
+        G_i = y_{i-1}^T * \Delta_i,
+    \end{equation}
+
+    \begin{equation}
+        W_i = W_i - G_i \cdot lr,
+    \end{equation}
+
+    gdzie:
+    \begin{itemize}
+        \item $G_i$ - gradient i-tej warstwy,
+        \item $lr$ - współczynnik uczenia (learning rate).
+    \end{itemize}
+
+    Jak wynika z powyższego wzoru korzysta się tutaj ze współczynnika uczenia.
     Na początku powinien mieć ustaloną wartość, a następnie wraz z kolejnymi epokami uczenia może się zmniejszać.
 
     Należy również wyznaczyć pochodne funkcji aktywacji.
-    Pierwsza pochodna funkcji sigmoidalnej to równanie~\ref{der-sigmoid}, a tanh to~\ref{der-tanh}.
+    Pierwsza pochodna funkcji sigmoidalnej to równanie~\ref{der-sigmoid}, a tanh to~\ref{der-tanh}:
 
     \begin{equation}
-        \sigma'(x) = \sigma(x) \cdot (1 - \sigma(x))
+        \sigma'(x) = \sigma(x) \cdot (1 - \sigma(x)),
         \label{der-sigmoid}
     \end{equation}
 
     \begin{equation}
-        \tanh'(x) = 1 - \tanh(x)^2
+        \tanh'(x) = 1 - \tanh(x)^2.
         \label{der-tanh}
     \end{equation}
 
-    Można to porównać do stania nad doliną górską, gdzie chcemy dość do najniższego punktu.
+    Ogólnie zmniejszanie gradientu można to porównać do stania nad doliną górską, gdzie chcemy dość do najniższego punktu.
     Najpierw należy ustalić kierunek marszu, by później kroczyć w tym kierunku.
     Na początku kroki mogą być ogromne, ale w miarę schodzenia, powinniśmy je zmniejszać, by nie przekroczyć minimum.
 
