@@ -459,9 +459,9 @@
     W uczeniu maszynowym znanych jest wiele rodzajów takich funkcji.
     W tej pracy opisano tylko dwie, które użyto do budowy sieci neuronowej.
 
-    \subsubsection{Sigmoid}
+    \subsubsection{Sigmoida}
 
-    Pierwszą opisywaną funkcją jest sigmoid, zwana też „sigmoidalną funkcją unipolarną”.
+    Pierwszą opisywaną funkcją jest sigmoida, zwana też „sigmoidalną funkcją unipolarną”.
     Bardzo dobrze nadaje się jako funkcja aktywacji, gdyż jej dziedzina to cały zbiór liczb rzeczywistych.
     Ma tę cechę, że zbiór warości mieści się w zakresie (0, 1).
     Jest to również wada, że szybko się „nasyca”.
@@ -476,7 +476,7 @@
     \begin{figure}[htp]
         \centering
         \includegraphics[scale=0.8]{./img/sigmoid.png}
-        \caption{Funkcja aktywacji - sigmoid}
+        \caption{Funkcja aktywacji - sigmoida}
         %        \label{}
     \end{figure}
 
@@ -484,7 +484,7 @@
     Kolejna funkcja, która wykorzystywana jest w sieciach neuronowych to tangens hiperboliczny (tanh).
     W tym przypadku również dziedziną jest zbiór liczb rzeczywistych.
     Spłaszcza wyjście w zakresie (-1, 1).
-    Podobnie jak sigmoid szybko się „nasyca”.
+    Podobnie jak sigmoida szybko się „nasyca”.
     W przeciwieństwie do poprzedniej funkcji jest scentralizowany wokół zera.
     Tanh również korzysta z funkcji ekpotencjalnej~\cite{cs231_neural_2}.
     Jej wzór to:
@@ -555,7 +555,7 @@
     Na początku powinien mieć ustaloną wartość, a następnie wraz z kolejnymi epokami uczenia może się zmniejszać.
 
     Należy również wyznaczyć pochodne funkcji aktywacji.
-    Pierwsza pochodna funkcji sigmoid to równanie~\ref{der-sigmoid}, a tanh to~\ref{der-tanh}.
+    Pierwsza pochodna funkcji sigmoidalnej to równanie~\ref{der-sigmoid}, a tanh to~\ref{der-tanh}.
 
     \begin{equation}
         \sigma'(x) = \sigma(x) \cdot (1 - \sigma(x))
@@ -583,7 +583,7 @@
     Klasa zawiera w sobie tablicę, która jest składa się z wag połączeń do poprzedniej warstwy.
 
     Przy tworzeniu instancji należy podać krotkę liczba oznaczającą kształt warstwy.
-    Dodatkowo można przekazać nazwę funkcji aktywacji, którą domyślnie jest to sigmoid.
+    Dodatkowo można przekazać nazwę funkcji aktywacji, którą domyślnie jest to sigmoida.
 
     Zadanie funkcji „feedforward” to przyjęcie tablicy liczb z poprzedniej warstwy, obliczenie iloczynu skalarnego z aktualnymi wagami i poddanie wyjścia funkcją aktywacji.
     Następnie funkcja powinna rekurencyjnie wywołać samą siebie na następnej warstwie jeśli nie jest ostatnia w sieci.
@@ -752,11 +752,11 @@
 
     \vspace{2em}
 
-    \section{Badania z funkcją sigmoid}\label{sec:badaniaZFunkcjąSigmoid}
+    \section{Badania z funkcją sigmoidalną}\label{sec:badaniaZFunkcjąSigmoid}
 
     \subsection{Różne współczynniki uczenia}\label{subsec:różneWspólczynnikiUczenia}
 
-    Poniżej znajduje się tabela z przebiegu uczenia dwóch modeli o architekturze 24\_16\_12\_8, funkcji aktywacji sigmoid, uczonym na 30 cechach i różniącym się współczynnikiem uczenia.
+    Poniżej znajduje się tabela z przebiegu uczenia dwóch modeli o architekturze 24\_16\_12\_8, funkcji aktywacji sigmoidalnej, uczonym na 30 cechach i różniącym się współczynnikiem uczenia.
 
     %    \noindent\begin{minipage}{\textwidth}
     \begin{longtable}{|c|l|l|l|l|}
@@ -841,7 +841,7 @@
 
     \subsection{Różna liczba cech}\label{subsec:różnaLiczbaCech}
 
-    Drugie porównanie to modele o architekturze 16\_8, funkcji aktywacji sigmoid.
+    Drugie porównanie to modele o architekturze 16\_8, funkcji aktywacji sigmoidalnej.
     Trenowane były z malejącym współczynnikiem uczenia.
     Parametr, który je różni, to liczba cech.
     $M_3$ klasyfikuje korzystając z 10 cech o najwyższym współczynniku chi2.
@@ -930,7 +930,7 @@
 
     \subsection{Różne architektury}\label{subsec:różneArchitektury}
 
-    Kolejnej analizie poddano sieci neuronowe mające funkcję aktywacji sigmoid oraz 30 neuronów w warstwie wejściowej.
+    Kolejnej analizie poddano sieci neuronowe mające funkcję aktywacji sigmoidalną oraz 30 neuronów w warstwie wejściowej.
     Współczynnik uczenia malał od $1.0$ do $0.01$ we wszystkich modelach tak samo.
     Kolejne klasyfikatory miały następujące architektury 8, 16\_8, 16\_12\_8 i 24\_16\_12\_8.
 
@@ -1295,8 +1295,8 @@
     Niektóre modele radzą sobie dobrze, inne średnio, a jeszcze inne były zupełnie oporne na proces uczenia.
     Badania przeprowadzone na wielu różnych klasyfikatorach pozwalają wyciągnąć ogólne wnioski.
 
-    Można zauważyć, że funkcja aktywacji sigmoid daje lepsze rezultaty niż tanh.
-    Każdy z~modeli z funkcją aktywacji sigmoid osiągnął wynik ponad 65\% dokładności po wszystkich epokach uczenia, nawet do 89\%.
+    Można zauważyć, że funkcja aktywacji sigmoida daje lepsze rezultaty niż tanh.
+    Każdy z~modeli z funkcją aktywacji sigmoidalną osiągnął wynik ponad 65\% dokładności po wszystkich epokach uczenia, nawet do 89\%.
     W przypadku tanh kilka najlepszych modeli nieznacznie przekroczyło próg 80\%, ale były też takie, którym nie udało się przeskoczyć 10\%.
     Jest to gorszy wynik niż zgadywanie klasy.
 
